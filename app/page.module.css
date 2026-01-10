@@ -24,7 +24,7 @@
   max-width: 800px;
   flex-direction: column;
   align-items: flex-start;
-  justify-content: space-between;
+  justify-content: center;
   background-color: var(--foreground);
   padding: 120px 60px;
 }
@@ -33,6 +33,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  justify-content: center;
   text-align: left;
   gap: 24px;
 }
@@ -128,10 +129,10 @@ a.secondary {
   }
 
   .page {
-    --background: #000;
-    --foreground: #000;
+    --background: #fff;
+    --foreground: #fafafa;
 
-    --text-primary: #ededed;
+    --text-primary: #101820;
     --text-secondary: #999;
 
     --button-primary-hover: #ccc;
