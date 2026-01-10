@@ -29,6 +29,16 @@
   padding: 120px 60px;
 }
 
+.avatar img {
+  margin-top: 20px;
+  width: 150px;      
+  height: 150px;
+  border-radius: 50%; 
+  object-fit: cover;   
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2); 
+}
+
+
 .intro {
   display: flex;
   flex-direction: column;

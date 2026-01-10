@@ -12,6 +12,9 @@ export default function Home() {
             back soon!
           </p>
         </div>
+        <div className={styles.avatar}>
+          <img src="/vector.jpg" alt="Daniel's Avatar" />
+        </div>
       </main>
     </div>
   );
