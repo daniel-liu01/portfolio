@@ -1,0 +1,9 @@
+.heroDown {
+  display: flex;
+  justify-content: center;
+  padding: var(--space-24) 0;
+}
+
+.heroDown img {
+  display: block;
+}
