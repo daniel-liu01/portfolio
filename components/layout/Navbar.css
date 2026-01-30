@@ -1,6 +1,6 @@
 .navbar {
-  border-bottom: 1px solid #e5e5e5;
-  padding: 24px 32px;
+  padding: 24px var(--space-80);
+  background: transparent;
 }
 
 .navbar-container {
@@ -12,16 +12,18 @@
 }
 
 .navbar-logo {
-  width: 72px;
-  height: 64px;
-  mix-blend-mode: multiply;
+  width: 58px;
+  height: 51px;
+  flex-shrink: 0;
+  overflow: visible;
   z-index: 1001;
 }
 
 .navbar-logo img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
+  display: block;
 }
 
 .navbar-toggle {
@@ -100,12 +102,12 @@
 /* Mobile Responsive Styles */
 @media (max-width: 768px) {
   .navbar {
-    padding: 16px 24px;
+    padding: 16px var(--space-16);
   }
 
   .navbar-logo {
-    width: 48px;
-    height: 42px;
+    width: 38px;
+    height: 34px;
   }
 
   .navbar-toggle {
@@ -141,7 +143,7 @@
 /* Tablet Styles */
 @media (max-width: 1024px) and (min-width: 769px) {
   .navbar {
-    padding: 20px 28px;
+    padding: 20px var(--space-80);
   }
 
   .navbar-menu {
