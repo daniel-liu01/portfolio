@@ -1,9 +1,9 @@
 import "./Work.css";
 
 const projects = [
-  { title: "Forge" },
+  { title: "Forge", image: "/forge.jpg" },
   { title: "LevelUp" },
-  { title: "G Adventures Travel Magazine" },
+  { title: "G Adventures Travel Magazine", image: "/magazine.jpg" },
   { title: "Kofi" },
 ];
 
@@ -15,7 +15,15 @@ function Work() {
         <div className="work-grid">
           {projects.map((project) => (
             <article key={project.title} className="work-card">
-              <div className="work-card-image" aria-hidden="true" />
+              {project.image ? (
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  className="work-card-image"
+                />
+              ) : (
+                <div className="work-card-image" aria-hidden="true" />
+              )}
               <h3 className="work-card-title">{project.title}</h3>
             </article>
           ))}

@@ -1,4 +1,4 @@
-import './Hero.css';
+import "./Hero.css";
 
 function Hero() {
   return (
@@ -12,7 +12,8 @@ function Hero() {
 
         {/* Top Right Tagline */}
         <p className="hero-tagline">
-          Designing with<br />
+          Creating with
+          <br />
           <strong>empathy & intent</strong>
         </p>
 
@@ -29,7 +30,8 @@ function Hero() {
 
         {/* Description */}
         <p className="hero-description">
-          Combining <strong>design</strong>, <strong>research</strong>, and <strong>branding</strong> to craft meaningful user experiences.
+          Combining <strong>design</strong>, <strong>research</strong>, and{" "}
+          <strong>branding</strong> to craft meaningful user experiences.
         </p>
       </div>
     </section>
