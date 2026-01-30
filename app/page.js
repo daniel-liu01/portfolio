@@ -1,19 +1,15 @@
-import Image from "next/image";
+import "./globals.css";
 import styles from "./page.module.css";
+import Navbar from "@/components/layout/Navbar";
+import Hero from "@/components/Hero";
 
 export default function Home() {
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <div className={styles.intro}>
-          <h1>Hi it's Daniel . . !</h1>
-          <p>
-            🚧 Portfolio under construction... Cool stuff loading… please check
-            back soon!
-          </p>
-        </div>
-        <div className={styles.avatar}>
-          <img src="/vector.jpg" alt="Daniel's Avatar" />
+    <div>
+      <Navbar />
+      <main>
+        <div>
+          <Hero />
         </div>
       </main>
     </div>
