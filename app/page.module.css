@@ -1,9 +1,22 @@
+@keyframes heroDown-slide-down {
+  from {
+    opacity: 0;
+    transform: translateY(-16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .heroDownWrap {
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 20px 0 208px 0;
   min-height: 48px;
+  opacity: 0;
+  animation: heroDown-slide-down 0.65s ease-out 3.8s forwards;
 }
 
 .heroDown {
