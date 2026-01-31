@@ -1,9 +1,21 @@
 .heroDown {
   display: flex;
   justify-content: center;
-  padding: var(--space-24) 0;
+  align-items: center;
+  padding: 20px 0 208px 0;
+  cursor: pointer;
+  min-height: 48px;
+  text-decoration: none;
+  color: inherit;
 }
 
 .heroDown img {
   display: block;
+  transition: transform 0.25s ease, filter 0.25s ease;
+  transform-origin: center center;
+}
+
+.heroDown:hover img {
+  transform: scale(1.15);
+  filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.2));
 }

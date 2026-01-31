@@ -1,6 +1,6 @@
 .work {
   width: 100%;
-  padding: 200px 0 300px;
+  padding: var(--space-48) 0 var(--space-48);
   background-color: #fff;
 }
 
