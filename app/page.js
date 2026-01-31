@@ -12,9 +12,11 @@ export default function Home() {
       <main>
         <div>
           <Hero />
-          <a href="#work" className={styles.heroDown} aria-label="Scroll to work section">
-            <img src="/down.svg" alt="" aria-hidden="true" />
-          </a>
+          <div className={styles.heroDownWrap}>
+            <a href="#work" className={styles.heroDown} aria-label="Scroll to work section">
+              <img src="/down.svg" alt="" aria-hidden="true" />
+            </a>
+          </div>
           <Work />
         </div>
       </main>

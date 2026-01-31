@@ -1,12 +1,21 @@
-.heroDown {
+.heroDownWrap {
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 20px 0 208px 0;
-  cursor: pointer;
   min-height: 48px;
+}
+
+.heroDown {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 16px;
+  cursor: pointer;
   text-decoration: none;
   color: inherit;
+  width: max-content;
+  box-sizing: content-box;
 }
 
 .heroDown img {
