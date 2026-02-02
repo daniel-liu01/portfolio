@@ -1,10 +1,14 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import "./Navbar.css";
 
 function Navbar({ activePage = "home" }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const pathname = usePathname();
+  const isHome = pathname === "/";
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -13,9 +17,9 @@ function Navbar({ activePage = "home" }) {
   return (
     <nav className="navbar">
       <div className="navbar-container">
-        <div className="navbar-logo">
+        <Link href="/" className="navbar-logo" aria-label="Home">
           <img src="/icon.svg" alt="Logo" />
-        </div>
+        </Link>
 
         <button
           className="navbar-toggle"
@@ -26,29 +30,29 @@ function Navbar({ activePage = "home" }) {
         </button>
 
         <div className={`navbar-menu ${isMenuOpen ? "open" : ""}`}>
-          <a
-            href="#home"
+          <Link
+            href={isHome ? "#home" : "/"}
             className={`navbar-link ${activePage === "home" ? "active" : ""}`}
             onClick={() => setIsMenuOpen(false)}
           >
             Home
-          </a>
-          <a
-            href="#about"
+          </Link>
+          <Link
+            href={isHome ? "#about" : "/#about"}
             className={`navbar-link ${activePage === "about" ? "active" : ""}`}
             onClick={() => setIsMenuOpen(false)}
           >
             About
-          </a>
-          <a
-            href="#contact"
+          </Link>
+          <Link
+            href={isHome ? "#contact" : "/#contact"}
             className={`navbar-link ${
               activePage === "contact" ? "active" : ""
             }`}
             onClick={() => setIsMenuOpen(false)}
           >
             Contact
-          </a>
+          </Link>
         </div>
       </div>
     </nav>

@@ -41,6 +41,9 @@
   --medium: 500;
   --semibold: 600;
   --bold: 700;
+
+  /* Shadow – reuse for cards, hero images, etc. */
+  --shadow-subtle: 0 2px 12px rgba(0, 0, 0, 0.08);
 }
 
 html {

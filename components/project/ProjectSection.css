@@ -1,0 +1,148 @@
+.project-section {
+  width: 100%;
+  padding: 60px var(--space-40) var(--space-96);
+  background-color: var(--white);
+}
+
+.project-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--space-40);
+}
+
+/* Header: title + reading time */
+.project-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-24);
+  margin-bottom: 20px;
+}
+
+.project-title {
+  font-family: var(--font-mono);
+  font-size: 24px;
+  font-weight: var(--medium);
+  color: var(--black);
+  margin: 0;
+  line-height: 1;
+}
+
+.project-reading-time {
+  font-family: var(--font-mono);
+  font-size: var(--text-base);
+  font-weight: var(--light);
+  color: var(--black);
+  margin: 0;
+  opacity: 0.85;
+}
+
+/* Hero: image only */
+.project-hero {
+  width: 100%;
+  margin-bottom: 40px;
+}
+
+.project-hero-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  box-shadow: var(--shadow-subtle);
+}
+
+/* Metadata grid */
+.project-meta {
+  padding-top: 0;
+}
+
+.project-meta-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-32);
+  margin: 0;
+}
+
+.project-meta-item {
+  margin: 0;
+}
+
+.project-meta-item dt {
+  font-family: var(--font-mono);
+  font-size: 20px;
+  font-weight: var(--medium);
+  color: var(--black);
+  margin-bottom: var(--space-4);
+}
+
+.project-meta-item dd {
+  font-family: var(--font-mono);
+  font-size: var(--text-base);
+  font-weight: var(--light);
+  color: var(--black);
+  margin: 0;
+}
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .project-section {
+    padding: 60px var(--space-30) var(--space-64);
+  }
+
+  .project-container {
+    padding: 0 var(--space-30);
+  }
+
+  .project-header {
+    margin-bottom: 20px;
+  }
+
+  .project-hero {
+    margin-bottom: 40px;
+  }
+
+  .project-meta-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-24);
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .project-section {
+    padding: 60px var(--space-20) var(--space-48);
+  }
+
+  .project-container {
+    padding: 0 var(--space-20);
+  }
+
+  .project-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-12);
+    margin-bottom: 20px;
+  }
+
+  .project-reading-time {
+    font-size: var(--text-sm);
+  }
+
+  .project-hero {
+    margin-bottom: 40px;
+  }
+
+  .project-meta {
+    padding-top: 0;
+  }
+
+  .project-meta-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-20);
+  }
+
+  .project-meta-item dd {
+    font-size: var(--text-sm);
+  }
+}
