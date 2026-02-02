@@ -16,7 +16,7 @@ const forgeContent = {
     { label: "Location", value: "BCIT" },
     { label: "Year", value: "2025" },
     { label: "Team", value: "8 members" },
-    { label: "Focus", value: "UX Design/Research, Frontend Development" },
+    { label: "Focus", value: "UX Design/Research Frontend Development" },
   ],
 };
 

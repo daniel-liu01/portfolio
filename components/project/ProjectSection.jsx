@@ -19,7 +19,7 @@ function ProjectSection({ title, readingTime, heroImage, heroImageAlt, meta = []
         <header className="project-header">
           <h1 className="project-title">{title}</h1>
           <p className="project-reading-time">
-            Estimated reading time: {readingTime}.
+            Estimated reading time: {readingTime}
           </p>
         </header>
 
