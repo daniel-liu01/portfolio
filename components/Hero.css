@@ -1,6 +1,7 @@
 .hero {
   width: 100%;
-  padding: 300px var(--space-40) var(--space-80);
+  /* Scale top padding with viewport height so hero sits higher on laptops */
+  padding: clamp(120px, 25vh, 300px) var(--space-40) var(--space-80);
   background-color: #fff;
 }
 
@@ -155,7 +156,7 @@
 /* Responsive Styles */
 @media (max-width: 1024px) {
   .hero {
-    padding: 300px var(--space-30) var(--space-60);
+    padding: clamp(100px, 22vh, 280px) var(--space-30) var(--space-60);
   }
 
   .hero-container {
@@ -194,7 +195,7 @@
 
 @media (max-width: 768px) {
   .hero {
-    padding: 300px var(--space-20) var(--space-40);
+    padding: clamp(80px, 18vh, 240px) var(--space-20) var(--space-40);
   }
 
   .hero-name {
