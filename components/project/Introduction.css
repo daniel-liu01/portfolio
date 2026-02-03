@@ -1,7 +1,7 @@
 .introduction {
   width: 100%;
   padding: var(--space-60) var(--space-40) var(--space-60);
-  background-color: var(--white);
+  background: transparent;
 }
 
 .introduction-container {
@@ -34,6 +34,7 @@
 .introduction-right {
   min-width: 0;
   flex-shrink: 0;
+  background: transparent;
 }
 
 .introduction-image {

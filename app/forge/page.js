@@ -28,9 +28,8 @@ const forgeContent = {
 const forgeIntroduction = (
   <>
     Gamifying skilled-trades discovery and helping{" "}
-    <strong>high school students</strong> and{" "}
-    <strong>young adults</strong> explore, experience, and choose their future
-    with confidence.
+    <strong>high school students</strong> and <strong>young adults</strong>{" "}
+    explore, experience, and choose their future with confidence.
   </>
 );
 
@@ -100,14 +99,12 @@ export default function ForgePage() {
         <ContentSection title="Expectations" variant="textRight">
           <p>
             We thought the problem was that it&apos;s hard to enter the business
-            as a business owner. So in the beginning, we thought the
-            opportunity was to help out{" "}
-            <strong>immigrant business owners</strong>.
+            as a business owner. So in the beginning, we thought the opportunity
+            was to help out <strong>immigrant business owners</strong>.
             <br />
             <br />
-            Based on the assumption
-            that they cannot create a successful business due to the{" "}
-            <strong>language barrier</strong>.
+            Based on the assumption that they cannot create a successful
+            business due to the <strong>language barrier</strong>.
           </p>
         </ContentSection>
         <ContentSection
@@ -124,8 +121,7 @@ export default function ForgePage() {
           <p>
             I quickly made these mockups, a <strong>business dashboard</strong>{" "}
             doubling as a <strong>step by step guide</strong> to building a
-            business. We were excited, convinced this is the idea going
-            forward.
+            business. We were excited, convinced this is the idea going forward.
           </p>
         </ContentSection>
         <ContentSection title="Realization" variant="textRight">
@@ -158,8 +154,8 @@ export default function ForgePage() {
         <ContentSection title="Assumption" variant="textRight">
           <p>
             So <strong>why</strong> high school students? Well it&apos;s
-            apparent that there are a lot of opportunities in the coming years in
-            skilled trades.
+            apparent that there are a lot of opportunities in the coming years
+            in skilled trades.
           </p>
           <p>
             With the older workers retiring and a relatively high average age
@@ -194,8 +190,7 @@ export default function ForgePage() {
               a viable career path
             </li>
             <li>
-              Many students learn about skilled trades{" "}
-              <strong>too late</strong>
+              Many students learn about skilled trades <strong>too late</strong>
             </li>
             <li>
               Students don&apos;t know a lot or have{" "}
@@ -218,14 +213,14 @@ export default function ForgePage() {
           </p>
           <p>
             Helping teens understand the possibilities and opportunities in
-            skilled trades would benefit both them{" "}
-            <strong>and</strong> the skilled trades industry as a whole.
+            skilled trades would benefit both them <strong>and</strong> the
+            skilled trades industry as a whole.
           </p>
         </ContentSection>
         <ContentSection title="Considerations" variant="textRight">
           <p>
-            In this day and age, most students have their phones as their primary
-            devices. So a mobile app is a no brainer.
+            In this day and age, most students have their phones as their
+            primary devices. So a mobile app is a no brainer.
           </p>
           <p>
             With attention span at an all time low (especially for teens), we
@@ -256,7 +251,9 @@ export default function ForgePage() {
             up a mid-fi prototype.
           </p>
           <p>
-            Not much was changed, we pretty much just added colors.
+            Not much changed in terms of functionality. Our core goal remained
+            the same: helping students understand skilled trades careers and
+            opportunities.
           </p>
         </ContentSection>
         <ContentSection
@@ -274,6 +271,131 @@ export default function ForgePage() {
             Colored mobile app screens showing the home flow, career detail,
             pathways, and careers in demand.
           </p>
+        </ContentSection>
+        <ContentSection
+          title="Branding & Styling"
+          variant="textRight"
+          bottomImages={[
+            {
+              src: "/type.jpg",
+              alt: "Nunito Sans typography and font weights on orange background",
+            },
+            {
+              src: "/bento.png",
+              alt: "Forge branding: logo, colors, graphics, and UI elements in bento layout",
+            },
+          ]}
+          bottomImagesGrid="1fr 2fr"
+        >
+          <p>
+            <strong>Color:</strong> The main color is orange, drawing a
+            comparison to high-visibility vests and linking bright colors to
+            improved mood and productivity.
+          </p>
+          <p>
+            <strong>Graphics:</strong> The design philosophy for graphics is
+            simple, cartoon-style to appeal to a younger audience.
+          </p>
+          <p>
+            <strong>Typography:</strong> The typeface we decided on is Nunito
+            Sans. It strikes the perfect balance between readability and
+            playfulness.
+          </p>
+        </ContentSection>
+        <ContentSection title="Realization" variant="textRight">
+          <p>
+            While our app provided clear information about skilled trades, the
+            learning experience was <strong>too informative</strong> and{" "}
+            <strong>not fun at all.</strong>
+            <br />
+            <br />
+            I immediately thought of Duolingo
+            and how colorful and fun it seems, which made me realize our
+            experience lacked the same sense of playfulness and motivation.
+          </p>
+        </ContentSection>
+        <ContentSection title="Incorporating Gamification" variant="textRight">
+          <p>
+            The team agreed that we need to incorporate some sort of{" "}
+            <strong>gamification</strong> into our app.
+          </p>
+          <p>
+            I suggested that we should make it a <strong>text-based</strong>{" "}
+            game, leveraging AI to <strong>simulate a career</strong> from
+            beginning to end. We could use storytelling to immerse students in
+            the career journey from apprentice to red seal, engaging them with
+            tasks and questions along the way.
+          </p>
+          <p>
+            Considering the workload required if we were to make a visual-heavy
+            game, this felt like the best solution.
+          </p>
+        </ContentSection>
+        <ContentSection
+          title="Redesign"
+          variant="textRight"
+          bottomImage={{
+            src: "/redesign.png",
+            alt: "Career Simulation app mockups: introduction, work style preferences, career progression and badges, explore careers map",
+          }}
+          bottomImageNoShadow
+        >
+          <p>
+            Four mobile mockups showing the Career Simulation flow: introduction
+            with Anna, work style preferences, career progression with badges,
+            and the explore careers map.
+          </p>
+        </ContentSection>
+        <ContentSection title="Usability Testing" variant="textRight">
+          <p>
+            We conducted usability testing on our prototype across five tasks
+            and received an average SUS score of 38.75 out of 50.
+          </p>
+        </ContentSection>
+        <ContentSection
+          title="Feedback"
+          variant="textLeftImagesRight"
+          rightContent={
+            <img
+              src="/testing.png"
+              alt="Usability testing participant feedback and SUS scores"
+              className="content-section-image-single"
+            />
+          }
+        >
+          <p>
+            <strong>Key Findings:</strong>
+          </p>
+          <ul>
+            <li>Repetitive buttons</li>
+            <li>Lack of control in simulation</li>
+            <li>Too text heavy</li>
+            <li>Fun factor is lacking</li>
+          </ul>
+        </ContentSection>
+        <ContentSection title="Re-Redesign" variant="textRight">
+          <p>
+            For this iteration, the most important part was to remove the clunk
+            and make it more fun.
+          </p>
+          <ul>
+            <li>
+              <strong>Onboarding:</strong> I added an onboarding section, where
+              users answer a set of questions to determine which career path they
+              go down.
+            </li>
+            <li>
+              <strong>Scenarios:</strong> I also added scenarios where students
+              can make a choice and diverge paths, so each simulation could be
+              different. This along with the onboarding could greatly increase
+              replay-ability.
+            </li>
+            <li>
+              <strong>Redundancy:</strong> Lastly, I removed the repetitiveness
+              in the home screen and navigation bar, making it easier to
+              navigate and more straightforward.
+            </li>
+          </ul>
         </ContentSection>
       </main>
       <Footer />

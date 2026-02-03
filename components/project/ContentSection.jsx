@@ -12,7 +12,9 @@ import "./ContentSection.css";
  * @param {"textRight" | "textLeftImagesRight"} variant
  * @param {React.ReactNode} [rightContent] - Right column content when variant is "textLeftImagesRight"
  * @param {{ src: string, alt: string }} [bottomImage] - Image below the row when variant is "textRight"; use for boards/screenshots (e.g. pivot.png)
- * @param {{ src: string, alt: string }[]} [bottomImages] - Two images below the row in a 1fr 1fr grid when variant is "textRight"
+ * @param {boolean} [bottomImageNoShadow] - When true, remove background and shadow from bottomImage
+ * @param {{ src: string, alt: string }[]} [bottomImages] - Two images below the row when variant is "textRight"; grid is 1fr 1fr by default
+ * @param {string} [bottomImagesGrid] - Optional grid template for bottomImages (e.g. "1fr 2fr")
  *
  * @example
  * // Heading + body + full-width image below (e.g. Pivot section)
@@ -31,12 +33,24 @@ function ContentSection({
   variant = "textRight",
   rightContent,
   bottomImage,
+  bottomImageNoShadow,
   bottomImages,
+  bottomImagesGrid,
 }) {
   const isTextLeftImagesRight = variant === "textLeftImagesRight";
 
+  const hasBottomImagesGrid = Boolean(
+    variant === "textRight" && bottomImages && bottomImagesGrid
+  );
+
+  const hasBottomImageNoShadow = Boolean(
+    variant === "textRight" && bottomImage && bottomImageNoShadow
+  );
+
   return (
-    <section className={`content-section content-section--${variant}`}>
+    <section
+      className={`content-section content-section--${variant}${hasBottomImagesGrid ? " content-section--bottomImagesGrid" : ""}${hasBottomImageNoShadow ? " content-section--bottomImageNoShadow" : ""}`}
+    >
       <div className="content-section-container">
         {variant === "textRight" && (
           <>
@@ -62,9 +76,20 @@ function ContentSection({
         </div>
       )}
       {variant === "textRight" && bottomImages && bottomImages.length >= 2 && (
-        <div className="content-section-bottom-images">
-          <img src={bottomImages[0].src} alt={bottomImages[0].alt} />
-          <img src={bottomImages[1].src} alt={bottomImages[1].alt} />
+        <div
+          className="content-section-bottom-images"
+          style={
+            bottomImagesGrid
+              ? { gridTemplateColumns: bottomImagesGrid }
+              : undefined
+          }
+        >
+          <div className="content-section-bottom-images-cell">
+            <img src={bottomImages[0].src} alt={bottomImages[0].alt} />
+          </div>
+          <div className="content-section-bottom-images-cell">
+            <img src={bottomImages[1].src} alt={bottomImages[1].alt} />
+          </div>
         </div>
       )}
     </section>
