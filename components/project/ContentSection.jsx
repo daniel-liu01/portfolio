@@ -12,10 +12,16 @@ import "./ContentSection.css";
  * @param {"textRight" | "textLeftImagesRight"} variant
  * @param {React.ReactNode} [rightContent] - Right column content when variant is "textLeftImagesRight"
  * @param {{ src: string, alt: string }} [bottomImage] - Image below the row when variant is "textRight"; use for boards/screenshots (e.g. pivot.png)
+ * @param {{ src: string, alt: string }[]} [bottomImages] - Two images below the row in a 1fr 1fr grid when variant is "textRight"
  *
  * @example
  * // Heading + body + full-width image below (e.g. Pivot section)
  * <ContentSection title="Pivot" variant="textRight" bottomImage={{ src: "/pivot.png", alt: "..." }}>
+ *   <p>...</p>
+ * </ContentSection>
+ * @example
+ * // Heading + body + two images below in 1fr 1fr (e.g. Primary Research)
+ * <ContentSection title="Primary Research" variant="textRight" bottomImages={[{ src: "/stat1.png", alt: "..." }, { src: "/stat2.png", alt: "..." }]}>
  *   <p>...</p>
  * </ContentSection>
  */
@@ -25,6 +31,7 @@ function ContentSection({
   variant = "textRight",
   rightContent,
   bottomImage,
+  bottomImages,
 }) {
   const isTextLeftImagesRight = variant === "textLeftImagesRight";
 
@@ -52,6 +59,12 @@ function ContentSection({
       {variant === "textRight" && bottomImage && (
         <div className="content-section-bottom-image">
           <img src={bottomImage.src} alt={bottomImage.alt} />
+        </div>
+      )}
+      {variant === "textRight" && bottomImages && bottomImages.length >= 2 && (
+        <div className="content-section-bottom-images">
+          <img src={bottomImages[0].src} alt={bottomImages[0].alt} />
+          <img src={bottomImages[1].src} alt={bottomImages[1].alt} />
         </div>
       )}
     </section>

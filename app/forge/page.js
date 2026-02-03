@@ -155,6 +155,126 @@ export default function ForgePage() {
             <strong>high school students</strong>.
           </p>
         </ContentSection>
+        <ContentSection title="Assumption" variant="textRight">
+          <p>
+            So <strong>why</strong> high school students? Well it&apos;s
+            apparent that there are a lot of opportunities in the coming years in
+            skilled trades.
+          </p>
+          <p>
+            With the older workers retiring and a relatively high average age
+            for apprentice, there is potential for high school students to come
+            in and fill the upcoming labour shortage.
+          </p>
+        </ContentSection>
+        <ContentSection
+          title="Primary Research"
+          variant="textRight"
+          bottomImages={[
+            {
+              src: "/stat1.png",
+              alt: "Have you ever considered a career in the trades? 9 responses. Yes 33.3%, No 66.7%",
+            },
+            {
+              src: "/stat2.png",
+              alt: "Do you feel trades careers are explained well enough in schools? 9 responses. Yes 33.3%, No 66.7%",
+            },
+          ]}
+        >
+          <p>
+            Our team also sent out a survey to local high school students to
+            understand their concerns and motivations regarding skilled trades.
+            We had 9 respondents in total.
+          </p>
+        </ContentSection>
+        <ContentSection title="Key Findings" variant="textRight">
+          <ul>
+            <li>
+              Most students <strong>don&apos;t consider</strong> skilled trades
+              a viable career path
+            </li>
+            <li>
+              Many students learn about skilled trades{" "}
+              <strong>too late</strong>
+            </li>
+            <li>
+              Students don&apos;t know a lot or have{" "}
+              <strong>misconceptions</strong> about skilled trades
+            </li>
+            <li>
+              High schools don&apos;t educate students enough about skilled
+              trades
+            </li>
+            <li>
+              Many students feel <strong>overwhelmed</strong> about the{" "}
+              <strong>overabundance</strong> of information
+            </li>
+          </ul>
+        </ContentSection>
+        <ContentSection title="Opportunity" variant="textRight">
+          <p>
+            From our research findings, we can confirm that there is a clear
+            opportunity to educate high school students about skilled trades.
+          </p>
+          <p>
+            Helping teens understand the possibilities and opportunities in
+            skilled trades would benefit both them{" "}
+            <strong>and</strong> the skilled trades industry as a whole.
+          </p>
+        </ContentSection>
+        <ContentSection title="Considerations" variant="textRight">
+          <p>
+            In this day and age, most students have their phones as their primary
+            devices. So a mobile app is a no brainer.
+          </p>
+          <p>
+            With attention span at an all time low (especially for teens), we
+            wanted the information to be easily digestible.
+          </p>
+        </ContentSection>
+        <ContentSection
+          title="Wireframe"
+          variant="textLeftImagesRight"
+          rightContent={
+            <img
+              src="/wireframe.png"
+              alt="Grayscale wireframes: Home screen, Plumbing detail, Daily work schedule, Mentorship screen"
+              className="content-section-image-single"
+            />
+          }
+        >
+          <p>Initial focus was on:</p>
+          <ul>
+            <li>Learning about careers in demand</li>
+            <li>Finding local opportunities</li>
+            <li>Talking to mentors</li>
+          </ul>
+        </ContentSection>
+        <ContentSection title="Rushing" variant="textRight">
+          <p>
+            My team and I were already behind on schedule, so we quickly whipped
+            up a mid-fi prototype.
+          </p>
+          <p>
+            Not much was changed, we pretty much just added colors.
+          </p>
+        </ContentSection>
+        <ContentSection
+          title="Mid-Fi Prototype"
+          variant="textLeftImagesRight"
+          rightContent={
+            <img
+              src="/midfi.png"
+              alt="Mid-fidelity prototype screens: Home, Plumbing detail, Pathways, Careers in Demand"
+              className="content-section-image-single"
+            />
+          }
+        >
+          <p>
+            Colored mobile app screens showing the home flow, career detail,
+            pathways, and careers in demand.
+          </p>
+        </ContentSection>
       </main>
       <Footer />
     </div>
