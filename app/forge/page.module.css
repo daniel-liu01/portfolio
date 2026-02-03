@@ -1,0 +1,11 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+/* Only 40px between sections: remove section vertical padding so gap is the sole spacing */
+.main > * {
+  padding-top: 0;
+  padding-bottom: 0;
+}

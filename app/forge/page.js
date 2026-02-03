@@ -1,7 +1,10 @@
 import "../globals.css";
+import styles from "./page.module.css";
 import Navbar from "@/components/layout/Navbar";
+import Footer from "@/components/layout/Footer";
 import ProjectSection from "@/components/project/ProjectSection";
 import Introduction from "@/components/project/Introduction";
+import ContentSection from "@/components/project/ContentSection";
 import Quotes from "@/components/project/Quotes";
 
 export const metadata = {
@@ -70,7 +73,7 @@ export default function ForgePage() {
   return (
     <div>
       <Navbar activePage="" />
-      <main>
+      <main className={styles.main}>
         <ProjectSection {...forgeContent} />
         <Introduction
           rightContent={
@@ -84,7 +87,76 @@ export default function ForgePage() {
           {forgeIntroduction}
         </Introduction>
         <Quotes quotes={forgeQuotes} />
+        <ContentSection
+          title="Big numbers, What do they mean?"
+          variant="textRight"
+        >
+          <p>
+            To sum it up, there will be a <strong>shortage</strong> of labour
+            for BC&apos;s skilled trades industry. Also, the average apprentice
+            is <strong>not</strong> as young as expected.
+          </p>
+        </ContentSection>
+        <ContentSection title="Expectations" variant="textRight">
+          <p>
+            We thought the problem was that it&apos;s hard to enter the business
+            as a business owner. So in the beginning, we thought the
+            opportunity was to help out{" "}
+            <strong>immigrant business owners</strong>.
+            <br />
+            <br />
+            Based on the assumption
+            that they cannot create a successful business due to the{" "}
+            <strong>language barrier</strong>.
+          </p>
+        </ContentSection>
+        <ContentSection
+          title="Initial Ideation"
+          variant="textLeftImagesRight"
+          rightContent={
+            <img
+              src="/initial.png"
+              alt="Forge app mockups: business dashboard, step-by-step guide, and document input screens"
+              className="content-section-image-single"
+            />
+          }
+        >
+          <p>
+            I quickly made these mockups, a <strong>business dashboard</strong>{" "}
+            doubling as a <strong>step by step guide</strong> to building a
+            business. We were excited, convinced this is the idea going
+            forward.
+          </p>
+        </ContentSection>
+        <ContentSection title="Realization" variant="textRight">
+          <p>
+            The initial idea is not going to work due to too much research and
+            logistics and it being a big undertaking.
+          </p>
+        </ContentSection>
+        <ContentSection
+          title="Pivot"
+          variant="textRight"
+          bottomImage={{
+            src: "/pivot.png",
+            alt: "Final idea board: value proposition, user flow, and feedback",
+          }}
+        >
+          <p>
+            We shifted from helping <strong>immigrant business owners</strong>{" "}
+            back to brainstorming.
+          </p>
+          <p>
+            We identified a gap in studying apprentices due to challenges like
+            school/work, financial pressure, and information overload.
+          </p>
+          <p>
+            The new focus: raising awareness for{" "}
+            <strong>high school students</strong>.
+          </p>
+        </ContentSection>
       </main>
+      <Footer />
     </div>
   );
 }

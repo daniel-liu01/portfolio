@@ -12,7 +12,7 @@ function Footer() {
           daniel30912@gmail.com
         </a>
         <a
-          href="/resume.pdf"
+          href="/Daniel%20Liu%20%7C%20Resume.pdf"
           target="_blank"
           rel="noopener noreferrer"
           className="footer-link"

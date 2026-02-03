@@ -102,6 +102,6 @@
   }
 
   .quotes-content {
-    font-size: var(--text-sm);
+    font-size: 18px;
   }
 }

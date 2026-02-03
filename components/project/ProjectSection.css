@@ -112,18 +112,22 @@
 /* Mobile */
 @media (max-width: 768px) {
   .project-section {
-    padding: 60px var(--space-20) var(--space-48);
+    padding: 60px 0 var(--space-48);
   }
 
   .project-container {
-    padding: 0 var(--space-20);
+    padding: 0 28px;
+  }
+
+  .project-title {
+    font-size: 20px;
   }
 
   .project-header {
     flex-direction: column;
     align-items: flex-start;
     gap: var(--space-12);
-    margin-bottom: 20px;
+    margin-bottom: var(--space-8);
   }
 
   .project-reading-time {
@@ -141,6 +145,10 @@
   .project-meta-grid {
     grid-template-columns: 1fr;
     gap: var(--space-24);
+  }
+
+  .project-meta-item dt {
+    font-size: 14px;
   }
 
   .project-meta-item dd {

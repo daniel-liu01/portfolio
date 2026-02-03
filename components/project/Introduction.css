@@ -69,7 +69,8 @@
   }
 
   .introduction-heading {
-    font-size: 1.25rem;
+    font-size: 18px;
     line-height: 1.5;
+    margin-bottom: var(--space-8);
   }
 }
