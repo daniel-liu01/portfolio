@@ -15,7 +15,7 @@ export const metadata = {
 const forgeContent = {
   title: "Forge",
   readingTime: "10 minutes",
-  heroImage: "/forge.jpg",
+  heroImage: "/forge/forge.jpg",
   heroImageAlt: "Forge project",
   meta: [
     { label: "Location", value: "BCIT" },
@@ -77,7 +77,7 @@ export default function ForgePage() {
         <Introduction
           rightContent={
             <img
-              src="/introMcok.png"
+              src="/forge/introMcok.png"
               alt="Career Simulation app screens"
               className="introduction-image"
             />
@@ -112,7 +112,7 @@ export default function ForgePage() {
           variant="textLeftImagesRight"
           rightContent={
             <img
-              src="/initial.png"
+              src="/forge/initial.png"
               alt="Forge app mockups: business dashboard, step-by-step guide, and document input screens"
               className="content-section-image-single"
             />
@@ -168,11 +168,11 @@ export default function ForgePage() {
           variant="textRight"
           bottomImages={[
             {
-              src: "/stat1.png",
+              src: "/forge/stat1.png",
               alt: "Have you ever considered a career in the trades? 9 responses. Yes 33.3%, No 66.7%",
             },
             {
-              src: "/stat2.png",
+              src: "/forge/stat2.png",
               alt: "Do you feel trades careers are explained well enough in schools? 9 responses. Yes 33.3%, No 66.7%",
             },
           ]}
@@ -232,7 +232,7 @@ export default function ForgePage() {
           variant="textLeftImagesRight"
           rightContent={
             <img
-              src="/wireframe.png"
+              src="/forge/wireframe.png"
               alt="Grayscale wireframes: Home screen, Plumbing detail, Daily work schedule, Mentorship screen"
               className="content-section-image-single"
             />
@@ -261,7 +261,7 @@ export default function ForgePage() {
           variant="textLeftImagesRight"
           rightContent={
             <img
-              src="/midfi.png"
+              src="/forge/midfi.png"
               alt="Mid-fidelity prototype screens: Home, Plumbing detail, Pathways, Careers in Demand"
               className="content-section-image-single"
             />
@@ -277,11 +277,11 @@ export default function ForgePage() {
           variant="textRight"
           bottomImages={[
             {
-              src: "/type.jpg",
+              src: "/forge/type.jpg",
               alt: "Nunito Sans typography and font weights on orange background",
             },
             {
-              src: "/bento.png",
+              src: "/forge/bento.png",
               alt: "Forge branding: logo, colors, graphics, and UI elements in bento layout",
             },
           ]}
@@ -335,7 +335,7 @@ export default function ForgePage() {
           title="Redesign"
           variant="textRight"
           bottomImage={{
-            src: "/redesign.png",
+            src: "/forge/redesign.png",
             alt: "Career Simulation app mockups: introduction, work style preferences, career progression and badges, explore careers map",
           }}
           bottomImageNoShadow
@@ -357,7 +357,7 @@ export default function ForgePage() {
           variant="textLeftImagesRight"
           rightContent={
             <img
-              src="/testing.png"
+              src="/forge/testing.png"
               alt="Usability testing participant feedback and SUS scores"
               className="content-section-image-single"
             />
