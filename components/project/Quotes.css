@@ -33,7 +33,7 @@
 
 .quotes-content {
   font-family: var(--font-sans);
-  font-size: var(--text-base);
+  font-size: 20px;
   font-weight: var(--light);
   line-height: 1.6;
   color: var(--black);
@@ -51,6 +51,16 @@
   font-style: normal;
   color: var(--black);
   opacity: 0.7;
+}
+
+.quotes-attribution-link {
+  color: inherit;
+  text-decoration: underline;
+  opacity: inherit;
+}
+
+.quotes-attribution-link:hover {
+  opacity: 1;
 }
 
 /* Tablet */

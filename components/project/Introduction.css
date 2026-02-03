@@ -41,7 +41,6 @@
   max-width: 100%;
   height: auto;
   display: block;
-  box-shadow: var(--shadow-subtle);
   object-fit: contain;
 }
 

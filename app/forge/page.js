@@ -41,6 +41,7 @@ const forgeQuotes = [
       </>
     ),
     attribution: "Source",
+    url: "https://www.rbc.com/en/economics/canadian-analysis/featured-analysis/insights/powering-up-preparing-canadas-skilled-trades-for-a-post-pandemic-economy/",
   },
   {
     content: (
@@ -49,7 +50,8 @@ const forgeQuotes = [
         expected to retire in Canada by 2028.
       </>
     ),
-    attribution: "Government of Canada",
+    attribution: "Source",
+    url: "https://www.canada.ca/en/employment-social-development/news/2022/07/government-of-canada-invests-to-help-canadians-enter-skilled-trades.html",
   },
   {
     content: (
@@ -60,6 +62,7 @@ const forgeQuotes = [
       </>
     ),
     attribution: "Source",
+    url: "https://ca.news.yahoo.com/why-2026-may-best-time-024753837.html",
   },
 ];
 
