@@ -18,7 +18,7 @@ import "./ContentSection.css";
  *
  * @example
  * // Heading + body + full-width image below (e.g. Pivot section)
- * <ContentSection title="Pivot" variant="textRight" bottomImage={{ src: "/pivot.png", alt: "..." }}>
+ * <ContentSection title="Pivot" variant="textRight" bottomImage={{ src: "/forge/pivot.png", alt: "..." }}>
  *   <p>...</p>
  * </ContentSection>
  * @example

@@ -134,7 +134,7 @@ export default function ForgePage() {
           title="Pivot"
           variant="textRight"
           bottomImage={{
-            src: "/pivot.png",
+            src: "/forge/pivot.png",
             alt: "Final idea board: value proposition, user flow, and feedback",
           }}
         >

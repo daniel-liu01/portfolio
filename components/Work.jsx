@@ -4,10 +4,10 @@ import { useState } from "react";
 import "./Work.css";
 
 const projects = [
-  { title: "Forge", image: "/forge.jpg", href: "/forge" },
+  { title: "Forge", image: "/forge/forge.jpg", href: "/forge" },
   { title: "LevelUp", href: "#" },
   { title: "G Adventures Travel Magazine", image: "/magazine.jpg", href: "#" },
-  { title: "Kofi", href: "#" },
+  { title: "Kofi", image: "/kofi/cans.png", href: "#" },
 ];
 
 function Work() {
