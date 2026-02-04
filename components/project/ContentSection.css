@@ -100,6 +100,24 @@
   min-width: 0;
 }
 
+/* imageLeftTextRight: image left (1fr), title + body right (2fr) */
+.content-section-left--image {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.content-section-left--image img,
+.content-section-left--image .content-section-image-single {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+}
+
 .content-section-title {
   font-family: var(--font-mono);
   font-size: 24px;
