@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import "./Work.css";
 
 const projects = [
@@ -34,18 +35,25 @@ function Work() {
             >
               <div
                 className="work-card-image-wrap"
-                style={hoveredCard === project.title ? hoveredWrapStyle : undefined}
+                style={
+                  hoveredCard === project.title ? hoveredWrapStyle : undefined
+                }
               >
                 {project.image ? (
-                  <img
+                  <Image
                     key={project.image}
                     src={project.image}
                     alt={project.title}
-                    className="work-card-image"
-                    loading="lazy"
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1600px) 50vw, 800px"
+                    style={{ objectFit: "cover" }}
+                    quality={90}
                   />
                 ) : (
-                  <div className="work-card-image-placeholder" aria-hidden="true" />
+                  <div
+                    className="work-card-image-placeholder"
+                    aria-hidden="true"
+                  />
                 )}
               </div>
               <h3 className="work-card-title">{project.title}</h3>
