@@ -23,8 +23,8 @@
 }
 
 .navbar-logo {
-  width: 58px;
-  height: 51px;
+  width: 46px;
+  height: 40px;
   flex-shrink: 0;
   overflow: visible;
   z-index: 1001;
@@ -35,6 +35,13 @@
   height: 100%;
   object-fit: contain;
   display: block;
+  transition: transform 0.25s ease, filter 0.25s ease;
+  transform-origin: center center;
+}
+
+.navbar-logo:hover img {
+  transform: scale(1.15);
+  filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.2));
 }
 
 .navbar-toggle {
@@ -117,8 +124,8 @@
   }
 
   .navbar-logo {
-    width: 38px;
-    height: 34px;
+    width: 32px;
+    height: 28px;
   }
 
   .navbar-toggle {
