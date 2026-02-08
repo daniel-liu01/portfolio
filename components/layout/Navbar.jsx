@@ -26,8 +26,21 @@ function Navbar({ activePage = "home" }) {
           onClick={toggleMenu}
           aria-label="Toggle menu"
         >
-          <span className={`hamburger ${isMenuOpen ? "open" : ""}`}></span>
+          <img
+            src="/hamburger.png"
+            alt=""
+            className={`navbar-toggle-icon ${isMenuOpen ? "open" : ""}`}
+          />
         </button>
+
+        <div
+          className={`navbar-overlay ${isMenuOpen ? "open" : ""}`}
+          onClick={() => setIsMenuOpen(false)}
+          onKeyDown={(e) => e.key === "Escape" && setIsMenuOpen(false)}
+          role="button"
+          tabIndex={-1}
+          aria-label="Close menu"
+        />
 
         <div className={`navbar-menu ${isMenuOpen ? "open" : ""}`}>
           <Link

@@ -20,19 +20,19 @@ function Hero() {
         {/* Divider Line */}
         <div className="hero-divider"></div>
 
-        {/* Services List */}
-        <div className="hero-services">
-          <p>UX/UI Design</p>
-          <p>User Research</p>
-          <p>Graphic Design</p>
-          <p>Branding</p>
+        {/* Services + Description row (mobile: side by side) */}
+        <div className="hero-bottom">
+          <div className="hero-services">
+            <p>UX/UI Design</p>
+            <p>User Research</p>
+            <p>Graphic Design</p>
+            <p>Branding</p>
+          </div>
+          <p className="hero-description">
+            Combining <strong>design</strong>, <strong>research</strong>, and{" "}
+            <strong>branding</strong> to craft meaningful user experiences.
+          </p>
         </div>
-
-        {/* Description */}
-        <p className="hero-description">
-          Combining <strong>design</strong>, <strong>research</strong>, and{" "}
-          <strong>branding</strong> to craft meaningful user experiences.
-        </p>
       </div>
     </section>
   );

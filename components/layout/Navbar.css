@@ -23,8 +23,8 @@
 }
 
 .navbar-logo {
-  width: 46px;
-  height: 40px;
+  width: 52px;
+  height: 46px;
   flex-shrink: 0;
   overflow: visible;
   z-index: 1001;
@@ -53,43 +53,17 @@
   z-index: 1001;
 }
 
-.hamburger {
+.navbar-toggle-icon {
   display: block;
   width: 28px;
-  height: 2px;
-  background-color: #000;
-  position: relative;
-  transition: background-color 0.3s;
+  height: auto;
+  object-fit: contain;
+  transition: opacity 0.2s ease;
 }
 
-.hamburger::before,
-.hamburger::after {
-  content: "";
-  position: absolute;
-  width: 28px;
-  height: 2px;
-  background-color: #000;
-  transition: transform 0.3s;
-}
-
-.hamburger::before {
-  top: -8px;
-}
-
-.hamburger::after {
-  top: 8px;
-}
-
-.hamburger.open {
-  background-color: transparent;
-}
-
-.hamburger.open::before {
-  transform: rotate(45deg) translateY(8px) translateX(8px);
-}
-
-.hamburger.open::after {
-  transform: rotate(-45deg) translateY(-8px) translateX(8px);
+.navbar-toggle-icon.open {
+  opacity: 0;
+  pointer-events: none;
 }
 
 .navbar-menu {
@@ -117,6 +91,10 @@
   text-underline-offset: 8px;
 }
 
+.navbar-overlay {
+  display: none;
+}
+
 /* Mobile Responsive Styles */
 @media (max-width: 768px) {
   .navbar {
@@ -124,12 +102,33 @@
   }
 
   .navbar-logo {
-    width: 32px;
-    height: 28px;
+    width: auto;
+    height: 48px;
+  }
+
+  .navbar-toggle-icon {
+    width: auto;
+    height: 32px;
   }
 
   .navbar-toggle {
     display: block;
+  }
+
+  .navbar-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.25);
+    z-index: 1002;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+  }
+
+  .navbar-overlay.open {
+    display: block;
+    opacity: 1;
+    pointer-events: auto;
   }
 
   .navbar-menu {
@@ -146,7 +145,7 @@
     padding: 40px;
     transition: right 0.3s ease;
     box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
+    z-index: 1003;
   }
 
   .navbar-menu.open {
