@@ -18,6 +18,11 @@
   margin: 0 0 var(--space-24) 0;
 }
 
+.work-title-note {
+  font-weight: var(--light);
+  color: rgba(0, 0, 0, 0.5);
+}
+
 .work-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);

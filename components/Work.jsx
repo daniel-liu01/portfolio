@@ -23,7 +23,10 @@ function Work() {
   return (
     <section className="work" id="work">
       <div className="work-container">
-        <h2 className="work-title">Work</h2>
+        <h2 className="work-title">
+          Selected Works{" "}
+          <span className="work-title-note">(Under construction!)</span>
+        </h2>
         <div className="work-grid">
           {projects.map((project) => (
             <a
