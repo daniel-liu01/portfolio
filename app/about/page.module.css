@@ -1,20 +1,45 @@
-/* Match hero section top/bottom padding on About page */
 .aboutMain :global(.content-section) {
-  padding-top: clamp(120px, 25vh, 300px);
+  padding-top: calc(clamp(120px, 25vh, 300px) - 4px);
   padding-bottom: var(--space-80);
 }
 
 @media (max-width: 1024px) {
   .aboutMain :global(.content-section) {
-    padding-top: clamp(100px, 22vh, 280px);
+    padding-top: calc(clamp(100px, 22vh, 280px) - 4px);
     padding-bottom: var(--space-60);
   }
 }
 
 @media (max-width: 768px) {
   .aboutMain :global(.content-section) {
-    padding-top: clamp(80px, 18vh, 240px);
+    padding-top: calc(clamp(80px, 18vh, 240px) - 4px);
     padding-bottom: var(--space-40);
+  }
+}
+
+/* Align doodle and "About Me" from the bottom */
+.aboutMain :global(.content-section--imageLeftTextRight .content-section-container) {
+  align-items: end;
+}
+
+/* Move text (heading + body) up 4px */
+.aboutMain :global(.content-section--imageLeftTextRight .content-section-right) {
+  transform: translateY(-4px);
+}
+
+.doodleImg {
+  display: block;
+  margin-top: -3em;
+  padding-bottom: var(--space-24);
+}
+
+@media (max-width: 768px) {
+  .doodleImg {
+    margin-top: -6em;
+  }
+
+  .aboutMain :global(.content-section--imageLeftTextRight) {
+    padding-bottom: var(--space-32);
   }
 }
 
@@ -52,6 +77,7 @@
   width: 100%;
   height: auto;
   display: block;
+  
 }
 
 .copy {
