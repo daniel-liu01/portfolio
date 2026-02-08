@@ -308,10 +308,9 @@ export default function ForgePage() {
             learning experience was <strong>too informative</strong> and{" "}
             <strong>not fun at all.</strong>
             <br />
-            <br />
-            I immediately thought of Duolingo
-            and how colorful and fun it seems, which made me realize our
-            experience lacked the same sense of playfulness and motivation.
+            <br />I immediately thought of Duolingo and how colorful and fun it
+            seems, which made me realize our experience lacked the same sense of
+            playfulness and motivation.
           </p>
         </ContentSection>
         <ContentSection title="Incorporating Gamification" variant="textRight">
@@ -373,16 +372,24 @@ export default function ForgePage() {
             <li>Fun factor is lacking</li>
           </ul>
         </ContentSection>
-        <ContentSection title="Re-Redesign" variant="textRight">
+        <ContentSection
+          title="Re-Redesign"
+          variant="textRight"
+          bottomImage={{
+            src: "/forge/Reredesign.png",
+            alt: "Re-Redesign: onboarding, scenarios, and mobile app mockups showing Career Simulation flow",
+          }}
+          bottomImageNoShadow
+        >
           <p>
             For this iteration, the most important part was to remove the clunk
             and make it more fun.
           </p>
           <ul>
             <li>
-              <strong>Onboarding:</strong> I added an onboarding section, where
-              users answer a set of questions to determine which career path they
-              go down.
+              <strong>Onboarding:</strong> I added an onboarding section for the
+              simulation, where users answer a set of questions to determine
+              which career path they go down.
             </li>
             <li>
               <strong>Scenarios:</strong> I also added scenarios where students
@@ -397,6 +404,62 @@ export default function ForgePage() {
             </li>
           </ul>
         </ContentSection>
+        <ContentSection title="Retrospective" variant="textRight">
+          <p>
+            Overall, this project was super fun and honestly helped me grow a
+            lot as a designer and developer. My main focus was research and
+            design, but I got to touch almost every part of the app development
+            process.
+          </p>
+          <p>
+            From research and prototyping to user testing, print materials,
+            presenting to a big crowd, and even building a small part of the app.
+            Every step taught me something new, and the whole experience felt
+            really valuable.
+          </p>
+          <p>
+            My team and I failed a lot, especially at the beginning. But
+            I&apos;m actually glad we did. Those failures forced us to rethink
+            our approach and helped me learn way more than if everything had
+            gone smoothly.
+          </p>
+        </ContentSection>
+        <div className={styles.galleryWrap}>
+          <ContentSection
+            title="Gallery"
+            variant="textRight"
+            bottomImages={[
+              {
+                src: "/forge/busCard.png",
+                alt: "Forge business cards: Daniel Liu UX/UI Designer and Forge branding",
+              },
+              {
+                src: "/forge/brochure.png",
+                alt: "Forge tri-fold brochure: Bridging Academia Gap, app features, Explore Your Future Now",
+              },
+              {
+                src: "/forge/presentation.jpg",
+                alt: "Forge team presenting at an event",
+              },
+              {
+                src: "/forge/booth.jpg",
+                alt: "Forge booth at an event or awards ceremony",
+              },
+            ]}
+          />
+        </div>
+        <section className={styles.thankYou}>
+          <div className={styles.thankYouInner}>
+            <p className={styles.thankYouText}>
+              Thank you, feel free to check out
+              <br />
+              my other works!
+            </p>
+            <a href="/" className={styles.thankYouLink}>
+              Back home
+            </a>
+          </div>
+        </section>
       </main>
       <Footer />
     </div>

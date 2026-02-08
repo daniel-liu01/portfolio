@@ -1,3 +1,4 @@
+import Image from "next/image";
 import "./ContentSection.css";
 
 /**
@@ -77,19 +78,28 @@ function ContentSection({
       )}
       {variant === "textRight" && bottomImages && bottomImages.length >= 2 && (
         <div
-          className="content-section-bottom-images"
+          className={`content-section-bottom-images${bottomImages.length === 4 ? " content-section-bottom-images--four" : ""}`}
           style={
             bottomImagesGrid
               ? { gridTemplateColumns: bottomImagesGrid }
               : undefined
           }
         >
-          <div className="content-section-bottom-images-cell">
-            <img src={bottomImages[0].src} alt={bottomImages[0].alt} />
-          </div>
-          <div className="content-section-bottom-images-cell">
-            <img src={bottomImages[1].src} alt={bottomImages[1].alt} />
-          </div>
+          {bottomImages.map((img, i) => (
+            <div key={i} className="content-section-bottom-images-cell">
+              {bottomImages.length === 4 ? (
+                <Image
+                  src={img.src}
+                  alt={img.alt}
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
+                  style={{ objectFit: "cover" }}
+                />
+              ) : (
+                <img src={img.src} alt={img.alt} />
+              )}
+            </div>
+          ))}
         </div>
       )}
     </section>
