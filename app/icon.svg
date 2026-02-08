@@ -18,7 +18,8 @@
       }
     </style>
   </defs>
-  <g id="Working_Layer" data-name="Working Layer">
+  <g transform="translate(9.73, 8.75) scale(0.8)">
+    <g id="Working_Layer" data-name="Working Layer">
     <g id="Logo2">
       <rect class="cls-1" x="1" y="1" width="18.02" height="85.41"/>
       <g>
@@ -28,6 +29,7 @@
         <path class="cls-2" d="M33.23,71.47h-8.94v.05h6.84c.71,0,1.41-.02,2.1-.05Z"/>
         <path class="cls-2" d="M55.9,81.42c5.08-2.46,9.31-5.78,12.69-9.96h-35.36c-.69.03-1.38.05-2.1.05h-6.84v14.89h7.2c9.4,0,17.54-1.66,24.41-4.98Z"/>
       </g>
+    </g>
     </g>
   </g>
 </svg>
