@@ -57,6 +57,10 @@
   display: block;
 }
 
+.work-card--levelup .work-card-image-wrap img {
+  object-position: center 0%;
+}
+
 .work-card-image {
   width: 100%;
   height: 100%;

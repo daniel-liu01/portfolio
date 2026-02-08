@@ -6,7 +6,7 @@ import "./Work.css";
 
 const projects = [
   { title: "Forge", image: "/forge/forge.jpg", href: "/forge" },
-  { title: "LevelUp", href: "#" },
+  { title: "LevelUp", image: "/levelup/lvlup.png", href: "#" },
   { title: "G Adventures Travel Magazine", image: "/magazine.jpg", href: "#" },
   { title: "Kofi", image: "/kofi/cans.png", href: "#" },
 ];
@@ -29,7 +29,7 @@ function Work() {
             <a
               key={project.title}
               href={project.href}
-              className="work-card"
+              className={`work-card${project.title === "LevelUp" ? " work-card--levelup" : ""}`}
               onMouseEnter={() => setHoveredCard(project.title)}
               onMouseLeave={() => setHoveredCard(null)}
             >
