@@ -216,47 +216,6 @@ export default function AboutPage() {
             </span>
           </div>
         </section>
-
-        <section className={styles.enjoy}>
-          <div className={styles.enjoyContainer}>
-            <h2 className={styles.enjoyTitle}>Things I enjoy:</h2>
-            <div className={styles.enjoyGrid}>
-              <div className={styles.enjoyColumn}>
-                <h3 className={styles.enjoySubtitle}>Sports</h3>
-                <p className={styles.enjoyBody}>
-                  I like staying active through mainly running and basketball.
-                  My favorite distance is the 10k and favorite NBA player is
-                  Trae Young.
-                </p>
-                <div className={styles.enjoyPlaceholder} aria-hidden="true" />
-                <div className={styles.enjoyPlaceholder} aria-hidden="true" />
-              </div>
-              <div className={styles.enjoyColumn}>
-                <h3 className={styles.enjoySubtitle}>Reading</h3>
-                <p className={styles.enjoyBody}>
-                  I am an avid reader. I mostly read non-fiction because I find
-                  it more enjoyable and gives me that creative juice. Some of my
-                  favorite reads recently are &quot;The Great Passage&quot; by
-                  Shion Miura and &quot;When Breath Becomes Air&quot; by Paul
-                  Kalanithi.
-                </p>
-                <div className={styles.enjoyPlaceholder} aria-hidden="true" />
-                <div className={styles.enjoyPlaceholder} aria-hidden="true" />
-              </div>
-              <div className={styles.enjoyColumn}>
-                <h3 className={styles.enjoySubtitle}>Fashion</h3>
-                <p className={styles.enjoyBody}>
-                  I really enjoy thrifting. There was a period of time where
-                  I&apos;d go every week to look for deals. Nowadays, I
-                  don&apos;t need more clothes but I still find the urge to go
-                  from time to time.
-                </p>
-                <div className={styles.enjoyPlaceholder} aria-hidden="true" />
-                <div className={styles.enjoyPlaceholder} aria-hidden="true" />
-              </div>
-            </div>
-          </div>
-        </section>
       </main>
       <Footer />
     </div>
