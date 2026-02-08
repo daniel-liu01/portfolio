@@ -14,8 +14,9 @@ const splineSansMono = Spline_Sans_Mono({
 });
 
 export const metadata = {
-  title: "Daniel Liu",
-  description: "UX/UI Design Portfolio",
+  title: "Daniel Liu | UX Designer — Design × Research × Brand",
+  description:
+    "UX designer focused on user research, product design, and brand systems. Portfolio of selected case studies and projects by Daniel Liu.",
 };
 
 export default function RootLayout({ children }) {
