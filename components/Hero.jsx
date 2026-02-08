@@ -12,25 +12,33 @@ function Hero() {
 
         {/* Top Right Tagline */}
         <p className="hero-tagline">
-          Creating with
-          <br />
-          <strong>empathy & intent</strong>
+          <span className="hero-tagline-inner">
+            Creating with
+            <br />
+            <strong>empathy & intent</strong>
+          </span>
         </p>
 
         {/* Divider Line */}
-        <div className="hero-divider"></div>
+        <div className="hero-divider">
+          <span className="hero-divider-inner" />
+        </div>
 
         {/* Services + Description row (mobile: side by side) */}
         <div className="hero-bottom">
           <div className="hero-services">
-            <p>UX/UI Design</p>
-            <p>User Research</p>
-            <p>Graphic Design</p>
-            <p>Branding</p>
+            <div className="hero-services-inner">
+              <p>UX/UI Design</p>
+              <p>User Research</p>
+              <p>Graphic Design</p>
+              <p>Branding</p>
+            </div>
           </div>
           <p className="hero-description">
-            Combining <strong>design</strong>, <strong>research</strong>, and{" "}
-            <strong>branding</strong> to craft meaningful user experiences.
+            <span className="hero-description-inner">
+              Combining <strong>design</strong>, <strong>research</strong>, and{" "}
+              <strong>branding</strong> to craft meaningful user experiences.
+            </span>
           </p>
         </div>
       </div>

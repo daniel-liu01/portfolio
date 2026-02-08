@@ -4,10 +4,10 @@
   --white: #fefefe;
   --black: #101820;
 
-  --font-sans: "Spline Sans", system-ui, -apple-system, BlinkMacSystemFont,
-    sans-serif;
-  --font-mono: "Spline Sans Mono", ui-monospace, SFMono-Regular, Menlo,
-    monospace;
+  --font-sans:
+    "Spline Sans", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono:
+    "Spline Sans Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
 
   /* Spacing scale – use throughout the project for margins, padding, gaps */
   --space-2: 2px;
