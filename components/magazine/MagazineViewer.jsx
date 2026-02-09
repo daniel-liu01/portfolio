@@ -65,7 +65,13 @@ export default function MagazineViewer() {
         >
           {currentIndex === 0 ? (
             <>
-              <div className="magazine-viewer-frame-spacer" aria-hidden="true" />
+              <div className="magazine-viewer-frame-prompt">
+                <h2 className="magazine-viewer-frame-prompt-text">
+                  Click Through
+                  <br />
+                  To Explore!
+                </h2>
+              </div>
               <div className="magazine-viewer-frame-image-wrap">
                 <img
                   src={PAGES[currentIndex]}
