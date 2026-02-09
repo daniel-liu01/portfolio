@@ -8,7 +8,7 @@
 }
 
 .navbar {
-  padding: 40px 240px;
+  padding: 40px var(--space-80);
   background: transparent;
   opacity: 0;
   animation: navbar-fade-in 1s ease-out forwards;
