@@ -1,5 +1,13 @@
-.forgeLayout :global(.navbar) {
-  padding-top: 0;
+/* Scroll-triggered fade-in (same as about page) */
+.scrollFadeWrap {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.scrollFadeVisible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .main {

@@ -6,6 +6,7 @@ import ProjectSection from "@/components/project/ProjectSection";
 import Introduction from "@/components/project/Introduction";
 import ContentSection from "@/components/project/ContentSection";
 import Quotes from "@/components/project/Quotes";
+import ScrollFade from "@/components/ScrollFade";
 
 export const metadata = {
   title: "Forge | Daniel Liu",
@@ -70,11 +71,20 @@ const forgeQuotes = [
 
 export default function ForgePage() {
   return (
-    <div className={styles.forgeLayout}>
+    <div>
       <Navbar activePage="" />
       <main className={styles.main}>
-        <ProjectSection {...forgeContent} />
-        <Introduction
+        <ScrollFade
+          wrapperClassName={styles.scrollFadeWrap}
+          visibleClassName={styles.scrollFadeVisible}
+        >
+          <ProjectSection {...forgeContent} />
+        </ScrollFade>
+        <ScrollFade
+          wrapperClassName={styles.scrollFadeWrap}
+          visibleClassName={styles.scrollFadeVisible}
+        >
+          <Introduction
           rightContent={
             <img
               src="/forge/introMcok.png"
@@ -85,8 +95,18 @@ export default function ForgePage() {
         >
           {forgeIntroduction}
         </Introduction>
-        <Quotes quotes={forgeQuotes} />
-        <ContentSection
+        </ScrollFade>
+        <ScrollFade
+          wrapperClassName={styles.scrollFadeWrap}
+          visibleClassName={styles.scrollFadeVisible}
+        >
+          <Quotes quotes={forgeQuotes} />
+        </ScrollFade>
+        <ScrollFade
+          wrapperClassName={styles.scrollFadeWrap}
+          visibleClassName={styles.scrollFadeVisible}
+        >
+          <ContentSection
           title="Big numbers, What do they mean?"
           variant="textRight"
         >
@@ -96,7 +116,12 @@ export default function ForgePage() {
             is <strong>not</strong> as young as expected.
           </p>
         </ContentSection>
-        <ContentSection title="Expectations" variant="textRight">
+        </ScrollFade>
+        <ScrollFade
+          wrapperClassName={styles.scrollFadeWrap}
+          visibleClassName={styles.scrollFadeVisible}
+        >
+          <ContentSection title="Expectations" variant="textRight">
           <p>
             We thought the problem was that it&apos;s hard to enter the business
             as a business owner. So in the beginning, we thought the opportunity
@@ -104,10 +129,15 @@ export default function ForgePage() {
             <br />
             <br />
             Based on the assumption that they cannot create a successful
-            business due to the <strong>language barrier</strong>.
+            business due to the             <strong>language barrier</strong>.
           </p>
         </ContentSection>
-        <ContentSection
+        </ScrollFade>
+        <ScrollFade
+          wrapperClassName={styles.scrollFadeWrap}
+          visibleClassName={styles.scrollFadeVisible}
+        >
+          <ContentSection
           title="Initial Ideation"
           variant="textLeftImagesRight"
           rightContent={
@@ -124,13 +154,23 @@ export default function ForgePage() {
             business. We were excited, convinced this is the idea going forward.
           </p>
         </ContentSection>
-        <ContentSection title="Realization" variant="textRight">
+        </ScrollFade>
+        <ScrollFade
+          wrapperClassName={styles.scrollFadeWrap}
+          visibleClassName={styles.scrollFadeVisible}
+        >
+          <ContentSection title="Realization" variant="textRight">
           <p>
             The initial idea is not going to work due to too much research and
             logistics and it being a big undertaking.
           </p>
         </ContentSection>
-        <ContentSection
+        </ScrollFade>
+        <ScrollFade
+          wrapperClassName={styles.scrollFadeWrap}
+          visibleClassName={styles.scrollFadeVisible}
+        >
+          <ContentSection
           title="Pivot"
           variant="textRight"
           bottomImage={{
@@ -151,7 +191,12 @@ export default function ForgePage() {
             <strong>high school students</strong>.
           </p>
         </ContentSection>
-        <ContentSection title="Assumption" variant="textRight">
+        </ScrollFade>
+        <ScrollFade
+          wrapperClassName={styles.scrollFadeWrap}
+          visibleClassName={styles.scrollFadeVisible}
+        >
+          <ContentSection title="Assumption" variant="textRight">
           <p>
             So <strong>why</strong> high school students? Well it&apos;s
             apparent that there are a lot of opportunities in the coming years
@@ -163,7 +208,12 @@ export default function ForgePage() {
             in and fill the upcoming labour shortage.
           </p>
         </ContentSection>
-        <ContentSection
+        </ScrollFade>
+        <ScrollFade
+          wrapperClassName={styles.scrollFadeWrap}
+          visibleClassName={styles.scrollFadeVisible}
+        >
+          <ContentSection
           title="Primary Research"
           variant="textRight"
           bottomImages={[
@@ -183,7 +233,12 @@ export default function ForgePage() {
             We had 9 respondents in total.
           </p>
         </ContentSection>
-        <ContentSection title="Key Findings" variant="textRight">
+        </ScrollFade>
+        <ScrollFade
+          wrapperClassName={styles.scrollFadeWrap}
+          visibleClassName={styles.scrollFadeVisible}
+        >
+          <ContentSection title="Key Findings" variant="textRight">
           <ul>
             <li>
               Most students <strong>don&apos;t consider</strong> skilled trades
@@ -206,7 +261,12 @@ export default function ForgePage() {
             </li>
           </ul>
         </ContentSection>
-        <ContentSection title="Opportunity" variant="textRight">
+        </ScrollFade>
+        <ScrollFade
+          wrapperClassName={styles.scrollFadeWrap}
+          visibleClassName={styles.scrollFadeVisible}
+        >
+          <ContentSection title="Opportunity" variant="textRight">
           <p>
             From our research findings, we can confirm that there is a clear
             opportunity to educate high school students about skilled trades.
@@ -217,7 +277,12 @@ export default function ForgePage() {
             skilled trades industry as a whole.
           </p>
         </ContentSection>
-        <ContentSection title="Considerations" variant="textRight">
+        </ScrollFade>
+        <ScrollFade
+          wrapperClassName={styles.scrollFadeWrap}
+          visibleClassName={styles.scrollFadeVisible}
+        >
+          <ContentSection title="Considerations" variant="textRight">
           <p>
             In this day and age, most students have their phones as their
             primary devices. So a mobile app is a no brainer.
@@ -227,7 +292,12 @@ export default function ForgePage() {
             wanted the information to be easily digestible.
           </p>
         </ContentSection>
-        <ContentSection
+        </ScrollFade>
+        <ScrollFade
+          wrapperClassName={styles.scrollFadeWrap}
+          visibleClassName={styles.scrollFadeVisible}
+        >
+          <ContentSection
           title="Wireframe"
           variant="textLeftImagesRight"
           rightContent={
@@ -245,7 +315,12 @@ export default function ForgePage() {
             <li>Talking to mentors</li>
           </ul>
         </ContentSection>
-        <ContentSection title="Rushing" variant="textRight">
+        </ScrollFade>
+        <ScrollFade
+          wrapperClassName={styles.scrollFadeWrap}
+          visibleClassName={styles.scrollFadeVisible}
+        >
+          <ContentSection title="Rushing" variant="textRight">
           <p>
             My team and I were already behind on schedule, so we quickly whipped
             up a mid-fi prototype.
@@ -256,7 +331,12 @@ export default function ForgePage() {
             opportunities.
           </p>
         </ContentSection>
-        <ContentSection
+        </ScrollFade>
+        <ScrollFade
+          wrapperClassName={styles.scrollFadeWrap}
+          visibleClassName={styles.scrollFadeVisible}
+        >
+          <ContentSection
           title="Mid-Fi Prototype"
           variant="textLeftImagesRight"
           rightContent={
@@ -272,7 +352,12 @@ export default function ForgePage() {
             pathways, and careers in demand.
           </p>
         </ContentSection>
-        <ContentSection
+        </ScrollFade>
+        <ScrollFade
+          wrapperClassName={styles.scrollFadeWrap}
+          visibleClassName={styles.scrollFadeVisible}
+        >
+          <ContentSection
           title="Branding & Styling"
           variant="textRight"
           bottomImages={[
@@ -302,7 +387,12 @@ export default function ForgePage() {
             playfulness.
           </p>
         </ContentSection>
-        <ContentSection title="Realization" variant="textRight">
+        </ScrollFade>
+        <ScrollFade
+          wrapperClassName={styles.scrollFadeWrap}
+          visibleClassName={styles.scrollFadeVisible}
+        >
+          <ContentSection title="Realization" variant="textRight">
           <p>
             While our app provided clear information about skilled trades, the
             learning experience was <strong>too informative</strong> and{" "}
@@ -313,7 +403,12 @@ export default function ForgePage() {
             playfulness and motivation.
           </p>
         </ContentSection>
-        <ContentSection title="Incorporating Gamification" variant="textRight">
+        </ScrollFade>
+        <ScrollFade
+          wrapperClassName={styles.scrollFadeWrap}
+          visibleClassName={styles.scrollFadeVisible}
+        >
+          <ContentSection title="Incorporating Gamification" variant="textRight">
           <p>
             The team agreed that we need to incorporate some sort of{" "}
             <strong>gamification</strong> into our app.
@@ -327,10 +422,15 @@ export default function ForgePage() {
           </p>
           <p>
             Considering the workload required if we were to make a visual-heavy
-            game, this felt like the best solution.
+            game,             this felt like the best solution.
           </p>
         </ContentSection>
-        <ContentSection
+        </ScrollFade>
+        <ScrollFade
+          wrapperClassName={styles.scrollFadeWrap}
+          visibleClassName={styles.scrollFadeVisible}
+        >
+          <ContentSection
           title="Redesign"
           variant="textRight"
           bottomImage={{
@@ -345,13 +445,23 @@ export default function ForgePage() {
             and the explore careers map.
           </p>
         </ContentSection>
-        <ContentSection title="Usability Testing" variant="textRight">
+        </ScrollFade>
+        <ScrollFade
+          wrapperClassName={styles.scrollFadeWrap}
+          visibleClassName={styles.scrollFadeVisible}
+        >
+          <ContentSection title="Usability Testing" variant="textRight">
           <p>
             We conducted usability testing on our prototype across five tasks
             and received an average SUS score of 38.75 out of 50.
           </p>
         </ContentSection>
-        <ContentSection
+        </ScrollFade>
+        <ScrollFade
+          wrapperClassName={styles.scrollFadeWrap}
+          visibleClassName={styles.scrollFadeVisible}
+        >
+          <ContentSection
           title="Feedback"
           variant="textLeftImagesRight"
           rightContent={
@@ -372,7 +482,12 @@ export default function ForgePage() {
             <li>Fun factor is lacking</li>
           </ul>
         </ContentSection>
-        <ContentSection
+        </ScrollFade>
+        <ScrollFade
+          wrapperClassName={styles.scrollFadeWrap}
+          visibleClassName={styles.scrollFadeVisible}
+        >
+          <ContentSection
           title="Re-Redesign"
           variant="textRight"
           bottomImage={{
@@ -404,7 +519,12 @@ export default function ForgePage() {
             </li>
           </ul>
         </ContentSection>
-        <ContentSection title="Retrospective" variant="textRight">
+        </ScrollFade>
+        <ScrollFade
+          wrapperClassName={styles.scrollFadeWrap}
+          visibleClassName={styles.scrollFadeVisible}
+        >
+          <ContentSection title="Retrospective" variant="textRight">
           <p>
             Overall, this project was super fun and honestly helped me grow a
             lot as a designer and developer. My main focus was research and
@@ -424,6 +544,11 @@ export default function ForgePage() {
             gone smoothly.
           </p>
         </ContentSection>
+        </ScrollFade>
+        <ScrollFade
+          wrapperClassName={styles.scrollFadeWrap}
+          visibleClassName={styles.scrollFadeVisible}
+        >
         <div className={styles.galleryWrap}>
           <ContentSection
             title="Gallery"
@@ -448,6 +573,11 @@ export default function ForgePage() {
             ]}
           />
         </div>
+        </ScrollFade>
+        <ScrollFade
+          wrapperClassName={styles.scrollFadeWrap}
+          visibleClassName={styles.scrollFadeVisible}
+        >
         <section className={styles.thankYou}>
           <div className={styles.thankYouInner}>
             <p className={styles.thankYouText}>
@@ -460,6 +590,7 @@ export default function ForgePage() {
             </a>
           </div>
         </section>
+        </ScrollFade>
       </main>
       <Footer />
     </div>
