@@ -29,7 +29,7 @@
 /* Match content-section: full width, same horizontal padding at all breakpoints */
 .thankYou {
   width: 100%;
-  padding: var(--space-48) var(--space-40);
+  padding: var(--space-48) var(--space-40) var(--space-80) var(--space-40);
   background-color: #fff;
 }
 
@@ -68,7 +68,7 @@
 
 @media (max-width: 1024px) {
   .thankYou {
-    padding: var(--space-48) var(--space-30);
+    padding: var(--space-48) var(--space-30) var(--space-80) var(--space-30);
   }
 
   .thankYouInner {
@@ -78,7 +78,7 @@
 
 @media (max-width: 768px) {
   .thankYou {
-    padding: var(--space-32) var(--space-20);
+    padding: var(--space-32) var(--space-20) var(--space-80) var(--space-20);
   }
 
   .thankYouInner {
