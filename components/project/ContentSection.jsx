@@ -7,10 +7,12 @@ import "./ContentSection.css";
  * **Variants:**
  * - `textRight` – Heading (1fr) left, body (2fr) right. Optional `bottomImage` adds a full-width image below, aligned to the grid with subtle shadow.
  * - `textLeftImagesRight` – Heading + body left, `rightContent` (e.g. image) right; image fills grid cell height.
+ * - `imageLeftTextRight` – `leftContent` (e.g. image) left (1fr), heading + body right (2fr).
  *
  * @param {string} title - Section heading
  * @param {React.ReactNode} children - Body content (use <strong> for emphasis)
- * @param {"textRight" | "textLeftImagesRight"} variant
+ * @param {"textRight" | "textLeftImagesRight" | "imageLeftTextRight"} variant
+ * @param {React.ReactNode} [leftContent] - Left column content when variant is "imageLeftTextRight"
  * @param {React.ReactNode} [rightContent] - Right column content when variant is "textLeftImagesRight"
  * @param {{ src: string, alt: string }} [bottomImage] - Image below the row when variant is "textRight"; use for boards/screenshots (e.g. pivot.png)
  * @param {boolean} [bottomImageNoShadow] - When true, remove background and shadow from bottomImage
@@ -32,6 +34,7 @@ function ContentSection({
   title,
   children,
   variant = "textRight",
+  leftContent,
   rightContent,
   bottomImage,
   bottomImageNoShadow,
@@ -39,6 +42,7 @@ function ContentSection({
   bottomImagesGrid,
 }) {
   const isTextLeftImagesRight = variant === "textLeftImagesRight";
+  const isImageLeftTextRight = variant === "imageLeftTextRight";
 
   const hasBottomImagesGrid = Boolean(
     variant === "textRight" && bottomImages && bottomImagesGrid
@@ -68,6 +72,19 @@ function ContentSection({
             {rightContent && (
               <div className="content-section-right">{rightContent}</div>
             )}
+          </>
+        )}
+        {isImageLeftTextRight && (
+          <>
+            {leftContent && (
+              <div className="content-section-left content-section-left--image">
+                {leftContent}
+              </div>
+            )}
+            <div className="content-section-right">
+              <h2 className="content-section-title">{title}</h2>
+              <div className="content-section-body">{children}</div>
+            </div>
           </>
         )}
       </div>

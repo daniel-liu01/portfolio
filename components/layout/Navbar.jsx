@@ -51,7 +51,7 @@ function Navbar({ activePage = "home" }) {
             Home
           </Link>
           <Link
-            href={isHome ? "#about" : "/#about"}
+            href="/about"
             className={`navbar-link ${activePage === "about" ? "active" : ""}`}
             onClick={() => setIsMenuOpen(false)}
           >
