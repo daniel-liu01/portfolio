@@ -85,6 +85,7 @@ export default function ForgePage() {
           visibleClassName={styles.scrollFadeVisible}
         >
           <Introduction
+          centerAlign
           rightContent={
             <img
               src="/forge/introMcok.png"

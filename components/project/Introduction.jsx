@@ -6,10 +6,11 @@ import "./Introduction.css";
  *
  * @param {React.ReactNode} children - Main intro text (use <strong> for emphasis)
  * @param {React.ReactNode} [rightContent] - Optional content for the right side (e.g. images, mockups)
+ * @param {boolean} [centerAlign] - When true, center-align the heading text
  */
-function Introduction({ children, rightContent }) {
+function Introduction({ children, rightContent, centerAlign }) {
   return (
-    <section className="introduction">
+    <section className={`introduction ${centerAlign ? "introduction--center" : ""}`}>
       <div className="introduction-container">
         <div className="introduction-content">
           <h2 className="introduction-heading">{children}</h2>

@@ -47,6 +47,7 @@
 .project-hero-image {
   width: 100%;
   height: auto;
+  max-height: 75vh;
   display: block;
   object-fit: cover;
   border: var(--border-subtle);
