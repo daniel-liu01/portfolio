@@ -1,6 +1,7 @@
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import ContentSection from "@/components/project/ContentSection";
+import ScrollFade from "@/components/ScrollFade";
 import styles from "./page.module.css";
 
 export const metadata = {
@@ -13,34 +14,49 @@ export default function AboutPage() {
     <div>
       <Navbar activePage="about" />
       <main className={styles.aboutMain}>
-        <ContentSection
-          title="About Me"
-          variant="imageLeftTextRight"
-          leftContent={
-            <img
-              src="/about/doodle.png"
-              alt="Doodle by Daniel Liu"
-              className={`content-section-image-single ${styles.doodleImg}`}
-            />
-          }
+        <ScrollFade
+          wrapperClassName={styles.scrollFadeWrap}
+          visibleClassName={styles.scrollFadeVisible}
         >
-          <p>
-            Hello! My name is Daniel. I am a UX/UI designer based in Vancouver.
-            I originally grew up in Taiwan and moved to Canada at the age of 10.
-          </p>
-          <p>
-            I got into design back when I was taking a gap year from university.
-            I told my friend I wasn&apos;t sure what to study and he told me:
-            <strong>
-              &quot;You should look into UX design, they make buttons.&quot;
-            </strong>{" "}
-            I then went down the rabbit hole and here I am today. I love the
-            creative aspect of this field, where I get to solve problems in a
-            non-traditional, creative way.
-          </p>
-        </ContentSection>
+          <ContentSection
+            title="About Me"
+            variant="imageLeftTextRight"
+            leftContent={
+              <img
+                src="/about/doodle.png"
+                alt="Doodle by Daniel Liu"
+                className={`content-section-image-single ${styles.doodleImg}`}
+              />
+            }
+          >
+            <p>
+              Hello! My name is Daniel. I am a UX/UI designer based in Vancouver.
+              I originally grew up in Taiwan and moved to Canada at the age of 10.
+            </p>
+            <p>
+              I got into design back when I was taking a gap year from university.
+              I told my friend I wasn&apos;t sure what to study and he told me:
+              <strong>
+                &quot;You should look into UX design, they make buttons.&quot;
+              </strong>{" "}
+              I then went down the rabbit hole and here I am today. I love the
+              creative aspect of this field, where I get to solve problems in a
+              non-traditional, creative way.
+            </p>
+          </ContentSection>
+        </ScrollFade>
 
-        <section className={styles.smallJoys} aria-label="Small joys">
+        <div className={styles.heroDownWrap}>
+          <a href="#small-joys" className={styles.heroDown} aria-label="Scroll to Small Joys section">
+            <img src="/down.svg" alt="" aria-hidden="true" />
+          </a>
+        </div>
+
+        <ScrollFade
+          wrapperClassName={styles.scrollFadeWrap}
+          visibleClassName={styles.scrollFadeVisible}
+        >
+          <section id="small-joys" className={styles.smallJoys} aria-label="Small joys">
           <h2 className={styles.smallJoysTitle}>Small Joys</h2>
           <div className={styles.smallJoysCloud}>
             <span
@@ -216,7 +232,12 @@ export default function AboutPage() {
             </span>
           </div>
         </section>
+        </ScrollFade>
 
+        <ScrollFade
+          wrapperClassName={styles.scrollFadeWrap}
+          visibleClassName={styles.scrollFadeVisible}
+        >
         <section className={styles.contactSection} aria-label="Contact">
           <div className={styles.contactGrid}>
             <div className={styles.contactCopy}>
@@ -243,6 +264,7 @@ export default function AboutPage() {
             </div>
           </div>
         </section>
+        </ScrollFade>
       </main>
       <Footer />
     </div>
