@@ -1,7 +1,7 @@
 .hero {
   width: 100%;
   /* Scale top padding with viewport height so hero sits higher on laptops */
-  padding: clamp(120px, 25vh, 300px) var(--space-40) var(--space-80);
+  padding: clamp(120px, 25vh, 300px) var(--space-40) calc(var(--space-80) - 64px);
   background-color: #fff;
 }
 
