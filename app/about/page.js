@@ -3,6 +3,7 @@ import Footer from "@/components/layout/Footer";
 import ContentSection from "@/components/project/ContentSection";
 import ScrollFade from "@/components/ScrollFade";
 import ScrollToTopOnHash from "@/components/ScrollToTopOnHash";
+import AboutMeImage from "@/components/AboutMeImage";
 import styles from "./page.module.css";
 
 export const metadata = {
@@ -24,9 +25,7 @@ export default function AboutPage() {
             title="About Me"
             variant="imageLeftTextRight"
             leftContent={
-              <img
-                src="/about/doodle.png"
-                alt="Doodle by Daniel Liu"
+              <AboutMeImage
                 className={`content-section-image-single ${styles.doodleImg}`}
               />
             }
