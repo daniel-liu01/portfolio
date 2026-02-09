@@ -96,6 +96,12 @@
   display: block;
   margin-top: -3em;
   padding-bottom: var(--space-24);
+  transition: transform 0.25s ease;
+  transform-origin: center center;
+}
+
+.doodleImg:hover {
+  transform: scale(1.03);
 }
 
 .powCounter {
