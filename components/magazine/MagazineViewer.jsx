@@ -17,11 +17,13 @@ export default function MagazineViewer() {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const goPrev = () => {
-    setCurrentIndex((i) => (i === 0 ? PAGES.length - 1 : i - 1));
+    if (currentIndex === 0) return;
+    setCurrentIndex((i) => i - 1);
   };
 
   const goNext = () => {
-    setCurrentIndex((i) => (i === PAGES.length - 1 ? 0 : i + 1));
+    if (currentIndex === PAGES.length - 1) return;
+    setCurrentIndex((i) => i + 1);
   };
 
   return (
@@ -29,15 +31,16 @@ export default function MagazineViewer() {
       <div className="magazine-viewer-container">
         <button
           type="button"
-          className="magazine-viewer-arrow magazine-viewer-arrow--prev"
+          className={`magazine-viewer-arrow magazine-viewer-arrow--prev ${currentIndex === 0 ? "magazine-viewer-arrow--disabled" : ""}`}
           onClick={goPrev}
           aria-label="Previous page"
+          aria-disabled={currentIndex === 0}
         >
-          <img src="/left.svg" alt="" width={24} height={24} aria-hidden />
+          <img src="/left.svg" alt="" width={32} height={32} aria-hidden />
         </button>
 
         <div
-          className={`magazine-viewer-frame ${currentIndex === 0 ? "magazine-viewer-frame--first" : ""}`}
+          className={`magazine-viewer-frame ${currentIndex === 0 ? "magazine-viewer-frame--first" : ""} ${currentIndex === PAGES.length - 1 ? "magazine-viewer-frame--last" : ""}`}
         >
           {currentIndex === 0 ? (
             <>
@@ -50,6 +53,17 @@ export default function MagazineViewer() {
                 />
               </div>
             </>
+          ) : currentIndex === PAGES.length - 1 ? (
+            <>
+              <div className="magazine-viewer-frame-image-wrap">
+                <img
+                  src={PAGES[currentIndex]}
+                  alt={`Magazine page ${currentIndex + 1} of ${PAGES.length}`}
+                  className="magazine-viewer-image"
+                />
+              </div>
+              <div className="magazine-viewer-frame-spacer" aria-hidden="true" />
+            </>
           ) : (
             <img
               src={PAGES[currentIndex]}
@@ -61,11 +75,12 @@ export default function MagazineViewer() {
 
         <button
           type="button"
-          className="magazine-viewer-arrow magazine-viewer-arrow--next"
+          className={`magazine-viewer-arrow magazine-viewer-arrow--next ${currentIndex === PAGES.length - 1 ? "magazine-viewer-arrow--disabled" : ""}`}
           onClick={goNext}
           aria-label="Next page"
+          aria-disabled={currentIndex === PAGES.length - 1}
         >
-          <img src="/right.svg" alt="" width={24} height={24} aria-hidden />
+          <img src="/right.svg" alt="" width={32} height={32} aria-hidden />
         </button>
       </div>
       <p className="magazine-viewer-indicator" aria-live="polite">
