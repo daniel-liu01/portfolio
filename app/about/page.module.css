@@ -17,7 +17,7 @@
   padding: 40px 0 90px 0;
   min-height: 48px;
   opacity: 0;
-  animation: heroDown-slide-down 0.65s ease-out 3.8s forwards;
+  animation: heroDown-slide-down 0.5s ease-out 0.4s forwards;
 }
 
 .heroDown {
@@ -41,6 +41,12 @@
 .heroDown:hover img {
   transform: scale(1.15);
   filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.2));
+}
+
+@media (max-width: 768px) {
+  .heroDownWrap {
+    display: none;
+  }
 }
 
 /* Scroll-triggered fade-in wrapper (used with ScrollFade component) */
@@ -512,6 +518,7 @@
 .contactCollage {
   position: relative;
   min-height: 480px;
+  padding-bottom: 100px;
 }
 
 .contactPlaceholder {
@@ -584,9 +591,11 @@
   }
 
   .contactCopy {
+    order: 2;
     font-size: 20px;
     width: calc(100% + 2 * var(--space-20));
     margin-left: calc(-1 * var(--space-20));
+    padding-top: var(--space-48);
     padding-left: var(--space-20);
     padding-right: var(--space-20);
     box-sizing: border-box;
@@ -601,8 +610,9 @@
   }
 
   .contactCollage {
+    order: 1;
     min-height: 380px;
-    padding-bottom: 60px;
+    padding-bottom: 100px;
   }
 
   .contactPlaceholder:nth-child(1) {

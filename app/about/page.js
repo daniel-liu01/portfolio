@@ -2,6 +2,7 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import ContentSection from "@/components/project/ContentSection";
 import ScrollFade from "@/components/ScrollFade";
+import ScrollToTopOnHash from "@/components/ScrollToTopOnHash";
 import styles from "./page.module.css";
 
 export const metadata = {
@@ -12,6 +13,7 @@ export const metadata = {
 export default function AboutPage() {
   return (
     <div>
+      <ScrollToTopOnHash />
       <Navbar activePage="about" />
       <main className={styles.aboutMain}>
         <ScrollFade
