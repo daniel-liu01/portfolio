@@ -216,6 +216,33 @@ export default function AboutPage() {
             </span>
           </div>
         </section>
+
+        <section className={styles.contactSection} aria-label="Contact">
+          <div className={styles.contactGrid}>
+            <div className={styles.contactCopy}>
+              <p>Just scratching</p>
+              <p>the surface,</p>
+              <p>perhaps you can</p>
+              <p>
+                <a href="/contact" className={styles.contactLink}>
+                  Contact Me
+                </a>{" "}
+                =)
+              </p>
+            </div>
+            <div className={styles.contactCollage}>
+              <div className={styles.contactPlaceholder}>
+                <img src="/about/1.jpeg" alt="" className={styles.contactCollageImg} />
+              </div>
+              <div className={styles.contactPlaceholder}>
+                <img src="/about/3.jpg" alt="" className={styles.contactCollageImg} />
+              </div>
+              <div className={styles.contactPlaceholder}>
+                <img src="/about/2.jpg" alt="" className={styles.contactCollageImg} />
+              </div>
+            </div>
+          </div>
+        </section>
       </main>
       <Footer />
     </div>
