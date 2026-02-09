@@ -98,6 +98,13 @@
   padding-bottom: var(--space-24);
 }
 
+.powCounter {
+  margin: var(--space-16) 0 0;
+  font-size: 12px;
+  color: #666;
+  font-family: var(--font-mono), monospace;
+}
+
 @media (max-width: 768px) {
   .doodleImg {
     margin-top: -6em;

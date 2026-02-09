@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect } from "react";
 
-export default function AboutMeImage({ className = "" }) {
+export default function AboutMeImage({ className = "", onPow }) {
   const [showPow, setShowPow] = useState(false);
   const timeoutRef = useRef(null);
   const src = showPow ? "/about/pow.jpeg" : "/about/doodle.jpeg";
@@ -14,6 +14,7 @@ export default function AboutMeImage({ className = "" }) {
       setShowPow(false);
     } else {
       setShowPow(true);
+      onPow?.();
       timeoutRef.current = setTimeout(() => setShowPow(false), 500);
     }
   };
