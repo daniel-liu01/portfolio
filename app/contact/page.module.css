@@ -2,6 +2,17 @@
   /* no base styles needed; mobile overrides below */
 }
 
+@keyframes contactFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .contactMain {
   min-height: 100vh;
   background-color: var(--white);
@@ -17,6 +28,8 @@
   font-weight: var(--medium);
   color: var(--black);
   margin: 0 0 var(--space-16);
+  opacity: 0;
+  animation: contactFadeIn 0.6s ease-out 0.1s forwards;
 }
 
 .contactSubtext {
@@ -27,6 +40,8 @@
   line-height: 1.5;
   margin: 0;
   max-width: 42ch;
+  opacity: 0;
+  animation: contactFadeIn 0.6s ease-out 0.25s forwards;
 }
 
 .contactBtns {
@@ -34,6 +49,8 @@
   flex-wrap: wrap;
   gap: var(--space-12);
   margin-top: var(--space-24);
+  opacity: 0;
+  animation: contactFadeIn 0.6s ease-out 0.4s forwards;
 }
 
 .contactBtn {
@@ -61,6 +78,8 @@
 .illustration {
   margin-top: var(--space-80);
   max-width: 100%;
+  opacity: 0;
+  animation: contactFadeIn 0.6s ease-out 0.55s forwards;
 }
 
 .cupsDesktop {
