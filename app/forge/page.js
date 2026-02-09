@@ -70,7 +70,7 @@ const forgeQuotes = [
 
 export default function ForgePage() {
   return (
-    <div>
+    <div className={styles.forgeLayout}>
       <Navbar activePage="" />
       <main className={styles.main}>
         <ProjectSection {...forgeContent} />

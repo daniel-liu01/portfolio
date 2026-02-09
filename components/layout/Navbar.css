@@ -98,7 +98,7 @@
 /* Mobile Responsive Styles */
 @media (max-width: 768px) {
   .navbar {
-    padding: 16px var(--space-16);
+    padding: 8px var(--space-16) 16px;
   }
 
   .navbar-logo {
