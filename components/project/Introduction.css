@@ -11,7 +11,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: var(--space-48);
-  align-items: center;
+  align-items: start;
 }
 
 .introduction-content {
@@ -35,6 +35,15 @@
   min-width: 0;
   flex-shrink: 0;
   background: transparent;
+}
+
+.introduction-right-text {
+  font-family: var(--font-mono);
+  font-size: var(--text-base);
+  font-weight: var(--light);
+  line-height: 1.6;
+  color: var(--black);
+  margin: 0;
 }
 
 .introduction-image {

@@ -1,0 +1,129 @@
+.magazine-viewer {
+  width: 100%;
+  padding: var(--space-60) var(--space-40) var(--space-60);
+  background: transparent;
+}
+
+.magazine-viewer-container {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 5% 90% 5%;
+  align-items: center;
+  gap: 0;
+}
+
+.magazine-viewer-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 48px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  border-radius: 50%;
+  color: var(--black);
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.magazine-viewer-arrow:hover {
+  opacity: 0.7;
+}
+
+.magazine-viewer-arrow:focus-visible {
+  outline: 2px solid var(--black);
+  outline-offset: 2px;
+}
+
+.magazine-viewer-arrow img {
+  display: block;
+  width: 24px;
+  height: 24px;
+}
+
+.magazine-viewer-frame {
+  min-width: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.magazine-viewer-frame--first {
+  display: grid;
+  grid-template-columns: 45% 45%;
+  gap: 0;
+  justify-content: stretch;
+  align-items: center;
+}
+
+.magazine-viewer-frame-spacer {
+  width: 100%;
+  min-width: 0;
+}
+
+.magazine-viewer-frame-image-wrap {
+  min-width: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.magazine-viewer-frame-image-wrap .magazine-viewer-image {
+  width: 100%;
+}
+
+.magazine-viewer-image {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+  border: none;
+  border-radius: 0;
+}
+
+.magazine-viewer-indicator {
+  margin: var(--space-24) 0 0;
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  font-weight: var(--light);
+  color: var(--black);
+  opacity: 0.8;
+}
+
+@media (max-width: 1024px) {
+  .magazine-viewer {
+    padding: var(--space-48) var(--space-30) var(--space-48);
+  }
+
+  .magazine-viewer-arrow {
+    min-height: 44px;
+  }
+}
+
+@media (max-width: 768px) {
+  .magazine-viewer {
+    padding: var(--space-40) var(--space-20) var(--space-40);
+  }
+
+  .magazine-viewer-arrow {
+    min-height: 40px;
+  }
+
+  .magazine-viewer-arrow img {
+    width: 20px;
+    height: 20px;
+  }
+
+  .magazine-viewer-indicator {
+    margin-top: var(--space-16);
+    font-size: var(--text-xs);
+  }
+}
