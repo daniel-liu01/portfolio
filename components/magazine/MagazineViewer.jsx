@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import "./MagazineViewer.css";
 
 const PAGES = [
@@ -13,17 +13,37 @@ const PAGES = [
   "/magazine/back.png",
 ];
 
+const FADE_MS = 150;
+
 export default function MagazineViewer() {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isTransitioning, setIsTransitioning] = useState(false);
+  const scrollRestoreRef = useRef(null);
+  const pendingIndexRef = useRef(null);
 
-  const goPrev = () => {
-    if (currentIndex === 0) return;
-    setCurrentIndex((i) => i - 1);
-  };
+  useEffect(() => {
+    if (scrollRestoreRef.current != null) {
+      window.scrollTo({ top: scrollRestoreRef.current, behavior: "auto" });
+      scrollRestoreRef.current = null;
+    }
+  }, [currentIndex]);
 
-  const goNext = () => {
-    if (currentIndex === PAGES.length - 1) return;
-    setCurrentIndex((i) => i + 1);
+  useEffect(() => {
+    if (!isTransitioning || pendingIndexRef.current == null) return;
+    const t = setTimeout(() => {
+      setCurrentIndex(pendingIndexRef.current);
+      pendingIndexRef.current = null;
+      setTimeout(() => setIsTransitioning(false), FADE_MS);
+    }, FADE_MS);
+    return () => clearTimeout(t);
+  }, [isTransitioning]);
+
+  const goToPage = (e, nextIndex) => {
+    if (nextIndex < 0 || nextIndex >= PAGES.length) return;
+    scrollRestoreRef.current = window.scrollY ?? document.documentElement.scrollTop;
+    e.currentTarget?.blur();
+    pendingIndexRef.current = nextIndex;
+    setIsTransitioning(true);
   };
 
   return (
@@ -32,15 +52,16 @@ export default function MagazineViewer() {
         <button
           type="button"
           className={`magazine-viewer-arrow magazine-viewer-arrow--prev ${currentIndex === 0 ? "magazine-viewer-arrow--disabled" : ""}`}
-          onClick={goPrev}
+          onClick={(e) => goToPage(e, currentIndex - 1)}
           aria-label="Previous page"
           aria-disabled={currentIndex === 0}
+          tabIndex={currentIndex === 0 ? -1 : 0}
         >
           <img src="/left.svg" alt="" width={32} height={32} aria-hidden />
         </button>
 
         <div
-          className={`magazine-viewer-frame ${currentIndex === 0 ? "magazine-viewer-frame--first" : ""} ${currentIndex === PAGES.length - 1 ? "magazine-viewer-frame--last" : ""}`}
+          className={`magazine-viewer-frame ${currentIndex === 0 ? "magazine-viewer-frame--first" : ""} ${currentIndex === PAGES.length - 1 ? "magazine-viewer-frame--last" : ""} ${isTransitioning ? "magazine-viewer-frame--fade" : ""}`}
         >
           {currentIndex === 0 ? (
             <>
@@ -76,9 +97,10 @@ export default function MagazineViewer() {
         <button
           type="button"
           className={`magazine-viewer-arrow magazine-viewer-arrow--next ${currentIndex === PAGES.length - 1 ? "magazine-viewer-arrow--disabled" : ""}`}
-          onClick={goNext}
+          onClick={(e) => goToPage(e, currentIndex + 1)}
           aria-label="Next page"
           aria-disabled={currentIndex === PAGES.length - 1}
+          tabIndex={currentIndex === PAGES.length - 1 ? -1 : 0}
         >
           <img src="/right.svg" alt="" width={32} height={32} aria-hidden />
         </button>

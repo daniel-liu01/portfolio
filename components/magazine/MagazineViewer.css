@@ -57,9 +57,16 @@
 
 .magazine-viewer-frame {
   min-width: 0;
+  min-height: 50vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  contain: layout;
+  transition: opacity 0.15s ease;
+}
+
+.magazine-viewer-frame--fade {
+  opacity: 0;
 }
 
 .magazine-viewer-frame--first,
