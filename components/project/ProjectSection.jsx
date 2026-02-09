@@ -10,7 +10,13 @@ import "./ProjectSection.css";
  * @param {string} [heroImageAlt] - Alt text for hero image (default: "{title} project")
  * @param {Array<{ label: string, value: string }>} meta - Metadata items (e.g. [{ label: "Location", value: "BCIT" }, ...])
  */
-function ProjectSection({ title, readingTime, heroImage, heroImageAlt, meta = [] }) {
+function ProjectSection({
+  title,
+  readingTime,
+  heroImage,
+  heroImageAlt,
+  meta = [],
+}) {
   const alt = heroImageAlt ?? `${title} project`;
 
   return (
@@ -24,11 +30,7 @@ function ProjectSection({ title, readingTime, heroImage, heroImageAlt, meta = []
         </header>
 
         <div className="project-hero">
-          <img
-            src={heroImage}
-            alt={alt}
-            className="project-hero-image"
-          />
+          <img src={heroImage} alt={alt} className="project-hero-image" />
         </div>
 
         <div className="project-meta">
