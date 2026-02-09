@@ -40,7 +40,13 @@ export default function ContactPage() {
             <img
               src="/contact/cups.png"
               alt=""
-              className={styles.cups}
+              className={styles.cupsDesktop}
+              aria-hidden
+            />
+            <img
+              src="/contact/mobileCups.png"
+              alt=""
+              className={styles.cupsMobile}
               aria-hidden
             />
           </div>
