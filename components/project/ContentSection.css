@@ -29,7 +29,7 @@
 /* Full-width image below content (used with textRight + bottomImage) – aligned to grid */
 .content-section-bottom-image {
   max-width: 1200px;
-  margin: var(--space-32) auto 0;
+  margin: calc(var(--space-32) + 20px) auto 0;
   padding: 0 var(--space-40);
   width: 100%;
   box-sizing: border-box;
@@ -53,7 +53,7 @@
 /* Two or four images below content (1fr 1fr grid; four = 2x2 gallery) */
 .content-section-bottom-images {
   max-width: 1200px;
-  margin: var(--space-32) auto 0;
+  margin: calc(var(--space-32) + 20px) auto 0;
   padding: 0 var(--space-40);
   width: 100%;
   box-sizing: border-box;

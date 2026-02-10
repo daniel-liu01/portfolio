@@ -1,5 +1,6 @@
 import { Spline_Sans, Spline_Sans_Mono } from "next/font/google";
 import "./globals.css";
+import BackToTop from "@/components/BackToTop";
 
 const splineSans = Spline_Sans({
   subsets: ["latin"],
@@ -24,6 +25,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={`${splineSans.variable} ${splineSansMono.variable}`}>
         {children}
+        <BackToTop />
       </body>
     </html>
   );

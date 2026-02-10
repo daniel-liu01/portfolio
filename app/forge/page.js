@@ -361,17 +361,11 @@ export default function ForgePage() {
           <ContentSection
           title="Branding & Styling"
           variant="textRight"
-          bottomImages={[
-            {
-              src: "/forge/type.jpg",
-              alt: "Nunito Sans typography and font weights on orange background",
-            },
-            {
-              src: "/forge/bento.png",
-              alt: "Forge branding: logo, colors, graphics, and UI elements in bento layout",
-            },
-          ]}
-          bottomImagesGrid="1fr 2fr"
+          bottomImage={{
+            src: "/forge/style.png",
+            alt: "Forge style guide: typography, color palette, logo, iconography, and UI elements in bento layout",
+          }}
+          bottomImageNoShadow
         >
           <p>
             <strong>Color:</strong> The main color is orange, drawing a
