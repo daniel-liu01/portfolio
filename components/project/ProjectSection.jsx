@@ -1,3 +1,4 @@
+import Image from "next/image";
 import "./ProjectSection.css";
 
 /**
@@ -30,7 +31,16 @@ function ProjectSection({
         </header>
 
         <div className="project-hero">
-          <img src={heroImage} alt={alt} className="project-hero-image" />
+          <Image
+            src={heroImage}
+            alt={alt}
+            className="project-hero-image"
+            fill
+            sizes="(max-width: 1200px) 100vw, 1200px"
+            quality={100}
+            priority
+            style={{ objectFit: "cover" }}
+          />
         </div>
 
         <div className="project-meta">

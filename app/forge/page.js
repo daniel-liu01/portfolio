@@ -16,7 +16,7 @@ export const metadata = {
 const forgeContent = {
   title: "Forge",
   readingTime: "10 minutes",
-  heroImage: "/forge/forge.jpg",
+  heroImage: "/forge/forge.png",
   heroImageAlt: "Forge project",
   meta: [
     { label: "Location", value: "BCIT" },

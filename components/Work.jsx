@@ -5,7 +5,7 @@ import Image from "next/image";
 import "./Work.css";
 
 const projects = [
-  { title: "Forge", image: "/forge/forge.jpg", href: "/forge" },
+  { title: "Forge", image: "/forge/forge.png", href: "/forge" },
   { title: "LevelUp", image: "/levelup/lvlup.png", href: "#" },
   { title: "G Adventures Travel Magazine", image: "/magazine.jpg", href: "/magazine" },
   { title: "Kofi", image: "/kofi/cans.png", href: "#" },
@@ -48,9 +48,10 @@ function Work() {
                     src={project.image}
                     alt={project.title}
                     fill
-                    sizes="(max-width: 768px) 100vw, (max-width: 1600px) 50vw, 800px"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1600px) 50vw, 1200px"
                     style={{ objectFit: "cover" }}
-                    quality={90}
+                    quality={100}
+                    priority={project.title === "Forge"}
                   />
                 ) : (
                   <div
