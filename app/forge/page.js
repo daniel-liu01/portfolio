@@ -7,6 +7,8 @@ import Introduction from "@/components/project/Introduction";
 import ContentSection from "@/components/project/ContentSection";
 import Quotes from "@/components/project/Quotes";
 import ScrollFade from "@/components/ScrollFade";
+import BackToTop from "@/components/BackToTop";
+import ScrollProgress from "@/components/ScrollProgress";
 
 export const metadata = {
   title: "Forge | Daniel Liu",
@@ -588,6 +590,8 @@ export default function ForgePage() {
         </ScrollFade>
       </main>
       <Footer />
+      <ScrollProgress />
+      <BackToTop />
     </div>
   );
 }
