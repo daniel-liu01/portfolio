@@ -41,6 +41,12 @@
   background: transparent;
 }
 
+.introduction-right-text-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+}
+
 .introduction-right-text {
   font-family: var(--font-mono);
   font-size: var(--text-base);

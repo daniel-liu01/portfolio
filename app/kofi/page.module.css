@@ -1,0 +1,114 @@
+/* Scroll-triggered fade-in (same as forge/magazine page) */
+.scrollFadeWrap {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.scrollFadeVisible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.main > * {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.dividerWrap {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 60px var(--space-40) 60px;
+}
+
+.divider {
+  width: 100%;
+  box-sizing: border-box;
+  height: 1px;
+  background-color: var(--black);
+}
+
+/* Thank you section (same as forge page) */
+.thankYou {
+  width: 100%;
+  padding: var(--space-48) var(--space-40) var(--space-80) var(--space-40);
+  background-color: #fff;
+}
+
+.thankYouInner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--space-40);
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-24);
+}
+
+.thankYouText {
+  font-family: var(--font-mono);
+  font-size: var(--text-2xl);
+  font-weight: var(--light);
+  line-height: 1.5;
+  color: var(--black);
+  margin: 0;
+}
+
+.thankYouLink {
+  font-family: var(--font-mono);
+  font-size: var(--text-md);
+  font-weight: var(--light);
+  color: var(--black);
+  text-decoration: underline;
+  text-underline-offset: 0.35em;
+  flex-shrink: 0;
+}
+
+.thankYouLink:hover {
+  opacity: 0.8;
+}
+
+@media (max-width: 1024px) {
+  .dividerWrap {
+    padding: 60px var(--space-30) 60px;
+  }
+
+  .thankYou {
+    padding: var(--space-48) var(--space-30) var(--space-80) var(--space-30);
+  }
+
+  .thankYouInner {
+    padding: 0 var(--space-30);
+  }
+}
+
+@media (max-width: 768px) {
+  .dividerWrap {
+    padding: 60px var(--space-20) 60px;
+  }
+
+  .thankYou {
+    padding: var(--space-32) var(--space-20) var(--space-80) var(--space-20);
+  }
+
+  .thankYouInner {
+    flex-direction: column;
+    padding: 0 var(--space-20);
+    gap: var(--space-16);
+  }
+
+  .thankYouText {
+    font-size: var(--text-xl);
+  }
+
+  .thankYouLink {
+    font-size: var(--text-base);
+  }
+}
