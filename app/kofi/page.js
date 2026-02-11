@@ -82,11 +82,14 @@ export default function KofiPage() {
         >
           <ContentSection
             title="Initial Design"
-            variant="textRight"
-            bottomImage={{
-              src: "/kofi/placeholder.svg",
-              alt: "Initial Kofi label design on short can (placeholder)",
-            }}
+            variant="textLeftImagesRight"
+            rightContent={
+              <img
+                src="/kofi/initial.png"
+                alt="Initial Kofi label design on short can: KOFI logo, Premium Cold Brew Coffee, nutrition facts, and bilingual details"
+                className="content-section-image-single"
+              />
+            }
           >
             <p>
               In the beginning, I started designing on a short can right away
@@ -115,14 +118,15 @@ export default function KofiPage() {
           <ContentSection
             title="Redesign"
             variant="textRight"
+            bottomImagesNoShadow
             bottomImages={[
               {
-                src: "/kofi/placeholder.svg",
-                alt: "Redesigned Kofi flat label for tall can (placeholder)",
+                src: "/kofi/cold.png",
+                alt: "Redesigned Kofi flat label for tall can",
               },
               {
-                src: "/kofi/placeholder.svg",
-                alt: "Three tall can mockups showing redesigned label (placeholder)",
+                src: "/kofi/firstKofi.png",
+                alt: "Kofi initial design label",
               },
             ]}
           />

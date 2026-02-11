@@ -78,6 +78,27 @@
   border-radius: 4px;
 }
 
+.content-section--bottomImagesNoShadow .content-section-bottom-images {
+  align-items: stretch;
+  margin-top: 20px;
+}
+
+.content-section--bottomImagesNoShadow .content-section-bottom-images-cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.content-section--bottomImagesNoShadow .content-section-bottom-images-cell img {
+  background: none;
+  border: none;
+  border-radius: 0;
+  width: auto;
+  max-width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
 /* Four-image gallery: align with rest of content (1200px, same padding); 2 cols, 16/9, border/shadow */
 .content-section-bottom-images--four {
   grid-template-columns: repeat(2, 1fr);

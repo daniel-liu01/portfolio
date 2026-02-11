@@ -18,6 +18,7 @@ import "./ContentSection.css";
  * @param {boolean} [bottomImageNoShadow] - When true, remove background and shadow from bottomImage
  * @param {{ src: string, alt: string }[]} [bottomImages] - Two images below the row when variant is "textRight"; grid is 1fr 1fr by default
  * @param {string} [bottomImagesGrid] - Optional grid template for bottomImages (e.g. "1fr 2fr")
+ * @param {boolean} [bottomImagesNoShadow] - When true, remove background and border from bottomImages
  *
  * @example
  * // Heading + body + full-width image below (e.g. Pivot section)
@@ -40,6 +41,7 @@ function ContentSection({
   bottomImageNoShadow,
   bottomImages,
   bottomImagesGrid,
+  bottomImagesNoShadow,
 }) {
   const isTextLeftImagesRight = variant === "textLeftImagesRight";
   const isImageLeftTextRight = variant === "imageLeftTextRight";
@@ -52,9 +54,13 @@ function ContentSection({
     variant === "textRight" && bottomImage && bottomImageNoShadow
   );
 
+  const hasBottomImagesNoShadow = Boolean(
+    variant === "textRight" && bottomImages && bottomImagesNoShadow
+  );
+
   return (
     <section
-      className={`content-section content-section--${variant}${hasBottomImagesGrid ? " content-section--bottomImagesGrid" : ""}${hasBottomImageNoShadow ? " content-section--bottomImageNoShadow" : ""}`}
+      className={`content-section content-section--${variant}${hasBottomImagesGrid ? " content-section--bottomImagesGrid" : ""}${hasBottomImageNoShadow ? " content-section--bottomImageNoShadow" : ""}${hasBottomImagesNoShadow ? " content-section--bottomImagesNoShadow" : ""}`}
     >
       <div className="content-section-container">
         {variant === "textRight" && (
