@@ -287,6 +287,14 @@
   border-radius: 4px;
 }
 
+.content-section--rightContentNoShadow .content-section-right .content-section-image-single,
+.content-section--rightContentNoShadow .content-section-right img {
+  background: none;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+}
+
 /* Tablet */
 @media (max-width: 1024px) {
   .content-section {
