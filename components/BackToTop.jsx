@@ -4,26 +4,30 @@ import { useState, useEffect, useCallback, useRef } from "react";
 import "./BackToTop.css";
 
 const SCROLL_THRESHOLD = 400;
+const IDLE_HIDE_MS = 1000;
 
 export default function BackToTop() {
   const [scrollPast, setScrollPast] = useState(false);
   const [footerInView, setFooterInView] = useState(false);
-  const [scrollingUp, setScrollingUp] = useState(false);
-  const prevScrollY = useRef(0);
+  const [idle, setIdle] = useState(true);
+  const hideTimeoutRef = useRef(null);
 
   const onScroll = useCallback(() => {
     if (typeof window === "undefined") return;
     const y = window.scrollY;
     setScrollPast(y > SCROLL_THRESHOLD);
-    setScrollingUp(y < prevScrollY.current);
-    prevScrollY.current = y;
+    setIdle(false);
+    if (hideTimeoutRef.current) clearTimeout(hideTimeoutRef.current);
+    hideTimeoutRef.current = setTimeout(() => setIdle(true), IDLE_HIDE_MS);
   }, []);
 
   useEffect(() => {
     window.addEventListener("scroll", onScroll, { passive: true });
-    prevScrollY.current = typeof window !== "undefined" ? window.scrollY : 0;
     onScroll();
-    return () => window.removeEventListener("scroll", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      if (hideTimeoutRef.current) clearTimeout(hideTimeoutRef.current);
+    };
   }, [onScroll]);
 
   useEffect(() => {
@@ -37,7 +41,7 @@ export default function BackToTop() {
     return () => observer.disconnect();
   }, []);
 
-  const visible = scrollPast && !footerInView && !scrollingUp;
+  const visible = scrollPast && !footerInView && !idle;
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });

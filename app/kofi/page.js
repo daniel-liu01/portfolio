@@ -6,10 +6,13 @@ import ProjectSection from "@/components/project/ProjectSection";
 import Introduction from "@/components/project/Introduction";
 import ContentSection from "@/components/project/ContentSection";
 import ScrollFade from "@/components/ScrollFade";
+import BackToTop from "@/components/BackToTop";
+import ScrollProgress from "@/components/ScrollProgress";
 
 export const metadata = {
   title: "Kofi | Daniel Liu",
-  description: "Kofi — Beverage can design. Graphic Design, Layout Design. BCIT 2025.",
+  description:
+    "Kofi — Beverage can design. Graphic Design, Layout Design. BCIT 2025.",
 };
 
 const kofiContent = {
@@ -56,14 +59,18 @@ export default function KofiPage() {
           >
             <>
               Kofi is well... Coffee!
-              <br />
-              A can design blending playfulness and minimalism.
+              <br />A can design blending playfulness and minimalism.
             </>
           </Introduction>
         </ScrollFade>
-        <div className={styles.dividerWrap}>
-          <div className={styles.divider} role="presentation" />
-        </div>
+        <ScrollFade
+          wrapperClassName={styles.scrollFadeWrap}
+          visibleClassName={styles.scrollFadeVisible}
+        >
+          <div className={styles.dividerWrap}>
+            <div className={styles.divider} role="presentation" />
+          </div>
+        </ScrollFade>
         <ScrollFade
           wrapperClassName={styles.scrollFadeWrap}
           visibleClassName={styles.scrollFadeVisible}
@@ -71,8 +78,8 @@ export default function KofiPage() {
           <ContentSection title="Concept" variant="textRight">
             <p>
               I wanted to create something that feels cool yet inviting. Since
-              coffee is the start to many people&apos;s days, I wanted my
-              design to evoke positive feelings.
+              coffee is the start to many people&apos;s days, I felt the design
+              should evoke positive feelings.
             </p>
           </ContentSection>
         </ScrollFade>
@@ -105,9 +112,16 @@ export default function KofiPage() {
             <p>
               After looking at mockups and real products, the short can felt
               stubby and unappealing, so I switched the design to be on a tall
-              can. Tall cans generally feel more premium, elegant, and are
-              easier to hold. Not to mention, there is more room to work with
-              for the designs.
+              can.
+            </p>
+            <p>
+              Tall cans generally feel more premium, elegant, and are{" "}
+              <strong>easier to hold</strong>.
+            </p>
+            <p>
+              Not to mention, there is more room to work with. I also needed
+              space for both English and French for people across Canada so it
+              worked out perfectly.
             </p>
           </ContentSection>
         </ScrollFade>
@@ -135,18 +149,32 @@ export default function KofiPage() {
           wrapperClassName={styles.scrollFadeWrap}
           visibleClassName={styles.scrollFadeVisible}
         >
-          <ContentSection title="Key Design Decisions" variant="textRight">
+          <ContentSection
+            title={
+              <>
+                Key Design
+                <br />
+                Decisions
+              </>
+            }
+            variant="textRight"
+          >
             <ul>
               <li>
-                Tall can format for stronger shelf presence and premium
-                perception
+                <strong>Tall can format</strong> for stronger shelf presence and
+                premium perception
               </li>
-              <li>Playful colours to differentiate flavours</li>
               <li>
-                Minimal layout to keep the brand clear and readable at a
-                distance
+                <strong>Playful colours</strong> to differentiate flavours
               </li>
-              <li>Bold typography for quick brand recognition</li>
+              <li>
+                <strong>Minimal layout</strong> to keep the brand clear and
+                readable at a distance
+              </li>
+              <li>
+                <strong>Bold &amp; Playful typography</strong> for quick brand
+                recognition
+              </li>
             </ul>
           </ContentSection>
         </ScrollFade>
@@ -206,7 +234,8 @@ export default function KofiPage() {
               while keeping the branding consistent.
             </p>
             <p>
-              I chose names that were just descriptive enough to feel premium.
+              I chose names that were descriptive yet appealing to highlight the
+              drink’s flavour and vibe.
             </p>
             <p>
               Adding &quot;Premium&quot; to the start of each drink name also
@@ -220,8 +249,8 @@ export default function KofiPage() {
         >
           <ContentSection title="Final Thoughts" variant="textRight">
             <p>
-              Overall, this was a fun project to explore what designing a
-              canned beverage would look like.
+              Overall, this was a fun project to explore what designing a canned
+              beverage would look like.
             </p>
             <p>
               If I were to change one thing, I might try to combine the coffee
@@ -249,6 +278,8 @@ export default function KofiPage() {
         </ScrollFade>
       </main>
       <Footer />
+      <ScrollProgress />
+      <BackToTop />
     </div>
   );
 }
