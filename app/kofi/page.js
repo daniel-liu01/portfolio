@@ -59,7 +59,10 @@ export default function KofiPage() {
           >
             <>
               Kofi is well... Coffee!
-              <br />A can design blending playfulness and minimalism.
+              <br />
+              A can design blending playfulness
+              <br />
+              and minimalism.
             </>
           </Introduction>
         </ScrollFade>
