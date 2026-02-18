@@ -25,7 +25,7 @@ const levelupContent = {
     { label: "Location", value: "RevenueCat Hackathon" },
     { label: "Year", value: "2025" },
     { label: "Team", value: "3 members" },
-    { label: "Focus", value: "UX/UI Design, Graphic Design" },
+    { label: "Focus", value: "UX/UI Design Graphic Design" },
   ],
 };
 
@@ -44,25 +44,24 @@ export default function LevelUpPage() {
           wrapperClassName={styles.scrollFadeWrap}
           visibleClassName={styles.scrollFadeVisible}
         >
-          <Introduction
-            rightContent={
-              <div className={styles.introductionImageWrap}>
+          <section className={styles.levelupIntro}>
+            <div className={styles.levelupIntroContainer}>
+              <h2 className={styles.levelupIntroHeading}>
+                Turning workouts into a playful
+                <br />
+                experience with virtual pets and
+                <br />
+                bite-sized minigames.
+              </h2>
+              <div className={styles.levelupIntroImageRow}>
                 <img
                   src="/levelup/muscle.png"
                   alt="LevelUp pink companion character flexing"
-                  className="introduction-image"
+                  className={styles.levelupIntroImage}
                 />
               </div>
-            }
-          >
-            <>
-              Turning workouts into a playful
-              <br />
-              experience with virtual pets and
-              <br />
-              bite-sized minigames.
-            </>
-          </Introduction>
+            </div>
+          </section>
         </ScrollFade>
         <ScrollFade
           wrapperClassName={styles.scrollFadeWrap}

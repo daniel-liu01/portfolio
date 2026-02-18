@@ -21,26 +21,43 @@
   padding-bottom: 0;
 }
 
-/* LevelUp intro: text 2/3, image 1/3, bigger heading (matches screenshot) */
-.main :global(.introduction .introduction-container) {
-  grid-template-columns: 2fr 1fr;
-}
-
-.main :global(.introduction .introduction-heading) {
-  font-size: clamp(1.75rem, 4vw, 2.5rem);
-}
-
-.main :global(.introduction) {
-  padding-bottom: 0;
-}
-
-.introductionImageWrap {
-  max-width: 100%;
-  margin-top: -40px;
-}
-
-.introductionImageWrap .introduction-image {
+/* LevelUp intro (stacked): text block on top, image below */
+.levelupIntro {
   width: 100%;
+  padding: var(--space-60) var(--space-40) 0;
+  background: transparent;
+}
+
+.levelupIntroContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--space-40);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-32);
+}
+
+.levelupIntroHeading {
+  font-family: var(--font-sans);
+  font-size: 22px;
+  font-weight: var(--light);
+  line-height: 1.6;
+  color: var(--black);
+  margin: 0;
+}
+
+.levelupIntroImageRow {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.levelupIntroImage {
+  width: auto;
+  height: auto;
+  max-width: 240px;
+  display: block;
+  object-fit: contain;
 }
 
 .dividerWrap {
@@ -112,6 +129,18 @@
 }
 
 @media (max-width: 768px) {
+  .levelupIntro {
+    padding: var(--space-40) var(--space-20) 0;
+  }
+
+  .levelupIntroContainer {
+    padding: 0 var(--space-8);
+  }
+
+  .levelupIntroHeading {
+    font-size: 22px;
+  }
+
   .dividerWrap {
     padding: 20px var(--space-20) 60px;
   }
