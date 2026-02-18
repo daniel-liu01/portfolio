@@ -9,7 +9,7 @@ import "./ProjectSection.css";
  * @param {string} readingTime - e.g. "10 minutes"
  * @param {string} heroImage - Image path (e.g. "/forge.jpg")
  * @param {string} [heroImageAlt] - Alt text for hero image (default: "{title} project")
- * @param {Array<{ label: string, value: string }>} meta - Metadata items (e.g. [{ label: "Location", value: "BCIT" }, ...])
+ * @param {Array<{ label: string, value: string | React.ReactNode }>} meta - Metadata items (e.g. [{ label: "Location", value: "BCIT" }, ...]). value can be a string or JSX for line breaks.
  */
 function ProjectSection({
   title,

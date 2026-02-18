@@ -21,7 +21,7 @@
   padding-bottom: 0;
 }
 
-/* LevelUp intro (stacked): text block on top, image below */
+/* LevelUp intro: desktop = side-by-side (text left, image right); mobile = stacked */
 .levelupIntro {
   width: 100%;
   padding: var(--space-60) var(--space-40) 0;
@@ -32,22 +32,23 @@
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 var(--space-40);
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-32);
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  align-items: center;
+  gap: var(--space-48);
 }
 
 .levelupIntroHeading {
+  min-width: 0;
   font-family: var(--font-sans);
-  font-size: 22px;
+  font-size: clamp(1.5rem, 3vw, 2rem);
   font-weight: var(--light);
-  line-height: 1.6;
+  line-height: 1.5;
   color: var(--black);
   margin: 0;
 }
 
 .levelupIntroImageRow {
-  width: 100%;
   display: flex;
   justify-content: flex-end;
 }
@@ -55,7 +56,7 @@
 .levelupIntroImage {
   width: auto;
   height: auto;
-  max-width: 240px;
+  max-width: 320px;
   display: block;
   object-fit: contain;
 }
@@ -134,11 +135,17 @@
   }
 
   .levelupIntroContainer {
+    grid-template-columns: 1fr;
     padding: 0 var(--space-8);
+    gap: var(--space-24);
   }
 
   .levelupIntroHeading {
     font-size: 22px;
+  }
+
+  .levelupIntroImageRow {
+    justify-content: flex-end;
   }
 
   .dividerWrap {

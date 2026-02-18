@@ -25,7 +25,16 @@ const levelupContent = {
     { label: "Location", value: "RevenueCat Hackathon" },
     { label: "Year", value: "2025" },
     { label: "Team", value: "3 members" },
-    { label: "Focus", value: "UX/UI Design Graphic Design" },
+    {
+      label: "Focus",
+      value: (
+        <>
+          UX/UI Design
+          <br />
+          Graphic Design
+        </>
+      ),
+    },
   ],
 };
 
@@ -47,10 +56,7 @@ export default function LevelUpPage() {
           <section className={styles.levelupIntro}>
             <div className={styles.levelupIntroContainer}>
               <h2 className={styles.levelupIntroHeading}>
-                Turning workouts into a playful
-                <br />
-                experience with virtual pets and
-                <br />
+                Turning workouts into a playful experience with virtual pets and
                 bite-sized minigames.
               </h2>
               <div className={styles.levelupIntroImageRow}>
