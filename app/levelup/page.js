@@ -75,18 +75,188 @@ export default function LevelUpPage() {
           wrapperClassName={styles.scrollFadeWrap}
           visibleClassName={styles.scrollFadeVisible}
         >
-          <ContentSection title="Overview" variant="textRight">
+          <ContentSection title="The Start" variant="textRight">
             <p>
-              The app centers on a pink spherical companion that asks to be fed
-              and leveled up. Users progress through steps, distance, and
-              calories (Stats Today), and can run workout plans like Push Day and
-              Pull Day. Rest timers and minigames (e.g. basketball) add variety
-              and keep the experience light.
+              A developer friend invited me to participate in a hackathon.
+              <br />
+              I then asked one of our mutual friend to join in with us, forming
+              a team of 3.
             </p>
             <p>
-              Navigation is built around Home, Workouts, Calendar, and Profile,
-              with a clear hierarchy so users can jump into a workout or check
-              their stats without friction.
+              It&apos;s for RevenueCat&apos;s annual hackathon, Shipaton.
+              <br />
+              The only requirements are that it&apos;s a mobile app and includes
+              subscription-based monetization.
+            </p>
+          </ContentSection>
+        </ScrollFade>
+        <ScrollFade
+          wrapperClassName={styles.scrollFadeWrap}
+          visibleClassName={styles.scrollFadeVisible}
+        >
+          <ContentSection title="Concept Choice" variant="textRight">
+            <p>
+              One member of our team frequently goes to the gym. His problem is
+              that sometimes he finds himself taking <strong>too long</strong> of
+              a break between sets.
+            </p>
+            <p>
+              He also observed that other people do the same, always glued to
+              their phones soon as they finish a set of a workout.
+            </p>
+            <p>
+              <strong>This pattern highlighted a common problem</strong>:{" "}
+              unstructured rest time combined with phone distraction reduces
+              focus, intensity, and efficiency during workouts.
+            </p>
+          </ContentSection>
+        </ScrollFade>
+        <ScrollFade
+          wrapperClassName={styles.scrollFadeWrap}
+          visibleClassName={styles.scrollFadeVisible}
+        >
+          <ContentSection
+            title="Initial Ideation"
+            variant="textLeftImagesRight"
+            rightContentNoShadow
+            rightContent={
+              <img
+                src="/levelup/initial.png"
+                alt="LevelUp initial mockups — home, steps, Push Day workout, rest time minigame"
+                className="content-section-image-single"
+              />
+            }
+          >
+            <p>
+              I quickly made these mockups, it&apos;s a simple fitness app.
+            </p>
+            <p>
+              The core feature we focused on was integrating short minigames
+              between workout sets.
+            </p>
+            <p>
+              These games last for the duration of the rest period, helping
+              users stay engaged without over-resting.
+            </p>
+          </ContentSection>
+        </ScrollFade>
+        <ScrollFade
+          wrapperClassName={styles.scrollFadeWrap}
+          visibleClassName={styles.scrollFadeVisible}
+        >
+          <ContentSection
+            title="Virtual Pet"
+            variant="textLeftImagesRight"
+            rightContentNoShadow
+            rightContent={
+              <img
+                src="/levelup/finalSlime.png"
+                alt="LevelUp virtual pet evolution — simple face to evolved pink slime with flexing biceps"
+                className="content-section-image-single"
+              />
+            }
+          >
+            <p>
+              Our standout element is the virtual
+              <br />
+              Pet.
+            </p>
+            <p>
+              It&apos;s a digital companion that grows
+              <br />
+              alongside you as you complete
+              <br />
+              workouts.
+            </p>
+            <p>
+              You workout, you get food to feed
+              <br />
+              the pet and help it gain experience
+              <br />
+              points as it grows
+            </p>
+          </ContentSection>
+        </ScrollFade>
+        <ScrollFade
+          wrapperClassName={styles.scrollFadeWrap}
+          visibleClassName={styles.scrollFadeVisible}
+        >
+          <ContentSection
+            title="Pet Illustration"
+            variant="textLeftImagesRight"
+            rightContentNoShadow
+            rightContent={
+              <img
+                src="/levelup/slimes.png"
+                alt="LevelUp slime character expressions and poses — neutral, sleepy, flexing, happy, dashing, level up, angry"
+                className="content-section-image-single"
+              />
+            }
+          >
+            <p>
+              I chose slime as the virtual pet
+              <br />
+              for its simplicity and versatility.
+            </p>
+            <p>
+              It&apos;d be easy to customize with just
+              <br />
+              colors and additional elements.
+            </p>
+          </ContentSection>
+        </ScrollFade>
+        <ScrollFade
+          wrapperClassName={styles.scrollFadeWrap}
+          visibleClassName={styles.scrollFadeVisible}
+        >
+          <ContentSection title="Dev Review" variant="textRight">
+            <p>
+              The developers gave me the okay. Since time is limited, they
+              wanted me
+              <br />
+              to work on implementing colors and real graphical assets right
+              away.
+            </p>
+          </ContentSection>
+        </ScrollFade>
+        <ScrollFade
+          wrapperClassName={styles.scrollFadeWrap}
+          visibleClassName={styles.scrollFadeVisible}
+        >
+          <ContentSection
+            title="Workout Graphics"
+            variant="textLeftImagesRight"
+            rightContentNoShadow
+            rightContent={
+              <img
+                src="/levelup/Workout.png"
+                alt="LevelUp workout illustration — barbell bench press isometric and exercise card"
+                className="content-section-image-single"
+              />
+            }
+          >
+            <p>
+              For the workout images, I planned
+              <br />
+              to use an API so it would be easy
+              <br />
+              to implement and scale.
+            </p>
+            <p>
+              Workout API felt most aligned with
+              <br />
+              my design approach for it&apos;s simple
+              <br />
+              yet cartoony style.
+            </p>
+            <p>
+              Though I used vector images as
+              <br />
+              placeholders in my prototype as we
+              <br />
+              weren&apos;t ready to make the purchase
+              <br />
+              yet.
             </p>
           </ContentSection>
         </ScrollFade>

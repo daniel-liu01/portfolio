@@ -14,7 +14,7 @@ import "./ContentSection.css";
  * @param {"textRight" | "textLeftImagesRight" | "imageLeftTextRight"} variant
  * @param {React.ReactNode} [leftContent] - Left column content when variant is "imageLeftTextRight"
  * @param {React.ReactNode} [rightContent] - Right column content when variant is "textLeftImagesRight"
- * @param {boolean} [rightContentNoShadow] - When true, remove border and background from rightContent (e.g. Branding image)
+ * @param {boolean} [rightContentNoShadow] - When true, remove border, background, and box-shadow from rightContent. Use for project page images that should have no fill or stroke.
  * @param {{ src: string, alt: string }} [bottomImage] - Image below the row when variant is "textRight"; use for boards/screenshots (e.g. pivot.png)
  * @param {boolean} [bottomImageNoShadow] - When true, remove background and shadow from bottomImage
  * @param {{ src: string, alt: string }[]} [bottomImages] - Two images below the row when variant is "textRight"; grid is 1fr 1fr by default
