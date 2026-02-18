@@ -41,7 +41,7 @@
 .work-card-image-wrap {
   position: relative;
   overflow: hidden;
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 2 / 1;
   border: var(--border-card);
   border-radius: var(--space-4);
   box-shadow: var(--shadow-card);

@@ -23,10 +23,7 @@ function Work() {
   return (
     <section className="work" id="work">
       <div className="work-container">
-        <h2 className="work-title">
-          Selected Works{" "}
-          <span className="work-title-note">(Under construction!)</span>
-        </h2>
+        <h2 className="work-title">Selected Works</h2>
         <div className="work-grid">
           {projects.map((project) => (
             <a
@@ -48,7 +45,11 @@ function Work() {
                     src={project.image}
                     alt={project.title}
                     fill
-                    sizes="(max-width: 768px) 100vw, (max-width: 1600px) 50vw, 1200px"
+                    sizes={
+                      project.title === "Forge"
+                        ? "(max-width: 768px) 100vw, (max-width: 1600px) 50vw, 1600px"
+                        : "(max-width: 768px) 100vw, (max-width: 1600px) 50vw, 1200px"
+                    }
                     style={{ objectFit: "cover" }}
                     quality={100}
                     priority={project.title === "Forge"}
