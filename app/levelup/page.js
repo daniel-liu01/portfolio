@@ -19,7 +19,8 @@ const levelupContent = {
   title: "LevelUp",
   readingTime: "10 minutes",
   heroImage: "/levelup/lvlup.png",
-  heroImageAlt: "LevelUp app — fitness companion with pink slime character, workout plans, and stats",
+  heroImageAlt:
+    "LevelUp app — fitness companion with pink slime character, workout plans, and stats",
   meta: [
     { label: "Location", value: "RevenueCat Hackathon" },
     { label: "Year", value: "2025" },
@@ -78,9 +79,8 @@ export default function LevelUpPage() {
           <ContentSection title="The Start" variant="textRight">
             <p>
               A developer friend invited me to participate in a hackathon.
-              <br />
-              I then asked one of our mutual friend to join in with us, forming
-              a team of 3.
+              <br />I then asked one of our mutual friend to join in with us,
+              forming a team of 3.
             </p>
             <p>
               It&apos;s for RevenueCat&apos;s annual hackathon, Shipaton.
@@ -97,8 +97,8 @@ export default function LevelUpPage() {
           <ContentSection title="Concept Choice" variant="textRight">
             <p>
               One member of our team frequently goes to the gym. His problem is
-              that sometimes he finds himself taking <strong>too long</strong> of
-              a break between sets.
+              that sometimes he finds himself taking <strong>too long</strong>{" "}
+              of a break between sets.
             </p>
             <p>
               He also observed that other people do the same, always glued to
@@ -127,9 +127,7 @@ export default function LevelUpPage() {
               />
             }
           >
-            <p>
-              I quickly made these mockups, it&apos;s a simple fitness app.
-            </p>
+            <p>I quickly made these mockups, it&apos;s a simple fitness app.</p>
             <p>
               The core feature we focused on was integrating short minigames
               between workout sets.
@@ -259,6 +257,60 @@ export default function LevelUpPage() {
               yet.
             </p>
           </ContentSection>
+        </ScrollFade>
+        <ScrollFade
+          wrapperClassName={styles.scrollFadeWrap}
+          visibleClassName={styles.scrollFadeVisible}
+        >
+          <ContentSection
+            title="Colours"
+            variant="textRight"
+            bottomImage={{
+              src: "/levelup/lvlbento.png",
+              alt: "LevelUp colour palette, stats card, bench press card, and buttons",
+            }}
+            bottomImageNoShadow
+          >
+            <p>
+              The app uses a light, green-focused colour palette, chosen to
+              reinforce themes of{" "}
+              <strong>health, growth, and positive progression</strong>.
+            </p>
+            <p>
+              Originally, I’d wanted to use a bright orange as the main color,
+              but it doesn’t go well with the cartoon style assets. Also, the
+              softer tones makes the app feel approachable rather than intense.
+            </p>
+          </ContentSection>
+        </ScrollFade>
+        <ScrollFade
+          wrapperClassName={styles.scrollFadeWrap}
+          visibleClassName={styles.scrollFadeVisible}
+        >
+          <ContentSection title="Typography" variant="textRight">
+            <p>
+              For typography, I chose Nunito for its rounded feel and wide range
+              of bold weights. It compliments the playful nature and is easy to
+              work with.
+            </p>
+          </ContentSection>
+        </ScrollFade>
+        <ScrollFade
+          wrapperClassName={styles.scrollFadeWrap}
+          visibleClassName={styles.scrollFadeVisible}
+        >
+          <ContentSection
+            title="Hi-Fi Mockup"
+            variant="textLeftImagesRight"
+            rightContentNoShadow
+            rightContent={
+              <img
+                src="/levelup/FinalLook.png"
+                alt="LevelUp high-fidelity screens — home, calories, Push Day workout, goal progress"
+                className="content-section-image-single"
+              />
+            }
+          ></ContentSection>
         </ScrollFade>
         <ScrollFade
           wrapperClassName={styles.scrollFadeWrap}
