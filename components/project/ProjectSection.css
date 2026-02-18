@@ -1,10 +1,10 @@
 .project-section {
   width: 100%;
   min-height: 100vh;
-  min-height: 100dvh;
+  min-height: calc(100dvh - (var(--space-96) + 48px + env(safe-area-inset-bottom, 0px)));
   display: flex;
   flex-direction: column;
-  padding: 60px var(--space-40) calc(var(--space-96) + 48px + env(safe-area-inset-bottom, 0px));
+  padding: 60px var(--space-40) 0;
   background-color: var(--white);
 }
 

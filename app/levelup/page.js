@@ -56,8 +56,9 @@ export default function LevelUpPage() {
           <section className={styles.levelupIntro}>
             <div className={styles.levelupIntroContainer}>
               <h2 className={styles.levelupIntroHeading}>
-                Turning workouts into a playful experience with virtual pets and
-                bite-sized minigames.
+                Reinmagining workouts by transforming rest periods into{" "}
+                <strong>bite-sized minigames</strong> and rewarding consistency
+                through a growing <strong>virtual companion</strong>.
               </h2>
               <div className={styles.levelupIntroImageRow}>
                 <img
