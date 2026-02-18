@@ -1,0 +1,35 @@
+.custom-cursor {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+}
+
+.custom-cursor-main,
+.custom-cursor-trail {
+  position: absolute;
+  border-radius: 50%;
+  background-color: var(--black);
+  pointer-events: none;
+}
+
+.custom-cursor-main {
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.5);
+  transition: width 0.2s ease, height 0.2s ease;
+}
+
+/* Hide default cursor (including pointer) when custom cursor is active */
+body.custom-cursor-active,
+body.custom-cursor-active * {
+  cursor: none !important;
+}
+
+.custom-cursor-trail {
+  background-color: var(--black);
+}
+
+@media (hover: none) {
+  .custom-cursor {
+    display: none;
+  }
+}

@@ -1,5 +1,6 @@
 import { Spline_Sans, Spline_Sans_Mono } from "next/font/google";
 import "./globals.css";
+import CustomCursor from "@/components/CustomCursor";
 
 const splineSans = Spline_Sans({
   subsets: ["latin"],
@@ -23,6 +24,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${splineSans.variable} ${splineSansMono.variable}`}>
+        <CustomCursor />
         {children}
       </body>
     </html>
