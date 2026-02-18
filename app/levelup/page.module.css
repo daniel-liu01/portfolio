@@ -30,6 +30,10 @@
   font-size: clamp(1.75rem, 4vw, 2.5rem);
 }
 
+.main :global(.introduction) {
+  padding-bottom: 0;
+}
+
 .introductionImageWrap {
   max-width: 100%;
   margin-top: -40px;
@@ -43,7 +47,7 @@
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 60px var(--space-40) 60px;
+  padding: 20px var(--space-40) 60px;
 }
 
 .divider {
@@ -95,7 +99,7 @@
 
 @media (max-width: 1024px) {
   .dividerWrap {
-    padding: 60px var(--space-30) 60px;
+    padding: 20px var(--space-30) 60px;
   }
 
   .thankYou {
@@ -109,7 +113,7 @@
 
 @media (max-width: 768px) {
   .dividerWrap {
-    padding: 60px var(--space-20) 60px;
+    padding: 20px var(--space-20) 60px;
   }
 
   .thankYou {

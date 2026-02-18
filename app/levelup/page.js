@@ -78,14 +78,13 @@ export default function LevelUpPage() {
         >
           <ContentSection title="The Start" variant="textRight">
             <p>
-              A developer friend invited me to participate in a hackathon.
-              <br />I then asked one of our mutual friend to join in with us,
-              forming a team of 3.
+              A developer friend invited me to participate in a hackathon. I
+              then asked one of our mutual friend to join in with us, forming a
+              team of 3.
             </p>
             <p>
-              It&apos;s for RevenueCat&apos;s annual hackathon, Shipaton.
-              <br />
-              The only requirements are that it&apos;s a mobile app and includes
+              It&apos;s for RevenueCat&apos;s annual hackathon, Shipaton. The
+              only requirements are that it&apos;s a mobile app and includes
               subscription-based monetization.
             </p>
           </ContentSection>
@@ -154,24 +153,14 @@ export default function LevelUpPage() {
               />
             }
           >
+            <p>Our standout element is the virtual Pet.</p>
             <p>
-              Our standout element is the virtual
-              <br />
-              Pet.
+              It&apos;s a digital companion that grows alongside you as you
+              complete workouts.
             </p>
             <p>
-              It&apos;s a digital companion that grows
-              <br />
-              alongside you as you complete
-              <br />
-              workouts.
-            </p>
-            <p>
-              You workout, you get food to feed
-              <br />
-              the pet and help it gain experience
-              <br />
-              points as it grows
+              You workout, you get food to feed the pet and help it gain
+              experience points as it grows
             </p>
           </ContentSection>
         </ScrollFade>
@@ -310,7 +299,176 @@ export default function LevelUpPage() {
                 className="content-section-image-single"
               />
             }
-          ></ContentSection>
+          >
+            <p>
+              Four high-fidelity screens demonstrate the final UI: a home
+              <br />
+              dashboard with stats and daily quests, calories tracking with the
+              <br />
+              pink companion, a Push Day workout plan with exercises and
+              <br />
+              rest times, and a goal visual with the basketball hoop and score.
+            </p>
+          </ContentSection>
+        </ScrollFade>
+        <ScrollFade
+          wrapperClassName={styles.scrollFadeWrap}
+          visibleClassName={styles.scrollFadeVisible}
+        >
+          <ContentSection
+            title="Minigames"
+            variant="textLeftImagesRight"
+            rightContentNoShadow
+            rightContent={
+              <img
+                src="/levelup/minigames.png"
+                alt="LevelUp minigame screens — timer, basketball hoop, rest time"
+                className="content-section-image-single"
+              />
+            }
+          >
+            <p>I wanted to keep these easy for everyone.</p>
+            <p>
+              Something that feels easy but rewarding and fun to play at the
+              same time.
+            </p>
+          </ContentSection>
+        </ScrollFade>
+        <ScrollFade
+          wrapperClassName={styles.scrollFadeWrap}
+          visibleClassName={styles.scrollFadeVisible}
+        >
+          <ContentSection title="Challenge" variant="textRight">
+            <p>
+              The challenge was in the timing—what happens when your rest time
+              ends and you&apos;re still playing?
+            </p>
+            <p>
+              As a temporary solution, I chose to automatically end the game
+              when the rest timer finishes to keep workouts on track.
+            </p>
+            <p>
+              Some alternatives I thought of was to either allow users to
+              continue on their next rest or ensure each minigame fits the rest
+              time provided.
+            </p>
+          </ContentSection>
+        </ScrollFade>
+        <ScrollFade
+          wrapperClassName={styles.scrollFadeWrap}
+          visibleClassName={styles.scrollFadeVisible}
+        >
+          <ContentSection
+            title="Workout"
+            variant="textLeftImagesRight"
+            rightContentNoShadow
+            rightContent={
+              <img
+                src="/levelup/bad.png"
+                alt="LevelUp Push Day workout screen with annotations on clarity and navigation"
+                className="content-section-image-single"
+              />
+            }
+          >
+            <p>
+              I needed to remind myself a few times that the core of this app is
+              working out.
+            </p>
+            <p>
+              It&apos;s not very clear what and where to click, so I&apos;ve
+              gone back and refined it.
+            </p>
+          </ContentSection>
+        </ScrollFade>
+        <ScrollFade
+          wrapperClassName={styles.scrollFadeWrap}
+          visibleClassName={styles.scrollFadeVisible}
+        >
+          <ContentSection
+            title="Redesign"
+            variant="textRight"
+            bottomImage={{
+              src: "/levelup/redesign.png",
+              alt: "LevelUp workout screen before and after redesign — numbering and greyed-out elements",
+            }}
+            bottomImageNoShadow
+          >
+            <p>
+              I added a numbering system so the workouts will have more
+              structure. I also greyed out elements that are not active.
+            </p>
+          </ContentSection>
+        </ScrollFade>
+        <ScrollFade
+          wrapperClassName={styles.scrollFadeWrap}
+          visibleClassName={styles.scrollFadeVisible}
+        >
+          <ContentSection
+            title="Experience Progression"
+            variant="textLeftImagesRight"
+            rightContentNoShadow
+            rightContent={
+              <img
+                src="/levelup/lvlhome.png"
+                alt="LevelUp home screen — pet level and experience progression from Lvl 30 to Lvl 98"
+                className="content-section-image-single"
+              />
+            }
+          >
+            <p>
+              Instead of gaining food and feeding the pet, I decided it&apos;s
+              better to just give experience points altogether.
+            </p>
+            <p>This skips a step that could feel redundant over time.</p>
+          </ContentSection>
+        </ScrollFade>
+        <ScrollFade
+          wrapperClassName={styles.scrollFadeWrap}
+          visibleClassName={styles.scrollFadeVisible}
+        >
+          <ContentSection title="Aftermath" variant="textRight">
+            <p>
+              On the day of the sprint, where we were supposed to get most of
+              the work done on the coding side of things. We were heavily
+              distracted and ended up just eating, chatting, and playing
+              basketball.
+            </p>
+            <p>
+              It&apos;s a shame but I was happy to be able to tackle a design
+              problem as the sole designer regardless of the outcome of this
+              hackathon.
+            </p>
+          </ContentSection>
+        </ScrollFade>
+        <ScrollFade
+          wrapperClassName={styles.scrollFadeWrap}
+          visibleClassName={styles.scrollFadeVisible}
+        >
+          <ContentSection
+            title="Retrospective"
+            variant="textLeftImagesRight"
+            rightContentNoShadow
+            rightContent={
+              <img
+                src="/levelup/retro.png"
+                alt="LevelUp slime characters — sleepy with Zzz and angry expression"
+                className="content-section-image-single"
+              />
+            }
+          >
+            <p>
+              There are still lots of possible additions that could take this
+              app further.
+            </p>
+            <p>
+              Elements such as customization, friend leaderboard, daily
+              challenges, etc.
+            </p>
+            <p>
+              When I&apos;m feeling up for the challenge, I&apos;ll definitely
+              come back to this project and make it even better.
+            </p>
+          </ContentSection>
         </ScrollFade>
         <ScrollFade
           wrapperClassName={styles.scrollFadeWrap}
@@ -319,11 +477,12 @@ export default function LevelUpPage() {
           <section className={styles.thankYou}>
             <div className={styles.thankYouInner}>
               <p className={styles.thankYouText}>
-                Thanks for reading. More case study content can be added here as
-                you build out the page.
+                Thank you, feel free to check out
+                <br />
+                my other works!
               </p>
-              <a href="/#work" className={styles.thankYouLink}>
-                Back to work
+              <a href="/" className={styles.thankYouLink}>
+                Back home
               </a>
             </div>
           </section>
