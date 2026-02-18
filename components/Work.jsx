@@ -6,7 +6,7 @@ import "./Work.css";
 
 const projects = [
   { title: "Forge", image: "/forge/forge.png", href: "/forge" },
-  { title: "LevelUp", image: "/levelup/lvlup.png", href: "#" },
+  { title: "LevelUp", image: "/levelup/lvlup.png", href: "/levelup" },
   { title: "G Adventures Travel Magazine", image: "/magazine.jpg", href: "/magazine" },
   { title: "Kofi", image: "/kofi/cans.png", href: "/kofi" },
 ];
