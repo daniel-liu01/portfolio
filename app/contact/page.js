@@ -27,7 +27,7 @@ export default function ContactPage() {
               Email
             </a>
             <a
-              href="https://linkedin.com"
+              href="https://www.linkedin.com/in/danielmyliu/"
               target="_blank"
               rel="noopener noreferrer"
               className={styles.contactBtn}
