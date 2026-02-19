@@ -1,15 +1,41 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import "./Navbar.css";
 
+const THEME_KEY = "portfolio-theme";
+
 function Navbar({ activePage = "home" }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const pathname = usePathname();
   const isHome = pathname === "/";
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (!mounted) return;
+    const stored = localStorage.getItem(THEME_KEY);
+    if (stored === "dark") setIsDarkMode(true);
+    else if (stored === "light") setIsDarkMode(false);
+    else if (window.matchMedia("(prefers-color-scheme: dark)").matches)
+      setIsDarkMode(true);
+  }, [mounted]);
+
+  useEffect(() => {
+    if (!mounted) return;
+    document.documentElement.classList.toggle("dark", isDarkMode);
+    document.documentElement.setAttribute(
+      "data-theme",
+      isDarkMode ? "dark" : "light"
+    );
+    localStorage.setItem(THEME_KEY, isDarkMode ? "dark" : "light");
+  }, [mounted, isDarkMode]);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);

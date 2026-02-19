@@ -3,6 +3,7 @@
 :root {
   --white: #fefefe;
   --black: #101820;
+  --muted: rgba(0, 0, 0, 0.5);
 
   --font-sans:
     "Spline Sans", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
@@ -53,6 +54,19 @@
   --border-card-hover: rgba(0, 0, 0, 0.18);
 }
 
+/* Dark mode – applied when navbar toggle is on */
+html.dark {
+  color-scheme: dark;
+  --white: #101820;
+  --black: #fefefe;
+  --muted: rgba(255, 255, 255, 0.6);
+  --shadow-subtle: 0 2px 12px rgba(0, 0, 0, 0.3);
+  --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.3);
+  --border-subtle: 1px solid rgba(255, 255, 255, 0.1);
+  --border-card: 1px solid rgba(255, 255, 255, 0.15);
+  --border-card-hover: rgba(255, 255, 255, 0.25);
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -80,8 +94,3 @@ a {
   text-decoration: none;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-}

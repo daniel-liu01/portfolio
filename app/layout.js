@@ -20,10 +20,25 @@ export const metadata = {
     "UX designer focused on user research, product design, and brand systems. Portfolio of selected case studies and projects by Daniel Liu.",
 };
 
+const themeScript = `
+  (function() {
+    try {
+      var t = localStorage.getItem('portfolio-theme');
+      var d = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if (t === 'dark' || (!t && d)) document.documentElement.classList.add('dark');
+      else document.documentElement.classList.remove('dark');
+    } catch (e) {}
+  })();
+`;
+
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className={`${splineSans.variable} ${splineSansMono.variable}`}>
+        <script
+          dangerouslySetInnerHTML={{ __html: themeScript }}
+          suppressHydrationWarning
+        />
         <CustomCursor />
         {children}
       </body>

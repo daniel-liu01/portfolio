@@ -1,7 +1,7 @@
 .work {
   width: 100%;
   padding: var(--space-48) 0 256px;
-  background-color: #fff;
+  background-color: var(--white);
 }
 
 .work-container {
@@ -20,7 +20,7 @@
 
 .work-title-note {
   font-weight: var(--light);
-  color: rgba(0, 0, 0, 0.5);
+  color: var(--muted);
 }
 
 .work-grid {

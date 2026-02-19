@@ -37,7 +37,7 @@
 .thankYou {
   width: 100%;
   padding: var(--space-48) var(--space-40) var(--space-80) var(--space-40);
-  background-color: #fff;
+  background-color: var(--white);
 }
 
 .thankYouInner {
