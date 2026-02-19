@@ -23,7 +23,9 @@ export const metadata = {
 const themeScript = `
   (function() {
     try {
-      document.documentElement.classList.remove('dark');
+      var t = localStorage.getItem('portfolio-theme');
+      if (t === 'dark') document.documentElement.classList.add('dark');
+      else document.documentElement.classList.remove('dark');
     } catch (e) {}
   })();
 `;

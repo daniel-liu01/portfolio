@@ -26,7 +26,8 @@ function Navbar({ activePage = "home" }) {
 
   useEffect(() => {
     if (!mounted) return;
-    setIsDarkMode(false);
+    const stored = localStorage.getItem(THEME_KEY);
+    setIsDarkMode(stored === "dark");
   }, [mounted]);
 
   useEffect(() => {
