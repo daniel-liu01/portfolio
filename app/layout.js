@@ -23,10 +23,7 @@ export const metadata = {
 const themeScript = `
   (function() {
     try {
-      var t = localStorage.getItem('portfolio-theme');
-      var d = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      if (t === 'dark' || (!t && d)) document.documentElement.classList.add('dark');
-      else document.documentElement.classList.remove('dark');
+      document.documentElement.classList.remove('dark');
     } catch (e) {}
   })();
 `;
