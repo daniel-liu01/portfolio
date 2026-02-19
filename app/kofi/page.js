@@ -220,7 +220,9 @@ export default function KofiPage() {
             variant="textLeftImagesRight"
             rightContentNoShadow
             rightContent={
-              <div className={styles.variationsGrid}>
+              <div
+                className={`${styles.variationsGrid} ${styles.kofiImagesNoBgVariations}`}
+              >
                 <img
                   src="/kofi/mochaFinal.png"
                   alt="Kofi Premium Cozy Mocha Latte"

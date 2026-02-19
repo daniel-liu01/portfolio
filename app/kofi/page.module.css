@@ -2,7 +2,9 @@
 .scrollFadeWrap {
   opacity: 0;
   transform: translateY(24px);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  transition:
+    opacity 0.6s ease-out,
+    transform 0.6s ease-out;
 }
 
 .scrollFadeVisible {
@@ -19,6 +21,12 @@
 .main > * {
   padding-top: 0;
   padding-bottom: 0;
+}
+
+/* Redesign: remove grey fill on right image cell */
+.kofiRedesignWrap :global(.content-section-bottom-images-cell:last-child),
+.kofiRedesignWrap :global(.content-section-bottom-images-cell:last-child) img {
+  background: transparent !important;
 }
 
 .dividerWrap {

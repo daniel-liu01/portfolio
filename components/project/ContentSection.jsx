@@ -44,24 +44,25 @@ function ContentSection({
   bottomImages,
   bottomImagesGrid,
   bottomImagesNoShadow,
+  bottomImagesRightCellNoBg,
 }) {
   const isTextLeftImagesRight = variant === "textLeftImagesRight";
   const isImageLeftTextRight = variant === "imageLeftTextRight";
 
   const hasBottomImagesGrid = Boolean(
-    variant === "textRight" && bottomImages && bottomImagesGrid
+    variant === "textRight" && bottomImages && bottomImagesGrid,
   );
 
   const hasBottomImageNoShadow = Boolean(
-    variant === "textRight" && bottomImage && bottomImageNoShadow
+    variant === "textRight" && bottomImage && bottomImageNoShadow,
   );
 
   const hasBottomImagesNoShadow = Boolean(
-    variant === "textRight" && bottomImages && bottomImagesNoShadow
+    variant === "textRight" && bottomImages && bottomImagesNoShadow,
   );
 
   const hasRightContentNoShadow = Boolean(
-    isTextLeftImagesRight && rightContentNoShadow
+    isTextLeftImagesRight && rightContentNoShadow,
   );
 
   return (
@@ -115,7 +116,10 @@ function ContentSection({
           }
         >
           {bottomImages.map((img, i) => (
-            <div key={i} className="content-section-bottom-images-cell">
+            <div
+              key={i}
+              className={`content-section-bottom-images-cell${bottomImagesRightCellNoBg && i === 1 ? " content-section-bottom-images-cell--noBg" : ""}`}
+            >
               {bottomImages.length === 4 ? (
                 <Image
                   src={img.src}
