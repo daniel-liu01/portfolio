@@ -8,6 +8,7 @@ import ContentSection from "@/components/project/ContentSection";
 import ScrollFade from "@/components/ScrollFade";
 import BackToTop from "@/components/BackToTop";
 import ScrollProgress from "@/components/ScrollProgress";
+import LevelUpWorkoutImage from "./LevelUpWorkoutImage";
 
 export const metadata = {
   title: "LevelUp | Daniel Liu",
@@ -368,13 +369,7 @@ export default function LevelUpPage() {
             title="Workout"
             variant="textLeftImagesRight"
             rightContentNoShadow
-            rightContent={
-              <img
-                src="/levelup/bad.png"
-                alt="LevelUp Push Day workout screen with annotations on clarity and navigation"
-                className="content-section-image-single"
-              />
-            }
+            rightContent={<LevelUpWorkoutImage />}
           >
             <p>
               I needed to remind myself a few times that the core of this app is

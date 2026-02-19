@@ -1,18 +1,24 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import "./Navbar.css";
 
 const THEME_KEY = "portfolio-theme";
+const SCROLL_AWARE_PATHS = ["/", "/levelup", "/forge", "/kofi", "/magazine"];
+const SCROLL_TOP_THRESHOLD = 80;
+const SCROLL_DELTA_THRESHOLD = 10;
 
 function Navbar({ activePage = "home" }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const [navbarVisible, setNavbarVisible] = useState(true);
+  const lastScrollY = useRef(0);
   const pathname = usePathname();
   const isHome = pathname === "/";
+  const isScrollAwarePage = SCROLL_AWARE_PATHS.includes(pathname);
 
   useEffect(() => {
     setMounted(true);
@@ -37,6 +43,25 @@ function Navbar({ activePage = "home" }) {
     localStorage.setItem(THEME_KEY, isDarkMode ? "dark" : "light");
   }, [mounted, isDarkMode]);
 
+  useEffect(() => {
+    if (!mounted || !isScrollAwarePage) return;
+    const onScroll = () => {
+      const y = window.scrollY;
+      if (y <= SCROLL_TOP_THRESHOLD) {
+        setNavbarVisible(true);
+      } else {
+        const delta = y - lastScrollY.current;
+        if (Math.abs(delta) >= SCROLL_DELTA_THRESHOLD) {
+          setNavbarVisible(delta < 0);
+        }
+      }
+      lastScrollY.current = y;
+    };
+    lastScrollY.current = window.scrollY;
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, [mounted, isScrollAwarePage]);
+
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
@@ -45,8 +70,16 @@ function Navbar({ activePage = "home" }) {
     setIsDarkMode((prev) => !prev);
   };
 
+  const navClass = [
+    "navbar",
+    isScrollAwarePage && "navbar--project-scroll",
+    isScrollAwarePage && !navbarVisible && "navbar--hidden",
+  ]
+    .filter(Boolean)
+    .join(" ");
+
   return (
-    <nav className="navbar">
+    <nav className={navClass}>
       <div className="navbar-container">
         <Link href="/" className="navbar-logo" aria-label="Home">
           <img src="/icon.svg" alt="Logo" />
