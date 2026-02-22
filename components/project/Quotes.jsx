@@ -5,14 +5,15 @@ import "./Quotes.css";
  * Use for project pages to show research stats or testimonials.
  *
  * @param {Array<{ content: React.ReactNode | string, attribution: string, url?: string }>} quotes - Array of quote objects (content + attribution; optional url to link the source)
+ * @param {boolean} [afterDivider] - When true, omit the internal divider and use even spacing (for use after the page’s divider line)
  */
-function Quotes({ quotes = [] }) {
+function Quotes({ quotes = [], afterDivider = false }) {
   if (quotes.length === 0) return null;
 
   return (
-    <section className="quotes">
+    <section className={`quotes${afterDivider ? " quotes--afterDivider" : ""}`}>
       <div className="quotes-container">
-        <div className="quotes-divider" aria-hidden="true" />
+        {!afterDivider && <div className="quotes-divider" aria-hidden="true" />}
         <div className="quotes-grid">
           {quotes.map(({ content, attribution, url }, index) => (
             <blockquote key={index} className="quotes-item">

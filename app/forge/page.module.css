@@ -22,6 +22,33 @@
   padding-bottom: 0;
 }
 
+/* Same divider as LevelUp/Kofi: even spacing top and bottom */
+.dividerWrap {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 60px var(--space-40) 60px;
+}
+
+.divider {
+  width: 100%;
+  box-sizing: border-box;
+  height: 1px;
+  background-color: var(--black);
+}
+
+@media (max-width: 1024px) {
+  .dividerWrap {
+    padding: 48px var(--space-30) 48px;
+  }
+}
+
+@media (max-width: 768px) {
+  .dividerWrap {
+    padding: 40px var(--space-20) 40px;
+  }
+}
+
 .galleryWrap {
   padding-bottom: var(--space-48);
 }

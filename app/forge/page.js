@@ -103,7 +103,15 @@ export default function ForgePage() {
           wrapperClassName={styles.scrollFadeWrap}
           visibleClassName={styles.scrollFadeVisible}
         >
-          <Quotes quotes={forgeQuotes} />
+          <div className={styles.dividerWrap}>
+            <div className={styles.divider} role="presentation" />
+          </div>
+        </ScrollFade>
+        <ScrollFade
+          wrapperClassName={styles.scrollFadeWrap}
+          visibleClassName={styles.scrollFadeVisible}
+        >
+          <Quotes quotes={forgeQuotes} afterDivider />
         </ScrollFade>
         <ScrollFade
           wrapperClassName={styles.scrollFadeWrap}

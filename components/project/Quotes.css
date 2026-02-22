@@ -1,7 +1,13 @@
 .quotes {
   width: 100%;
-  padding: var(--space-60) var(--space-40) var(--space-96);
+  padding: var(--space-80) var(--space-40);
   background-color: var(--white);
+}
+
+/* When used after the page divider: even spacing (no internal divider, 0 top / 60 bottom) */
+.quotes--afterDivider {
+  padding-top: 0;
+  padding-bottom: var(--space-60);
 }
 
 .quotes-container {
@@ -66,7 +72,11 @@
 /* Tablet */
 @media (max-width: 1024px) {
   .quotes {
-    padding: var(--space-48) var(--space-30) var(--space-64);
+    padding: var(--space-56) var(--space-30);
+  }
+
+  .quotes--afterDivider {
+    padding-bottom: var(--space-48);
   }
 
   .quotes-container {
@@ -86,7 +96,11 @@
 /* Mobile */
 @media (max-width: 768px) {
   .quotes {
-    padding: var(--space-40) var(--space-20) var(--space-48);
+    padding: var(--space-48) var(--space-20);
+  }
+
+  .quotes--afterDivider {
+    padding-bottom: var(--space-40);
   }
 
   .quotes-container {
