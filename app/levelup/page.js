@@ -206,10 +206,8 @@ export default function LevelUpPage() {
           <ContentSection title="Dev Review" variant="textRight">
             <p>
               The developers gave me the okay. Since time is limited, they
-              wanted me
-              <br />
-              to work on implementing colors and real graphical assets right
-              away.
+              wanted me to work on implementing colors and real graphical assets
+              right away.
             </p>
           </ContentSection>
         </ScrollFade>
@@ -230,27 +228,59 @@ export default function LevelUpPage() {
             }
           >
             <p>
-              For the workout images, I planned
-              <br />
-              to use an API so it would be easy
-              <br />
-              to implement and scale.
+              For the workout images, I planned to use an API so it would be
+              easy to implement and scale.
             </p>
             <p>
-              Workout API felt most aligned with
-              <br />
-              my design approach for it&apos;s simple
-              <br />
-              yet cartoony style.
+              Workout API felt most aligned with my design approach for
+              it&apos;s simple yet cartoony style.
             </p>
             <p>
-              Though I used vector images as
+              Though I used vector images as placeholders in my prototype as we
+              weren&apos;t ready to make the purchase yet.
+            </p>
+          </ContentSection>
+        </ScrollFade>
+        <ScrollFade
+          wrapperClassName={styles.scrollFadeWrap}
+          visibleClassName={styles.scrollFadeVisible}
+        >
+          <ContentSection
+            title="Mid-Fi Mockups"
+            variant="textLeftImagesRight"
+            rightContentNoShadow
+            rightContent={
+              <img
+                src="/levelup/midfi.png"
+                alt="LevelUp mid-fi mockups — home with pink companion and workout list, new workout plan screen"
+                className="content-section-image-single"
+              />
+            }
+          >
+            <p>
+              I finished the mid-fi in a hurry, and immediately felt like
+              something was off.
               <br />
-              placeholders in my prototype as we
-              <br />
-              weren&apos;t ready to make the purchase
-              <br />
-              yet.
+              <br />I noticed that the contrast between the cute, cartoony
+              graphics and the intense, gung-ho workout app concept created a
+              disconnect in the visual experience.
+            </p>
+          </ContentSection>
+        </ScrollFade>
+        <ScrollFade
+          wrapperClassName={styles.scrollFadeWrap}
+          visibleClassName={styles.scrollFadeVisible}
+        >
+          <ContentSection title="Course Correction" variant="textRight">
+            <p>
+              I realized I had prioritized speed over strategic alignment. I
+              jumped into visual styling before clearly defining the brand
+              personality and emotional direction.
+            </p>
+            <p>
+              I did some research on existing apps and noticed that the
+              aesthetics is never half-baked, they always go all in on a
+              particular style. So I changed my approach for the Hi-Fi mockups.
             </p>
           </ContentSection>
         </ScrollFade>
@@ -268,8 +298,8 @@ export default function LevelUpPage() {
             bottomImageNoShadow
           >
             <p>
-              The app uses a light, green-focused colour palette, chosen to
-              reinforce themes of{" "}
+              After the changes, the app uses a light, green-focused colour
+              palette, chosen to reinforce themes of{" "}
               <strong>health, growth, and positive progression</strong>.
             </p>
             <p>
@@ -297,26 +327,13 @@ export default function LevelUpPage() {
         >
           <ContentSection
             title="Hi-Fi Mockup"
-            variant="textLeftImagesRight"
-            rightContentNoShadow
-            rightContent={
-              <img
-                src="/levelup/FinalLook.png"
-                alt="LevelUp high-fidelity screens — home, calories, Push Day workout, goal progress"
-                className="content-section-image-single"
-              />
-            }
-          >
-            <p>
-              Four high-fidelity screens demonstrate the final UI: a home
-              <br />
-              dashboard with stats and daily quests, calories tracking with the
-              <br />
-              pink companion, a Push Day workout plan with exercises and
-              <br />
-              rest times, and a goal visual with the basketball hoop and score.
-            </p>
-          </ContentSection>
+            variant="textRight"
+            bottomImage={{
+              src: "/levelup/FinalLook.png",
+              alt: "LevelUp high-fidelity screens — home, calories, Push Day workout, goal progress",
+            }}
+            bottomImageNoShadow
+          ></ContentSection>
         </ScrollFade>
         <ScrollFade
           wrapperClassName={styles.scrollFadeWrap}
