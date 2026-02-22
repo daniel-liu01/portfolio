@@ -97,6 +97,10 @@
   pointer-events: none;
 }
 
+.navbar-close {
+  display: none;
+}
+
 .navbar-menu {
   display: flex;
   align-items: center;
@@ -179,7 +183,7 @@
 /* Mobile Responsive Styles */
 @media (max-width: 768px) {
   .navbar {
-    padding: 16px var(--space-20) 16px calc(var(--space-16) + 10px);
+    padding: 16px var(--space-20) 16px 16px;
     position: relative;
     z-index: 10001;
   }
