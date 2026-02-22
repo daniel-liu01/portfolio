@@ -2,10 +2,33 @@
 
 import { useState, useRef, useEffect } from "react";
 
+const IMAGES = {
+  light: { doodle: "/about/doodle.png", pow: "/about/pow.png" },
+  dark: { doodle: "/about/doodleDark.png", pow: "/about/powDark.png" },
+};
+
+function getIsDark() {
+  if (typeof document === "undefined") return false;
+  return document.documentElement.classList.contains("dark");
+}
+
 export default function AboutMeImage({ className = "", onPow }) {
   const [showPow, setShowPow] = useState(false);
+  const [isDark, setIsDark] = useState(false);
   const timeoutRef = useRef(null);
-  const src = showPow ? "/about/pow.jpeg" : "/about/doodle.jpeg";
+
+  useEffect(() => {
+    setIsDark(getIsDark());
+    const observer = new MutationObserver(() => setIsDark(getIsDark()));
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["class"],
+    });
+    return () => observer.disconnect();
+  }, []);
+
+  const theme = isDark ? IMAGES.dark : IMAGES.light;
+  const src = showPow ? theme.pow : theme.doodle;
   const alt = showPow ? "Pow by Daniel Liu" : "Doodle by Daniel Liu";
 
   const handleClick = () => {

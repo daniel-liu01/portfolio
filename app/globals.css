@@ -57,7 +57,7 @@
 /* Dark mode – applied when navbar toggle is on */
 html.dark {
   color-scheme: dark;
-  --white: #101820;
+  --white: #040608;
   --black: #fefefe;
   --muted: rgba(255, 255, 255, 0.6);
   --shadow-subtle: 0 2px 12px rgba(0, 0, 0, 0.3);
