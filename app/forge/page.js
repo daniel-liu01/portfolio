@@ -87,17 +87,49 @@ export default function ForgePage() {
           visibleClassName={styles.scrollFadeVisible}
         >
           <Introduction
-          centerAlign
-          rightContent={
-            <img
-              src="/forge/introMcok.png"
-              alt="Career Simulation app screens"
-              className="introduction-image"
-            />
-          }
-        >
-          {forgeIntroduction}
-        </Introduction>
+            centerAlign
+            leftFooter={
+              <div className={styles.introLinks}>
+                <a
+                  href="https://www.figma.com/design/j94w0xOZKjhoCQkLBWd567/Forge_Project?node-id=1725-2428&t=JIXCqerkiOu1U4Td-1"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.introLink}
+                >
+                  Figma Project
+                  <img
+                    src="/link.svg"
+                    alt=""
+                    aria-hidden
+                    className={styles.introLinkIcon}
+                  />
+                </a>
+                <a
+                  href="https://www.figma.com/proto/j94w0xOZKjhoCQkLBWd567/Forge_Project?node-id=1725-2428&t=JIXCqerkiOu1U4Td-1"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.introLink}
+                >
+                  Prototype
+                  <img
+                    src="/link.svg"
+                    alt=""
+                    aria-hidden
+                    className={styles.introLinkIcon}
+                  />
+                </a>
+              </div>
+            }
+            rightContent={
+              <img
+                src="/forge/introMcok.png"
+                alt="Career Simulation app screens"
+                className="introduction-image"
+              />
+            }
+          >
+            {forgeIntroduction}
+          </Introduction>
         </ScrollFade>
         <ScrollFade
           wrapperClassName={styles.scrollFadeWrap}

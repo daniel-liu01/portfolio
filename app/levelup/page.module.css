@@ -48,10 +48,39 @@
   margin: 0;
 }
 
+.levelupIntroLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-24);
+  margin-top: var(--space-24);
+}
+
+.levelupIntroLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: var(--text-base);
+  font-weight: var(--light);
+  color: var(--black);
+  text-decoration: underline;
+  text-underline-offset: 0.35em;
+}
+
+.levelupIntroLink:hover {
+  opacity: 0.8;
+}
+
+.levelupIntroLinkIcon {
+  width: 13px;
+  height: 13px;
+  flex-shrink: 0;
+  display: block;
+}
+
 .levelupIntroImageRow {
   display: flex;
   justify-content: flex-end;
-  margin-top: 40px;
 }
 
 .levelupIntroImage {

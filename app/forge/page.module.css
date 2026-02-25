@@ -22,6 +22,36 @@
   padding-bottom: 0;
 }
 
+/* Intro links (Figma Project, Prototype) below heading */
+.introLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-24);
+}
+
+.introLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: var(--text-base);
+  font-weight: var(--light);
+  color: var(--black);
+  text-decoration: underline;
+  text-underline-offset: 0.35em;
+}
+
+.introLink:hover {
+  opacity: 0.8;
+}
+
+.introLinkIcon {
+  width: 13px;
+  height: 13px;
+  flex-shrink: 0;
+  display: block;
+}
+
 /* Same divider as LevelUp/Kofi: even spacing top and bottom */
 .dividerWrap {
   width: 100%;

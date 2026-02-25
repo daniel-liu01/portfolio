@@ -56,11 +56,43 @@ export default function LevelUpPage() {
         >
           <section className={styles.levelupIntro}>
             <div className={styles.levelupIntroContainer}>
-              <h2 className={styles.levelupIntroHeading}>
-                Reinmagining workouts by transforming rest periods into{" "}
-                <strong>bite-sized minigames</strong> and rewarding consistency
-                through a growing <strong>virtual companion</strong>.
-              </h2>
+              <div className={styles.levelupIntroText}>
+                <h2 className={styles.levelupIntroHeading}>
+                  Reimagining workouts by transforming rest periods into{" "}
+                  <strong>bite-sized minigames</strong> and rewarding consistency
+                  through a growing <strong>virtual companion</strong>.
+                </h2>
+                <div className={styles.levelupIntroLinks}>
+                  <a
+                    href="https://www.figma.com/design/omtIZChTG7M1zhSgFMIGoM/LevelUp_Project?node-id=260-34136&t=q8fZE5TsVTQIqglm-1"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={styles.levelupIntroLink}
+                  >
+                    Figma Project
+                    <img
+                      src="/link.svg"
+                      alt=""
+                      aria-hidden
+                      className={styles.levelupIntroLinkIcon}
+                    />
+                  </a>
+                  <a
+                    href="https://www.figma.com/proto/omtIZChTG7M1zhSgFMIGoM/LevelUp_Project?node-id=260-34136&t=q8fZE5TsVTQIqglm-1"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={styles.levelupIntroLink}
+                  >
+                    Prototype
+                    <img
+                      src="/link.svg"
+                      alt=""
+                      aria-hidden
+                      className={styles.levelupIntroLinkIcon}
+                    />
+                  </a>
+                </div>
+              </div>
               <div className={styles.levelupIntroImageRow}>
                 <img
                   src="/levelup/muscle.png"

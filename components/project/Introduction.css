@@ -31,6 +31,10 @@
   font-weight: var(--medium);
 }
 
+.introduction-left-footer {
+  margin-top: var(--space-24);
+}
+
 .introduction--center .introduction-container {
   align-items: center;
 }
