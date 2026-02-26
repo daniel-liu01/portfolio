@@ -149,22 +149,12 @@ export default function ForgePage() {
           wrapperClassName={styles.scrollFadeWrap}
           visibleClassName={styles.scrollFadeVisible}
         >
-          <ContentSection
-            title="Big numbers, What do they mean?"
-            variant="textRight"
-          >
+          <ContentSection title="Insights & Expectations" variant="textRight">
             <p>
               To sum it up, there will be a <strong>shortage</strong> of labour
               for BC&apos;s skilled trades industry. Also, the average
               apprentice is <strong>not</strong> as young as expected.
             </p>
-          </ContentSection>
-        </ScrollFade>
-        <ScrollFade
-          wrapperClassName={styles.scrollFadeWrap}
-          visibleClassName={styles.scrollFadeVisible}
-        >
-          <ContentSection title="Expectations" variant="textRight">
             <p>
               We thought the problem was that it&apos;s hard to enter the
               business as a business owner. So in the beginning, we thought the
@@ -173,7 +163,11 @@ export default function ForgePage() {
               <br />
               <br />
               Based on the assumption that they cannot create a successful
-              business due to the <strong>language barrier</strong>.
+              business due to the{" "}
+              <strong>
+                language barrier and difficult to understand documents
+              </strong>
+              .
             </p>
           </ContentSection>
         </ScrollFade>
@@ -469,7 +463,8 @@ export default function ForgePage() {
           <ContentSection title="Usability Testing" variant="textRight">
             <p>
               We conducted usability testing on our prototype across five tasks
-              and received an average SUS score of 38.75 out of 50.
+              and received an average <strong>SUS score</strong> of{" "}
+              <strong>38.75</strong> out of <strong>50</strong>.
             </p>
           </ContentSection>
         </ScrollFade>
@@ -492,10 +487,18 @@ export default function ForgePage() {
               <strong>Key Findings:</strong>
             </p>
             <ul>
-              <li>Repetitive buttons</li>
-              <li>Lack of control in simulation</li>
-              <li>Too text heavy</li>
-              <li>Fun factor is lacking</li>
+              <li>
+                <strong>Repetitive buttons</strong>
+              </li>
+              <li>
+                <strong>Lack of control in simulation</strong>
+              </li>
+              <li>
+                <strong>Too text heavy</strong>
+              </li>
+              <li>
+                <strong>Fun factor is lacking</strong>
+              </li>
             </ul>
           </ContentSection>
         </ScrollFade>
@@ -504,7 +507,7 @@ export default function ForgePage() {
           visibleClassName={styles.scrollFadeVisible}
         >
           <ContentSection
-            title="Re-Redesign"
+            title="Final Design"
             variant="textRight"
             bottomImage={{
               src: "/forge/Reredesign.png",
