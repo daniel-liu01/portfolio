@@ -59,8 +59,9 @@ export default function LevelUpPage() {
               <div className={styles.levelupIntroText}>
                 <h2 className={styles.levelupIntroHeading}>
                   Reimagining workouts by transforming rest periods into{" "}
-                  <strong>bite-sized minigames</strong> and rewarding consistency
-                  through a growing <strong>virtual companion</strong>.
+                  <strong>bite-sized minigames</strong> and rewarding
+                  consistency through a growing{" "}
+                  <strong>virtual companion</strong>.
                 </h2>
                 <div className={styles.levelupIntroLinks}>
                   <a
@@ -228,18 +229,6 @@ export default function LevelUpPage() {
               It&apos;d be easy to customize with just
               <br />
               colors and additional elements.
-            </p>
-          </ContentSection>
-        </ScrollFade>
-        <ScrollFade
-          wrapperClassName={styles.scrollFadeWrap}
-          visibleClassName={styles.scrollFadeVisible}
-        >
-          <ContentSection title="Dev Review" variant="textRight">
-            <p>
-              The developers gave me the okay. Since time is limited, they
-              wanted me to work on implementing colors and real graphical assets
-              right away.
             </p>
           </ContentSection>
         </ScrollFade>

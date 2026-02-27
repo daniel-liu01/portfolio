@@ -313,21 +313,6 @@ export default function ForgePage() {
           wrapperClassName={styles.scrollFadeWrap}
           visibleClassName={styles.scrollFadeVisible}
         >
-          <ContentSection title="Considerations" variant="textRight">
-            <p>
-              In this day and age, most students have their phones as their
-              primary devices. So a mobile app is a no brainer.
-            </p>
-            <p>
-              With attention span at an all time low (especially for teens), we
-              wanted the information to be easily digestible.
-            </p>
-          </ContentSection>
-        </ScrollFade>
-        <ScrollFade
-          wrapperClassName={styles.scrollFadeWrap}
-          visibleClassName={styles.scrollFadeVisible}
-        >
           <ContentSection
             title="Wireframe"
             variant="textLeftImagesRight"
@@ -351,6 +336,21 @@ export default function ForgePage() {
           wrapperClassName={styles.scrollFadeWrap}
           visibleClassName={styles.scrollFadeVisible}
         >
+          <ContentSection title="Considerations" variant="textRight">
+            <p>
+              In this day and age, most students have their phones as their
+              primary devices. So a mobile app is a no brainer.
+            </p>
+            <p>
+              With attention span at an all time low (especially for teens), we
+              wanted the information to be easily digestible.
+            </p>
+          </ContentSection>
+        </ScrollFade>
+        <ScrollFade
+          wrapperClassName={styles.scrollFadeWrap}
+          visibleClassName={styles.scrollFadeVisible}
+        >
           <ContentSection
             title="Rapid Iteration"
             variant="textLeftImagesRight"
@@ -362,10 +362,6 @@ export default function ForgePage() {
               />
             }
           >
-            <p>
-              My team and I were already behind on schedule, so we quickly
-              whipped up a <strong>mid-fi prototype</strong>.
-            </p>
             <p>
               Our core goal remained the same: helping students understand
               <strong> skilled trades careers and opportunities</strong>.
