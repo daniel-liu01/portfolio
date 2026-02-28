@@ -444,6 +444,20 @@ export default function ForgePage() {
           visibleClassName={styles.scrollFadeVisible}
         >
           <ContentSection
+            title="Mapping Out the Game"
+            variant="textRight"
+            bottomImage={{
+              src: "/forge/gameFlow.png",
+              alt: "User Flow for cartrer simulation",
+            }}
+            bottomImageNoShadow
+          ></ContentSection>
+        </ScrollFade>
+        <ScrollFade
+          wrapperClassName={styles.scrollFadeWrap}
+          visibleClassName={styles.scrollFadeVisible}
+        >
+          <ContentSection
             title="Redesign"
             variant="textRight"
             bottomImage={{
@@ -501,6 +515,21 @@ export default function ForgePage() {
               </li>
             </ul>
           </ContentSection>
+        </ScrollFade>
+        <ScrollFade
+          wrapperClassName={styles.scrollFadeWrap}
+          visibleClassName={styles.scrollFadeVisible}
+        >
+
+             <ContentSection
+            title="User Pain Points"
+            variant="textRight"
+            bottomImage={{
+              src: "/forge/painpoints.png",
+              alt: "Issues with hi-fi version 1",
+            }}
+            bottomImageNoShadow
+          ></ContentSection>
         </ScrollFade>
         <ScrollFade
           wrapperClassName={styles.scrollFadeWrap}
