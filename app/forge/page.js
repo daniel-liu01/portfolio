@@ -468,7 +468,11 @@ export default function ForgePage() {
               alt: "Career Simulation app mockups: introduction, work style preferences, career progression and badges, explore careers map",
             }}
             bottomImageNoShadow
-          ></ContentSection>
+          >
+            <p>
+              In this iteration, users can simulate a trades career from start to finish by chatting with our AI assistant, earning badges on the way as proof and reward for their hard work.
+            </p>
+          </ContentSection>
         </ScrollFade>
         <ScrollFade
           wrapperClassName={styles.scrollFadeWrap}
@@ -553,20 +557,15 @@ export default function ForgePage() {
             </p>
             <ul>
               <li>
-                <strong>Onboarding:</strong> I added an onboarding section for
-                the simulation, where users answer a set of questions to
-                determine which career path they go down.
+                <strong>User Autonomy:</strong> I gave users control over their own pace throughout the simulation
               </li>
-              <li>
-                <strong>Scenarios:</strong> I also added scenarios where
-                students can make a choice and diverge paths, so each simulation
-                could be different. This along with the onboarding could greatly
-                increase replay-ability.
+  <li>
+                <strong>Onboarding:</strong> I incorporated an onboarding section for
+                the simulation, adding interactivity and replayability
               </li>
               <li>
                 <strong>Redundancy:</strong> Lastly, I removed the
-                repetitiveness in the home screen and navigation bar, making it
-                easier to navigate and more straightforward.
+                repetitiveness in the home screen and navigation bar
               </li>
             </ul>
           </ContentSection>
@@ -588,6 +587,27 @@ export default function ForgePage() {
               our approach and helped me learn way more than if everything had
               gone smoothly.
             </p>
+          </ContentSection>
+        </ScrollFade>
+        <ScrollFade
+          wrapperClassName={styles.scrollFadeWrap}
+          visibleClassName={styles.scrollFadeVisible}
+        >
+          <ContentSection title="Future Iterations" variant="textRight">
+            <p>
+              If I had more time to work on it, some of the things I would include would be:
+            </p>
+            <ul>
+              <li>
+                <strong>Improving fun factor:</strong>  I would introduce a wider range of simulation tasks, including time-sensitive challenges and game-inspired mechanics 
+              </li>
+  <li>
+                <strong>Collaboration:</strong> Partner with official organizations such as SkilledTradesBC, validating our content and providing official certificates
+              </li>
+              <li>
+                <strong>Accesibility:</strong> I would introduce multilingual support to make the app more inclusive and accessible to users whose first language is not English
+              </li>
+            </ul>
           </ContentSection>
         </ScrollFade>
         <ScrollFade
