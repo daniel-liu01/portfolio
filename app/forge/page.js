@@ -268,7 +268,7 @@ export default function ForgePage() {
           wrapperClassName={styles.scrollFadeWrap}
           visibleClassName={styles.scrollFadeVisible}
         >
-          <ContentSection title="Key Findings" variant="textRight">
+          <ContentSection title="Problem" variant="textRight">
             <ul>
               <li>
                 Most students <strong>don&apos;t consider</strong> skilled
@@ -329,6 +329,7 @@ export default function ForgePage() {
               <li>Learning about careers in demand</li>
               <li>Finding local opportunities</li>
               <li>Talking to mentors</li>
+              <li>Digestable information</li>
             </ul>
           </ContentSection>
         </ScrollFade>
@@ -336,21 +337,21 @@ export default function ForgePage() {
           wrapperClassName={styles.scrollFadeWrap}
           visibleClassName={styles.scrollFadeVisible}
         >
-          <ContentSection title="Considerations" variant="textRight">
-            <p>
-              In this day and age, most students have their phones as their
-              primary devices. So a mobile app is a no brainer.
-            </p>
-            <p>
-              With attention span at an all time low (especially for teens), we
-              wanted the information to be easily digestible.
-            </p>
-          </ContentSection>
+           <ContentSection
+            title="User Flow"
+            variant="textRight"
+            bottomImage={{
+              src: "/forge/flow.png",
+              alt: "User Flow for initial idea of Forge App",
+            }}
+            bottomImageNoShadow
+          ></ContentSection>
         </ScrollFade>
         <ScrollFade
           wrapperClassName={styles.scrollFadeWrap}
           visibleClassName={styles.scrollFadeVisible}
         >
+        
           <ContentSection
             title="Rapid Iteration"
             variant="textLeftImagesRight"
@@ -401,9 +402,9 @@ export default function ForgePage() {
           wrapperClassName={styles.scrollFadeWrap}
           visibleClassName={styles.scrollFadeVisible}
         >
-          <ContentSection title="Rethinking" variant="textRight">
+          <ContentSection title="Feedback" variant="textRight">
             <p>
-              While our app provided clear information about skilled trades, the
+              The feedback we recieved is that while our app provided clear information about skilled trades, the
               learning experience was <strong>too informative</strong> and{" "}
               <strong>not fun at all.</strong>
               <br />
@@ -418,12 +419,12 @@ export default function ForgePage() {
           visibleClassName={styles.scrollFadeVisible}
         >
           <ContentSection
-            title="Incorporating Gamification"
+            title="Iteration"
             variant="textRight"
           >
             <p>
-              The team agreed that we need to incorporate some sort of{" "}
-              <strong>gamification</strong> into our app.
+              The team agreed that we need to incorporate{" "}
+              <strong>gamification</strong> into our app. 
             </p>
             <p>
               I suggested that we should make it a <strong>text-based</strong>{" "}
@@ -485,6 +486,9 @@ export default function ForgePage() {
             <ul>
               <li>
                 <strong>Repetitive buttons</strong>
+              </li>
+               <li>
+                <strong>Unclear icons</strong>
               </li>
               <li>
                 <strong>Lack of control in simulation</strong>
