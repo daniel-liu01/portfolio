@@ -314,6 +314,20 @@ export default function ForgePage() {
           visibleClassName={styles.scrollFadeVisible}
         >
           <ContentSection
+            title="User Flow"
+            variant="textRight"
+            bottomImage={{
+              src: "/forge/flow.png",
+              alt: "User Flow for initial idea of Forge App",
+            }}
+            bottomImageNoShadow
+          ></ContentSection>
+        </ScrollFade>
+        <ScrollFade
+          wrapperClassName={styles.scrollFadeWrap}
+          visibleClassName={styles.scrollFadeVisible}
+        >
+          <ContentSection
             title="Wireframe"
             variant="textLeftImagesRight"
             rightContent={
@@ -337,20 +351,7 @@ export default function ForgePage() {
           wrapperClassName={styles.scrollFadeWrap}
           visibleClassName={styles.scrollFadeVisible}
         >
-           <ContentSection
-            title="User Flow"
-            variant="textRight"
-            bottomImage={{
-              src: "/forge/flow.png",
-              alt: "User Flow for initial idea of Forge App",
-            }}
-            bottomImageNoShadow
-          ></ContentSection>
-        </ScrollFade>
-        <ScrollFade
-          wrapperClassName={styles.scrollFadeWrap}
-          visibleClassName={styles.scrollFadeVisible}
-        >
+           
         
           <ContentSection
             title="Rapid Iteration"
@@ -419,7 +420,7 @@ export default function ForgePage() {
           visibleClassName={styles.scrollFadeVisible}
         >
           <ContentSection
-            title="Iteration"
+            title="Improving Experience"
             variant="textRight"
           >
             <p>
@@ -451,7 +452,9 @@ export default function ForgePage() {
               alt: "User Flow for cartrer simulation",
             }}
             bottomImageNoShadow
-          ></ContentSection>
+          >
+
+          </ContentSection>
         </ScrollFade>
         <ScrollFade
           wrapperClassName={styles.scrollFadeWrap}
@@ -578,12 +581,6 @@ export default function ForgePage() {
               lot as a designer and developer. My main focus was research and
               design, but I got to touch almost every part of the app
               development process.
-            </p>
-            <p>
-              From research and prototyping to user testing, print materials,
-              presenting to a big crowd, and even building a small part of the
-              app. Every step taught me something new, and the whole experience
-              felt really valuable.
             </p>
             <p>
               My team and I failed a lot, especially at the beginning. But
