@@ -1,0 +1,27 @@
+.note {
+  position: relative;
+  padding: 1.25rem 1.5rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 14px 24px rgba(0, 0, 0, 0.18);
+  max-width: 260px;
+  min-height: 160px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: default;
+}
+
+.message {
+  font-size: 0.98rem;
+  line-height: 1.5;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.name {
+  margin-top: 1rem;
+  font-size: 0.85rem;
+  text-align: right;
+  opacity: 0.8;
+}
+

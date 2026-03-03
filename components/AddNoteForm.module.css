@@ -1,0 +1,90 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+  background: rgba(255, 252, 240, 0.8);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(6px);
+}
+
+.row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.label {
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.input,
+.textarea {
+  border-radius: 0.5rem;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  padding: 0.6rem 0.75rem;
+  font-size: 0.95rem;
+  font-family: inherit;
+  outline: none;
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.input:focus,
+.textarea:focus {
+  border-color: rgba(0, 0, 0, 0.18);
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.06);
+}
+
+.textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.metaRow {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 0.25rem;
+}
+
+.counter {
+  font-size: 0.8rem;
+  opacity: 0.7;
+}
+
+.error {
+  font-size: 0.85rem;
+  color: #b22a2a;
+}
+
+.button {
+  align-self: flex-start;
+  padding: 0.55rem 1.2rem;
+  border-radius: 999px;
+  border: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  background: #f0a93b;
+  color: #2f2210;
+  transition: transform 0.1s ease, box-shadow 0.1s ease, background 0.1s ease;
+}
+
+.button:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.16);
+  background: #f6b24a;
+}
+
+.button:disabled {
+  opacity: 0.7;
+  cursor: default;
+}
+
+@media (min-width: 768px) {
+  .form {
+    padding: 1.75rem 1.9rem;
+  }
+}
+

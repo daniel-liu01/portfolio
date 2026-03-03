@@ -149,6 +149,13 @@ function Navbar({ activePage = "home" }) {
           >
             Contact
           </Link>
+          <Link
+            href="/wall"
+            className={`navbar-link ${activePage === "wall" ? "active" : ""}`}
+            onClick={() => setIsMenuOpen(false)}
+          >
+            Visitor Wall
+          </Link>
           <button
             type="button"
             className="navbar-theme-toggle"
