@@ -2,7 +2,7 @@ import styles from "./page.module.css";
 import { getSupabaseClient } from "@/lib/supabase";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
-import WallClient from "@/components/WallClient";
+import WallClient from "@/components/wall/WallClient";
 
 export const dynamic = "force-dynamic";
 

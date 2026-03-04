@@ -3,7 +3,7 @@
 import { useState } from "react";
 import NoteWall from "./NoteWall";
 import AddNoteForm from "./AddNoteForm";
-import styles from "../app/wall/page.module.css";
+import styles from "../../app/wall/page.module.css";
 
 export default function WallClient({ initialNotes }) {
   const [notes, setNotes] = useState(initialNotes);
