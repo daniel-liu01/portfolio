@@ -1,12 +1,86 @@
-.form {
+/* Bottom-left "Leave a note" teaser */
+.cta {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: 2;
+  display: grid;
+  gap: 0.35rem;
+  max-width: 260px;
+  padding: 0.25rem;
+}
+
+.ctaTitle {
+  margin: 0;
+  font-size: 1.35rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+.ctaText {
+  margin: 0;
+  font-size: 0.85rem;
+  opacity: 0.75;
+  line-height: 1.35;
+}
+
+.ctaButton {
+  justify-self: start;
+  margin-top: 0.35rem;
+  padding: 0.35rem 0.7rem;
+  border-radius: 0.3rem;
+  border: 1px solid rgba(0, 0, 0, 0.55);
+  background: transparent;
+  font-family: inherit;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.ctaButton:hover {
+  background: rgba(0, 0, 0, 0.04);
+}
+
+/* Modal overlay */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.18);
+  display: grid;
+  place-items: center;
+  z-index: 50;
+  padding: 1.5rem;
+}
+
+.modal {
+  width: min(520px, calc(100vw - 3rem));
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.55);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.22);
+  padding: 2rem 2.2rem;
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  padding: 1.5rem;
-  border-radius: 0.75rem;
-  background: rgba(255, 252, 240, 0.8);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(6px);
+}
+
+.closeButton {
+  position: absolute;
+  right: 0.85rem;
+  top: 0.7rem;
+  width: 2.1rem;
+  height: 2.1rem;
+  display: grid;
+  place-items: center;
+  border: 0;
+  background: transparent;
+  font-size: 1.7rem;
+  line-height: 1;
+  cursor: pointer;
+  opacity: 0.75;
+}
+
+.closeButton:hover:not(:disabled) {
+  opacity: 1;
 }
 
 .row {
@@ -22,19 +96,19 @@
 
 .input,
 .textarea {
-  border-radius: 0.5rem;
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  padding: 0.6rem 0.75rem;
-  font-size: 0.95rem;
+  border-radius: 0.35rem;
+  border: 1px solid rgba(0, 0, 0, 0.55);
+  padding: 0.55rem 0.7rem;
+  font-size: 0.9rem;
   font-family: inherit;
   outline: none;
-  background: rgba(255, 255, 255, 0.9);
+  background: #ffffff;
 }
 
 .input:focus,
 .textarea:focus {
-  border-color: rgba(0, 0, 0, 0.18);
-  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.06);
+  border-color: rgba(0, 0, 0, 0.75);
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.12);
 }
 
 .textarea {
@@ -58,33 +132,35 @@
   color: #b22a2a;
 }
 
-.button {
-  align-self: flex-start;
-  padding: 0.55rem 1.2rem;
-  border-radius: 999px;
-  border: none;
-  font-size: 0.9rem;
-  font-weight: 500;
+.stickButton {
+  align-self: center;
+  padding: 0.35rem 0.9rem;
+  border-radius: 0.35rem;
+  border: 1px solid rgba(0, 0, 0, 0.55);
+  background: transparent;
+  font-family: inherit;
+  font-size: 0.85rem;
   cursor: pointer;
-  background: #f0a93b;
-  color: #2f2210;
-  transition: transform 0.1s ease, box-shadow 0.1s ease, background 0.1s ease;
 }
 
-.button:hover:not(:disabled) {
-  transform: translateY(-1px);
-  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.16);
-  background: #f6b24a;
+.stickButton:hover:not(:disabled) {
+  background: rgba(0, 0, 0, 0.04);
 }
 
-.button:disabled {
+.stickButton:disabled {
   opacity: 0.7;
   cursor: default;
 }
 
-@media (min-width: 768px) {
-  .form {
-    padding: 1.75rem 1.9rem;
+@media (max-width: 520px) {
+  .cta {
+    left: 0;
+    bottom: 0;
+    max-width: 220px;
+  }
+
+  .modal {
+    padding: 1.6rem 1.5rem;
   }
 }
 

@@ -1,4 +1,4 @@
-import Filter from "bad-words";
+import { Filter } from "bad-words";
 import { NextResponse } from "next/server";
 import { getSupabaseClient } from "@/lib/supabase";
 

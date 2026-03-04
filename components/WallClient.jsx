@@ -13,9 +13,9 @@ export default function WallClient({ initialNotes }) {
   }
 
   return (
-    <div className={styles.content}>
-      <AddNoteForm onNoteAdded={handleNoteAdded} />
+    <div className={styles.wallClient}>
       <NoteWall notes={notes} />
+      <AddNoteForm onNoteAdded={handleNoteAdded} />
     </div>
   );
 }
