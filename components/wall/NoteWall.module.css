@@ -1,14 +1,23 @@
 .wall {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1.5rem;
-  padding: 1.5rem 0 6.25rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  padding: 1.75rem 0 6.25rem;
   align-items: flex-start;
+}
+
+.noteWrap {
+  position: relative;
+  margin: -0.65rem;
 }
 
 @media (min-width: 768px) {
   .wall {
     gap: 2rem;
+  }
+
+  .noteWrap {
+    margin: -0.9rem;
   }
 }
 

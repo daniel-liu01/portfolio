@@ -31,13 +31,22 @@ function seededInt(id, min, max, salt = "") {
   return min + (hash % span);
 }
 
+function seededTilt(id) {
+  const magnitude = seededInt(id, 4, 15, "tilt-magnitude");
+  const direction = seededInt(id, 0, 1, "tilt-direction") === 0 ? -1 : 1;
+  return magnitude * direction;
+}
+
 export default function NoteWall({ notes }) {
   const notesWithStyle = useMemo(
     () =>
       notes.map((note) => ({
         ...note,
         color: note.color || PASTEL_COLORS[seededInt(note.id, 0, PASTEL_COLORS.length - 1, "color")],
-        rotation: seededInt(note.id, -15, 15, "rotation"),
+        rotation: seededTilt(note.id),
+        offsetX: seededInt(note.id, -48, 48, "offset-x"),
+        offsetY: seededInt(note.id, -30, 30, "offset-y"),
+        layer: seededInt(note.id, 1, 20, "layer"),
       })),
     [notes]
   );
@@ -45,13 +54,21 @@ export default function NoteWall({ notes }) {
   return (
     <section className={styles.wall} aria-label="Visitor notes">
       {notesWithStyle.map((note) => (
-        <StickyNote
+        <div
           key={note.id}
-          name={note.name}
-          message={note.message}
-          color={note.color}
-          rotation={note.rotation}
-        />
+          className={styles.noteWrap}
+          style={{
+            transform: `translate(${note.offsetX}px, ${note.offsetY}px)`,
+            zIndex: note.layer,
+          }}
+        >
+          <StickyNote
+            name={note.name}
+            message={note.message}
+            color={note.color}
+            rotation={note.rotation}
+          />
+        </div>
       ))}
     </section>
   );
