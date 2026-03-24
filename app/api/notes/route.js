@@ -1,11 +1,23 @@
 import { Filter } from "bad-words";
 import { NextResponse } from "next/server";
-import { getSupabaseAdminClient, getSupabaseClient } from "@/lib/supabase";
+import { getSupabaseAdminClient } from "@/lib/supabase";
 
 const filter = new Filter();
 
 export async function GET() {
-  const supabase = getSupabaseClient();
+  let supabase;
+  try {
+    supabase = getSupabaseAdminClient();
+  } catch (error) {
+    console.error("Supabase admin client configuration error:", error);
+    return NextResponse.json(
+      {
+        error:
+          "Server is missing SUPABASE_SERVICE_ROLE_KEY. Add it to .env.local and restart.",
+      },
+      { status: 500 }
+    );
+  }
 
   const { data, error } = await supabase
     .from("notes")

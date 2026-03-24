@@ -1,5 +1,5 @@
 import styles from "./page.module.css";
-import { getSupabaseClient } from "@/lib/supabase";
+import { getSupabaseAdminClient } from "@/lib/supabase";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import WallClient from "@/components/wall/WallClient";
@@ -7,7 +7,7 @@ import WallClient from "@/components/wall/WallClient";
 export const dynamic = "force-dynamic";
 
 export default async function WallPage() {
-  const supabase = getSupabaseClient();
+  const supabase = getSupabaseAdminClient();
 
   const { data } = await supabase
     .from("notes")
