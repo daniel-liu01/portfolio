@@ -9,6 +9,7 @@
   flex-direction: column;
   justify-content: space-between;
   cursor: default;
+  color: #101820;
 }
 
 .message {

@@ -10,6 +10,31 @@
   font-family: var(--font-mono);
 }
 
+:global(html.dark) .cta {
+  background: transparent;
+  color: #fefefe;
+  border: 0;
+  border-radius: 0;
+  padding: 0.25rem 0;
+}
+
+:global(html.dark) .ctaButton {
+  color: #fefefe;
+  border-color: rgba(254, 254, 254, 0.8);
+}
+
+:global(html.dark) .ctaButton:hover {
+  background: rgba(254, 254, 254, 0.08);
+}
+
+:global(html.dark) .ctaButton:focus-visible {
+  outline-color: rgba(254, 254, 254, 0.9);
+}
+
+:global(html.dark) .ctaText {
+  opacity: 0.85;
+}
+
 .ctaTitle {
   margin: 0;
   font-size: 32px;
