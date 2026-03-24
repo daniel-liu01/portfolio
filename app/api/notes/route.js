@@ -1,15 +1,6 @@
 import { Filter } from "bad-words";
 import { NextResponse } from "next/server";
-import { getSupabaseClient } from "@/lib/supabase";
-
-const COLORS = [
-  "#FFE8A3",
-  "#FFD1DC",
-  "#C8E7FF",
-  "#D9FFC8",
-  "#FFE4C8",
-  "#E4D4FF",
-];
+import { getSupabaseAdminClient, getSupabaseClient } from "@/lib/supabase";
 
 const filter = new Filter();
 
@@ -32,7 +23,19 @@ export async function GET() {
 }
 
 export async function POST(request) {
-  const supabase = getSupabaseClient();
+  let supabase;
+  try {
+    supabase = getSupabaseAdminClient();
+  } catch (error) {
+    console.error("Supabase admin client configuration error:", error);
+    return NextResponse.json(
+      {
+        error:
+          "Server is missing SUPABASE_SERVICE_ROLE_KEY. Add it to .env.local and restart.",
+      },
+      { status: 500 }
+    );
+  }
 
   let body;
   try {
@@ -71,15 +74,14 @@ export async function POST(request) {
   const name = filter.clean(rawName);
   const message = filter.clean(rawMessage);
 
-  const color = COLORS[Math.floor(Math.random() * COLORS.length)];
-
   const { data, error } = await supabase
     .from("notes")
-    .insert([{ name, message, color }])
+    .insert([{ name, message }])
     .select()
     .single();
 
   if (error) {
+    console.error("Failed to insert note into Supabase:", error.message);
     return NextResponse.json(
       { error: "Failed to save your note. Please try again." },
       { status: 500 }
