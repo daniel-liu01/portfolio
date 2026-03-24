@@ -5,7 +5,10 @@ import NoteWall from "./NoteWall";
 import AddNoteForm from "./AddNoteForm";
 import styles from "../../app/wall/page.module.css";
 
-export default function WallClient({ initialNotes }) {
+export default function WallClient({
+  initialNotes,
+  supabaseUnavailableReason,
+}) {
   const [notes, setNotes] = useState(initialNotes);
 
   function handleNoteAdded(newNote) {
@@ -14,7 +17,15 @@ export default function WallClient({ initialNotes }) {
 
   return (
     <div className={styles.wallClient}>
-      <AddNoteForm onNoteAdded={handleNoteAdded} />
+      {supabaseUnavailableReason ? (
+        <p className={styles.configWarning} role="alert">
+          {supabaseUnavailableReason}
+        </p>
+      ) : null}
+      <AddNoteForm
+        onNoteAdded={handleNoteAdded}
+        disabled={Boolean(supabaseUnavailableReason)}
+      />
       <NoteWall notes={notes} />
     </div>
   );

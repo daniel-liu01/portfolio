@@ -5,7 +5,7 @@ import styles from "./AddNoteForm.module.css";
 
 const MAX_LENGTH = 100;
 
-export default function AddNoteForm({ onNoteAdded }) {
+export default function AddNoteForm({ onNoteAdded, disabled = false }) {
   const nameId = useId();
   const messageId = useId();
   const nameInputRef = useRef(null);
@@ -38,7 +38,7 @@ export default function AddNoteForm({ onNoteAdded }) {
 
   async function handleSubmit(event) {
     event.preventDefault();
-    if (submitting) return;
+    if (disabled || submitting) return;
 
     setSubmitting(true);
     setError("");

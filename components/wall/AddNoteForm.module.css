@@ -70,6 +70,11 @@
   outline-offset: 3px;
 }
 
+.ctaButton:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
 /* Modal overlay */
 .overlay {
   position: fixed;

@@ -1,14 +1,57 @@
 import { Filter } from "bad-words";
 import { NextResponse } from "next/server";
-import { getSupabaseAdminClient } from "@/lib/supabase";
+import {
+  getSupabaseAdminClient,
+  verifySupabaseHostResolvable,
+} from "@/lib/supabase";
 
 const filter = new Filter();
 
+const UNRESOLVABLE_MSG =
+  "Supabase project URL is invalid or the project no longer exists. Open Supabase → Settings → API, copy Project URL into NEXT_PUBLIC_SUPABASE_URL in .env.local, add fresh API keys, run supabase/notes.sql if needed, then restart the dev server.";
+
+function jsonSupabaseConfigError(error, status = 503) {
+  const msg = error?.message ?? String(error);
+  if (msg === "SUPABASE_HOST_UNRESOLVABLE") {
+    return NextResponse.json({ error: UNRESOLVABLE_MSG }, { status });
+  }
+  if (
+    msg.includes("NEXT_PUBLIC_SUPABASE_URL") ||
+    msg.includes("not a valid URL")
+  ) {
+    return NextResponse.json({ error: msg }, { status: 500 });
+  }
+  if (msg.includes("SUPABASE_SERVICE_ROLE_KEY")) {
+    return NextResponse.json(
+      {
+        error:
+          "Server is missing SUPABASE_SERVICE_ROLE_KEY. Add it to .env.local and restart.",
+      },
+      { status: 500 }
+    );
+  }
+  return null;
+}
+
 export async function GET() {
+  try {
+    await verifySupabaseHostResolvable();
+  } catch (error) {
+    const handled = jsonSupabaseConfigError(error);
+    if (handled) return handled;
+    console.error("Supabase host check failed:", error);
+    return NextResponse.json(
+      { error: "Failed to reach Supabase. Check your network and .env.local." },
+      { status: 503 }
+    );
+  }
+
   let supabase;
   try {
     supabase = getSupabaseAdminClient();
   } catch (error) {
+    const handled = jsonSupabaseConfigError(error, 500);
+    if (handled) return handled;
     console.error("Supabase admin client configuration error:", error);
     return NextResponse.json(
       {
@@ -25,6 +68,7 @@ export async function GET() {
     .order("created_at", { ascending: false });
 
   if (error) {
+    console.error("GET /api/notes:", error.message);
     return NextResponse.json(
       { error: "Failed to fetch notes." },
       { status: 500 }
@@ -35,10 +79,24 @@ export async function GET() {
 }
 
 export async function POST(request) {
+  try {
+    await verifySupabaseHostResolvable();
+  } catch (error) {
+    const handled = jsonSupabaseConfigError(error);
+    if (handled) return handled;
+    console.error("Supabase host check failed:", error);
+    return NextResponse.json(
+      { error: "Failed to reach Supabase. Check your network and .env.local." },
+      { status: 503 }
+    );
+  }
+
   let supabase;
   try {
     supabase = getSupabaseAdminClient();
   } catch (error) {
+    const handled = jsonSupabaseConfigError(error, 500);
+    if (handled) return handled;
     console.error("Supabase admin client configuration error:", error);
     return NextResponse.json(
       {
@@ -86,14 +144,39 @@ export async function POST(request) {
   const name = filter.clean(rawName);
   const message = filter.clean(rawMessage);
 
-  const { data, error } = await supabase
-    .from("notes")
-    .insert([{ name, message }])
-    .select()
-    .single();
+  let data;
+  let insertError;
+  try {
+    const result = await supabase
+      .from("notes")
+      .insert([{ name, message }])
+      .select()
+      .single();
+    data = result.data;
+    insertError = result.error;
+  } catch (e) {
+    console.error("Failed to insert note into Supabase:", e);
+    const msg = e?.message ?? String(e);
+    if (msg.includes("fetch failed")) {
+      return NextResponse.json(
+        {
+          error: UNRESOLVABLE_MSG,
+        },
+        { status: 503 }
+      );
+    }
+    return NextResponse.json(
+      { error: "Failed to save your note. Please try again." },
+      { status: 500 }
+    );
+  }
 
-  if (error) {
-    console.error("Failed to insert note into Supabase:", error.message);
+  if (insertError) {
+    console.error("Failed to insert note into Supabase:", insertError.message);
+    const msg = insertError.message ?? "";
+    if (msg.includes("fetch failed")) {
+      return NextResponse.json({ error: UNRESOLVABLE_MSG }, { status: 503 });
+    }
     return NextResponse.json(
       { error: "Failed to save your note. Please try again." },
       { status: 500 }

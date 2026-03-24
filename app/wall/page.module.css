@@ -19,6 +19,17 @@
   min-height: inherit;
 }
 
+.configWarning {
+  margin: 0 0 1.25rem;
+  padding: 0.875rem 1rem;
+  font-size: 0.9375rem;
+  line-height: 1.45;
+  color: #7a2e0e;
+  background: #fff4e8;
+  border: 1px solid #f0c9a8;
+  border-radius: 8px;
+}
+
 @media (max-width: 1024px) and (min-width: 769px) {
   .page {
     padding: 2rem var(--space-40) 4rem;
