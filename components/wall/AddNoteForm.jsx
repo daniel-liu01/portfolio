@@ -131,7 +131,7 @@ export default function AddNoteForm({ onNoteAdded }) {
                 className={styles.input}
                 value={name}
                 onChange={(event) => setName(event.target.value)}
-                placeholder="Your name"
+                placeholder="Type anon if you prefer"
                 maxLength={80}
                 autoComplete="name"
               />
@@ -139,14 +139,14 @@ export default function AddNoteForm({ onNoteAdded }) {
 
             <div className={styles.row}>
               <label className={styles.label} htmlFor={messageId}>
-                Message
+                What makes you happy
               </label>
               <textarea
                 id={messageId}
                 className={styles.textarea}
                 value={message}
                 onChange={(event) => setMessage(event.target.value)}
-                placeholder="Leave a short message!"
+                placeholder="McDonalds, your friends, anything!"
                 maxLength={MAX_LENGTH}
                 rows={6}
               />
