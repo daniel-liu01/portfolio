@@ -1,14 +1,12 @@
-/* Center "Leave a note" teaser */
 .cta {
-  position: absolute;
-  bottom: 0;
-  transform: translateX(-50%);
+  position: relative;
   z-index: 2;
   display: grid;
   gap: 0.35rem;
-  width: min(360px, calc(100vw - 3rem));
+  width: min(360px, 100%);
   text-align: left;
-  padding: 0.25rem;
+  padding: 0.25rem 0;
+  margin: 0.75rem 0;
   font-family: var(--font-mono);
 }
 
@@ -163,7 +161,7 @@
 
 @media (max-width: 520px) {
   .cta {
-    width: min(320px, calc(100vw - 2.5rem));
+    width: min(320px, 100%);
   }
 
   .modal {

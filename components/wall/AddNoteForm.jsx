@@ -3,7 +3,7 @@
 import { useEffect, useId, useRef, useState } from "react";
 import styles from "./AddNoteForm.module.css";
 
-const MAX_LENGTH = 200;
+const MAX_LENGTH = 100;
 
 export default function AddNoteForm({ onNoteAdded }) {
   const nameId = useId();

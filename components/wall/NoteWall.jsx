@@ -44,7 +44,8 @@ export default function NoteWall({ notes }) {
         ...note,
         color: note.color || PASTEL_COLORS[seededInt(note.id, 0, PASTEL_COLORS.length - 1, "color")],
         rotation: seededTilt(note.id),
-        offsetX: seededInt(note.id, -48, 48, "offset-x"),
+        // Keep scatter effect, but avoid drifting too close to viewport edge.
+        offsetX: seededInt(note.id, -12, 36, "offset-x"),
         offsetY: seededInt(note.id, -30, 30, "offset-y"),
         layer: seededInt(note.id, 1, 20, "layer"),
       })),

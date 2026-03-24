@@ -1,12 +1,11 @@
 .page {
   min-height: 100vh;
-  padding: 4.25rem 1.5rem 3rem;
+  padding: 2rem var(--space-80) 3rem;
   background: #ffffff;
 }
 
 .inner {
-  max-width: 1100px;
-  margin: 0 auto;
+  width: 100%;
 }
 
 .board {
@@ -20,9 +19,15 @@
   min-height: inherit;
 }
 
-@media (min-width: 768px) {
+@media (max-width: 1024px) and (min-width: 769px) {
   .page {
-    padding: 5rem 2rem 4rem;
+    padding: 2rem var(--space-40) 4rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .page {
+    padding: 1.5rem 16px 3rem;
   }
 }
 

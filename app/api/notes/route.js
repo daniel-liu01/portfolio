@@ -76,9 +76,9 @@ export async function POST(request) {
     );
   }
 
-  if (rawMessage.length > 200) {
+  if (rawMessage.length > 100) {
     return NextResponse.json(
-      { error: "Message must be 200 characters or less." },
+      { error: "Message must be 100 characters or less." },
       { status: 400 }
     );
   }
