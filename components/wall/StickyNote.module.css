@@ -26,3 +26,20 @@
   opacity: 0.8;
 }
 
+@media (max-width: 768px) {
+  .note {
+    width: clamp(100px, 44vw, 200px);
+    padding: 1rem;
+  }
+
+  .message {
+    font-size: 0.75rem;
+    line-height: 1.25;
+  }
+
+  .name {
+    font-size: 0.6875rem;
+    margin-top: 0.65rem;
+  }
+}
+
