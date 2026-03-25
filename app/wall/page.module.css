@@ -11,7 +11,7 @@
 .board {
   position: relative;
   min-height: calc(100vh - 14rem);
-  padding: 1.25rem 0 0;
+  padding-top: 1.25rem;
 }
 
 .wallClient {

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useId, useRef, useState } from "react";
+import Button from "@/components/ui/Button";
 import styles from "./AddNoteForm.module.css";
 
 const MAX_LENGTH = 100;
@@ -81,16 +82,18 @@ export default function AddNoteForm({ onNoteAdded, disabled = false }) {
         <p className={styles.ctaText}>
           Leave a simple message for other visitors!
         </p>
-        <button
-          type="button"
-          className={styles.ctaButton}
-          onClick={() => {
-            setOpen(true);
-            setError("");
-          }}
-        >
-          Try it!
-        </button>
+        <div className={styles.ctaButtonRow}>
+          <Button
+            type="button"
+            onClick={() => {
+              setOpen(true);
+              setError("");
+            }}
+            disabled={disabled}
+          >
+            Try it!
+          </Button>
+        </div>
       </div>
 
       {open ? (
@@ -159,13 +162,14 @@ export default function AddNoteForm({ onNoteAdded, disabled = false }) {
 
             {error && <p className={styles.error}>{error}</p>}
 
-            <button
-              className={styles.stickButton}
-              type="submit"
-              disabled={submitting || !message.trim()}
-            >
-              {submitting ? "Sticking..." : "Stick!"}
-            </button>
+            <div className={styles.submitRow}>
+              <Button
+                type="submit"
+                disabled={submitting || !message.trim()}
+              >
+                {submitting ? "Sticking..." : "Stick!"}
+              </Button>
+            </div>
           </form>
         </div>
       ) : null}

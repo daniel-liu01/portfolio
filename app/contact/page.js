@@ -1,5 +1,6 @@
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import Button from "@/components/ui/Button";
 import styles from "./page.module.css";
 
 export const metadata = {
@@ -19,22 +20,18 @@ export default function ContactPage() {
             first!
           </p>
           <div className={styles.contactBtns}>
-            <a
-              href="mailto:hello@example.com"
-              className={styles.contactBtn}
-              aria-label="Email"
-            >
+            <Button as="a" href="mailto:hello@example.com" aria-label="Email">
               Email
-            </a>
-            <a
+            </Button>
+            <Button
+              as="a"
               href="https://www.linkedin.com/in/danielmyliu/"
               target="_blank"
               rel="noopener noreferrer"
-              className={styles.contactBtn}
               aria-label="LinkedIn"
             >
               LinkedIn
-            </a>
+            </Button>
           </div>
           <div className={styles.illustration}>
             <img
