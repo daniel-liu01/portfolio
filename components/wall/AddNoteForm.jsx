@@ -80,7 +80,7 @@ export default function AddNoteForm({ onNoteAdded, disabled = false }) {
       <div className={styles.cta}>
         <h2 className={styles.ctaTitle}>Leave a note!</h2>
         <p className={styles.ctaText}>
-          Leave a simple message for other visitors!
+          Write what makes you happy on a sticky note!
         </p>
         <div className={styles.ctaButtonRow}>
           <Button

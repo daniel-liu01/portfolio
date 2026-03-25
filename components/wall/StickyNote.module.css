@@ -1,19 +1,18 @@
 .note {
   position: relative;
-  padding: 0.9rem 1rem;
+  padding: 1rem;
   border-radius: 0.5rem;
   box-shadow: 0 14px 24px rgba(0, 0, 0, 0.18);
-  width: clamp(126px, 17vw, 182px);
+  width: clamp(100px, 17vw, 150px);
   aspect-ratio: 1 / 1;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  cursor: default;
   color: #101820;
 }
 
 .message {
-  font-size: 0.86rem;
+  font-size: 0.75rem;
   line-height: 1.3;
   white-space: pre-wrap;
   word-wrap: break-word;
