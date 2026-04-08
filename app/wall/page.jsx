@@ -51,7 +51,7 @@ export default async function WallPage() {
       <Navbar activePage="wall" />
       <div className={styles.page}>
         <div className={styles.inner}>
-          <h1 className={styles.srOnly}>Visitor Wall</h1>
+          <h1 className={styles.screenReaderText}>Visitor Wall</h1>
           <section className={styles.board} aria-label="Sticky note wall">
             <WallClient
               initialNotes={notes}
@@ -64,4 +64,3 @@ export default async function WallPage() {
     </>
   );
 }
-
