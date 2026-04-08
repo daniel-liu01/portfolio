@@ -1,0 +1,45 @@
+.note {
+  position: relative;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 14px 24px rgba(0, 0, 0, 0.18);
+  width: clamp(100px, 17vw, 150px);
+  aspect-ratio: 1 / 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: #101820;
+}
+
+.message {
+  font-size: 0.75rem;
+  line-height: 1.3;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  overflow: hidden;
+}
+
+.name {
+  margin-top: 0.75rem;
+  font-size: 0.75rem;
+  text-align: right;
+  opacity: 0.8;
+}
+
+@media (max-width: 768px) {
+  .note {
+    width: clamp(100px, 44vw, 200px);
+    padding: 1rem;
+  }
+
+  .message {
+    font-size: 0.75rem;
+    line-height: 1.25;
+  }
+
+  .name {
+    font-size: 0.6875rem;
+    margin-top: 0.65rem;
+  }
+}
+

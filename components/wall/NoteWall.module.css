@@ -1,0 +1,22 @@
+.wall {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  padding: 6.25rem 0.5rem;
+  align-items: flex-start;
+}
+
+.noteWrap {
+  position: relative;
+  margin: -0.35rem;
+}
+
+@media (min-width: 768px) {
+  .wall {
+    gap: 2rem;
+  }
+
+  .noteWrap {
+    margin: -0.5rem;
+  }
+}

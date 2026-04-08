@@ -1,0 +1,55 @@
+.page {
+  min-height: 100vh;
+  padding: 2rem var(--space-80) 3rem;
+  background: var(--white);
+}
+
+.inner {
+  width: 100%;
+}
+
+.board {
+  position: relative;
+  min-height: calc(100vh - 14rem);
+  padding-top: 1.25rem;
+}
+
+.wallClient {
+  position: relative;
+  min-height: inherit;
+}
+
+.configWarning {
+  margin: 0 0 1.25rem;
+  padding: 0.875rem 1rem;
+  font-size: 0.9375rem;
+  line-height: 1.45;
+  color: #7a2e0e;
+  background: #fff4e8;
+  border: 1px solid #f0c9a8;
+  border-radius: 8px;
+}
+
+@media (max-width: 1024px) and (min-width: 769px) {
+  .page {
+    padding: 2rem var(--space-40) 4rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .page {
+    padding: 1.5rem 16px 3rem;
+  }
+}
+
+.screenReaderText {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

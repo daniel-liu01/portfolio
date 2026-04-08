@@ -35,7 +35,7 @@ function Navbar({ activePage = "home" }) {
     document.documentElement.classList.toggle("dark", isDarkMode);
     document.documentElement.setAttribute(
       "data-theme",
-      isDarkMode ? "dark" : "light"
+      isDarkMode ? "dark" : "light",
     );
     localStorage.setItem(THEME_KEY, isDarkMode ? "dark" : "light");
   }, [mounted, isDarkMode]);
@@ -141,6 +141,13 @@ function Navbar({ activePage = "home" }) {
             About
           </Link>
           <Link
+            href="/wall"
+            className={`navbar-link ${activePage === "wall" ? "active" : ""}`}
+            onClick={() => setIsMenuOpen(false)}
+          >
+            Wall
+          </Link>
+          <Link
             href="/contact"
             className={`navbar-link ${
               activePage === "contact" ? "active" : ""
@@ -149,6 +156,7 @@ function Navbar({ activePage = "home" }) {
           >
             Contact
           </Link>
+
           <button
             type="button"
             className="navbar-theme-toggle"
