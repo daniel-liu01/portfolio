@@ -140,13 +140,7 @@ function Navbar({ activePage = "home" }) {
           >
             About
           </Link>
-          <Link
-            href="/wall"
-            className={`navbar-link ${activePage === "wall" ? "active" : ""}`}
-            onClick={() => setIsMenuOpen(false)}
-          >
-            Wall
-          </Link>
+
           <Link
             href="/contact"
             className={`navbar-link ${
