@@ -59,8 +59,25 @@ export default function ClimbHome() {
             </a>
             <div className="fade" id="fade" />
             <div className="cue" id="cue">
+              <svg
+                className="cue-arrow up"
+                viewBox="0 0 26 18"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.4"
+                aria-hidden="true"
+              >
+                <path d="M1 15l12-12L25 15" />
+              </svg>
               <span>Scroll to climb</span>
-              <svg viewBox="0 0 26 18" fill="none" stroke="currentColor" strokeWidth="1.4" aria-hidden="true">
+              <svg
+                className="cue-arrow down"
+                viewBox="0 0 26 18"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.4"
+                aria-hidden="true"
+              >
                 <path d="M1 3l12 12L25 3" />
               </svg>
             </div>

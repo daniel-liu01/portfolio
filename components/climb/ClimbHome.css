@@ -84,6 +84,26 @@ html.climb-page body {
   stroke-linejoin: round;
 }
 
+.climb-home .cue {
+  gap: 4px;
+}
+
+.climb-home .cue svg,
+.climb-home .cue .cue-arrow {
+  width: 18px;
+  height: 12px;
+}
+
+.climb-home .skip {
+  bottom: calc(clamp(14px, 3.4vh, 34px) + 16px);
+}
+
+@media (max-width: 759px) {
+  .climb-home .skip {
+    bottom: calc(20px + env(safe-area-inset-bottom, 0px));
+  }
+}
+
 .climb-home .tile p {
   margin-top: -6px;
 }

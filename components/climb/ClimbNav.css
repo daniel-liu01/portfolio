@@ -16,11 +16,11 @@
 }
 
 .site-nav.ink {
-  --nav-fg: var(--black, #101820);
+  --nav-fg: #101820;
 }
 
 html.dark .site-nav.ink {
-  --nav-fg: var(--white, #fefefe);
+  --nav-fg: #fefefe;
 }
 
 .site-nav > * {
@@ -70,12 +70,15 @@ html.dark .site-nav.ink {
 }
 
 .site-nav .theme {
+  appearance: none;
+  -webkit-appearance: none;
   position: relative;
   width: 52px;
   height: 28px;
   border-radius: 999px;
-  border: 1px solid currentColor;
+  border: 1.5px solid currentColor;
   background: transparent;
+  color: inherit;
   cursor: pointer;
   padding: 0;
   margin-left: 8px;
@@ -88,19 +91,21 @@ html.dark .site-nav.ink {
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  background: var(--nav-fg);
-  color: #2a56f2;
+  background: #fefefe;
+  color: #101820;
   display: grid;
   place-items: center;
   transition: transform 0.35s cubic-bezier(0.3, 0.8, 0.3, 1);
 }
 
 .site-nav.ink .theme-thumb {
-  color: var(--white, #fefefe);
+  background: #101820;
+  color: #fefefe;
 }
 
 html.dark .site-nav.ink .theme-thumb {
-  color: var(--black, #101820);
+  background: #fefefe;
+  color: #101820;
 }
 
 .site-nav .theme-thumb svg {
