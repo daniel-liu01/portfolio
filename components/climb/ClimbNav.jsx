@@ -37,12 +37,14 @@ export default function ClimbNav() {
       setOverSky(false);
       return undefined;
     }
-    const onScroll = () => {
-      setOverSky(window.scrollY < window.innerHeight * 0.2);
+    const html = document.documentElement;
+    const sync = () => {
+      setOverSky(!html.classList.contains("climb-nav-on-light"));
     };
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    sync();
+    const mo = new MutationObserver(sync);
+    mo.observe(html, { attributes: true, attributeFilter: ["class"] });
+    return () => mo.disconnect();
   }, [isHome]);
 
   const toggleTheme = () => {

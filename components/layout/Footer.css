@@ -4,6 +4,11 @@
   background-color: var(--white);
 }
 
+html.dark .footer,
+html[data-theme="dark"] .footer {
+  background-color: #0a0e2c;
+}
+
 .footer-container {
   width: 100%;
   padding: 0 var(--space-80);

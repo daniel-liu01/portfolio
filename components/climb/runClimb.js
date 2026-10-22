@@ -368,6 +368,116 @@ export function runClimb(root) {
   let activeCard = -1;
   let camReady = false;
   let busy = false;
+  let navOnLight = false;
+
+  function parseColor(str) {
+    if (!str || str === "none" || str === "transparent") return null;
+    const trimmed = str.trim();
+    if (trimmed.startsWith("#")) {
+      let h = trimmed.slice(1);
+      if (h.length === 3) h = h.split("").map((c) => c + c).join("");
+      if (h.length !== 6) return null;
+      return [parseInt(h.slice(0, 2), 16), parseInt(h.slice(2, 4), 16), parseInt(h.slice(4, 6), 16)];
+    }
+    const m = trimmed.match(
+      /rgba?\(\s*([\d.]+)[,\s]+([\d.]+)[,\s]+([\d.]+)(?:\s*[,\s/]\s*([\d.]+))?/,
+    );
+    if (!m) return null;
+    const a = m[4] === undefined ? 1 : Number(m[4]) > 1 ? Number(m[4]) / 255 : Number(m[4]);
+    if (a < 0.12) return null;
+    return [Number(m[1]), Number(m[2]), Number(m[3])];
+  }
+
+  function relativeLuminance(rgb) {
+    const lin = rgb.map((c) => {
+      const x = c / 255;
+      return x <= 0.03928 ? x / 12.92 : ((x + 0.055) / 1.055) ** 2.4;
+    });
+    return 0.2126 * lin[0] + 0.7152 * lin[1] + 0.0722 * lin[2];
+  }
+
+  function isPainted(node) {
+    let n = node;
+    while (n && n !== document.documentElement) {
+      const s = getComputedStyle(n);
+      if (s.visibility === "hidden" || s.display === "none" || Number(s.opacity) < 0.12) {
+        return false;
+      }
+      n = n.parentElement;
+    }
+    return true;
+  }
+
+  function colorOfNode(node) {
+    if (!isPainted(node)) return null;
+    const s = getComputedStyle(node);
+    if (node instanceof SVGElement) {
+      const painted = /^(use|path|polygon|rect|circle|ellipse)$/i.test(node.tagName);
+      if (painted) {
+        const token =
+          parseColor(s.getPropertyValue("--k0")) || parseColor(s.getPropertyValue("--sk"));
+        if (token) return token;
+      }
+      const fill = parseColor(s.fill);
+      const explicit = node.getAttribute("fill") || node.style.fill;
+      if (fill && explicit && explicit !== "none") return fill;
+    }
+    return parseColor(s.backgroundColor);
+  }
+
+  function sampleNavLuminance() {
+    const nav = document.getElementById("nav");
+    if (!nav) return 0.2;
+    const targets = [nav.querySelector(".logo"), nav.querySelector(".nav-right")].filter(Boolean);
+    const points = [];
+    targets.forEach((el) => {
+      const r = el.getBoundingClientRect();
+      const y = r.top + r.height / 2;
+      points.push(
+        [r.left + r.width * 0.2, y],
+        [r.left + r.width * 0.5, y],
+        [r.left + r.width * 0.8, y],
+      );
+    });
+    const trail = $("#trail");
+    const prevWorld = world.style.pointerEvents;
+    const prevTrail = trail?.style.pointerEvents;
+    world.style.pointerEvents = "auto";
+    if (trail) trail.style.pointerEvents = "none";
+    let maxLum = 0;
+    let sum = 0;
+    let n = 0;
+    points.forEach(([x, y]) => {
+      const stack = document.elementsFromPoint(x, y);
+      let rgb = null;
+      for (const el of stack) {
+        if (nav.contains(el) || el.closest(".site-nav, .gauge, .cards, .finale, .skip, .cue")) {
+          continue;
+        }
+        rgb = colorOfNode(el);
+        if (rgb) break;
+      }
+      if (!rgb) return;
+      const lum = relativeLuminance(rgb);
+      maxLum = Math.max(maxLum, lum);
+      sum += lum;
+      n += 1;
+    });
+    world.style.pointerEvents = prevWorld;
+    if (trail) trail.style.pointerEvents = prevTrail || "";
+    if (!n) return 0.2;
+    return maxLum * 0.65 + (sum / n) * 0.35;
+  }
+
+  function updateNavContrast() {
+    const lum = sampleNavLuminance();
+    if (navOnLight) {
+      if (lum < 0.36) navOnLight = false;
+    } else if (lum > 0.48) {
+      navOnLight = true;
+    }
+    html.classList.toggle("climb-nav-on-light", navOnLight);
+  }
 
   function readScroll() {
     if (reduced) {
@@ -414,6 +524,7 @@ export function runClimb(root) {
     const tx = vw / 2 - cam.cx * cam.s;
     const ty = vh / 2 - cam.cy * cam.s;
     world.style.transform = `translate3d(${tx.toFixed(2)}px,${ty.toFixed(2)}px,0) scale(${cam.s.toFixed(5)})`;
+    updateNavContrast();
 
     const v = Math.abs(S - lastS);
     lastS = S;
@@ -550,7 +661,7 @@ export function runClimb(root) {
     mq.removeEventListener?.("change", onMq);
     stepLinks.forEach((el) => el.removeEventListener("click", skipToSteps));
     html.style.scrollBehavior = prevScrollBehavior;
-    html.classList.remove("climb-page");
+    html.classList.remove("climb-page", "climb-nav-on-light");
     printsG.replaceChildren();
     flagsG.replaceChildren();
     nextEl.remove();
