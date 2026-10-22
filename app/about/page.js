@@ -1,4 +1,3 @@
-import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import ContentSection from "@/components/project/ContentSection";
 import ScrollFade from "@/components/ScrollFade";
@@ -15,7 +14,6 @@ export default function AboutPage() {
   return (
     <div>
       <ScrollToTopOnHash />
-      <Navbar activePage="about" />
       <main className={styles.aboutMain}>
         <ScrollFade
           wrapperClassName={styles.scrollFadeWrap}

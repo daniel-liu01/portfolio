@@ -3,7 +3,6 @@ import {
   getSupabaseAdminClient,
   verifySupabaseHostResolvable,
 } from "@/lib/supabase";
-import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import WallClient from "@/components/wall/WallClient";
 
@@ -48,7 +47,6 @@ export default async function WallPage() {
 
   return (
     <>
-      <Navbar activePage="wall" />
       <div className={styles.page}>
         <div className={styles.inner}>
           <h1 className={styles.screenReaderText}>Visitor Wall</h1>

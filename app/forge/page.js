@@ -1,6 +1,5 @@
 import "../globals.css";
 import styles from "./page.module.css";
-import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import ProjectSection from "@/components/project/ProjectSection";
 import Introduction from "@/components/project/Introduction";
@@ -74,7 +73,6 @@ const forgeQuotes = [
 export default function ForgePage() {
   return (
     <div>
-      <Navbar activePage="" />
       <main className={styles.main}>
         <ScrollFade
           wrapperClassName={styles.scrollFadeWrap}

@@ -1,6 +1,7 @@
-import { Spline_Sans, Spline_Sans_Mono } from "next/font/google";
+import { Newsreader, Spline_Sans, Spline_Sans_Mono } from "next/font/google";
 import "./globals.css";
 import CustomCursor from "@/components/CustomCursor";
+import ClimbNav from "@/components/climb/ClimbNav";
 
 const splineSans = Spline_Sans({
   subsets: ["latin"],
@@ -14,6 +15,13 @@ const splineSansMono = Spline_Sans_Mono({
   display: "swap",
 });
 
+const newsreader = Newsreader({
+  subsets: ["latin"],
+  weight: ["300", "400"],
+  variable: "--font-serif",
+  display: "swap",
+});
+
 export const metadata = {
   title: "Daniel Liu | UX/UI Designer — Design, Research, Branding",
   description:
@@ -24,8 +32,9 @@ const themeScript = `
   (function() {
     try {
       var t = localStorage.getItem('portfolio-theme');
-      if (t === 'dark') document.documentElement.classList.add('dark');
-      else document.documentElement.classList.remove('dark');
+      var dark = t === 'dark';
+      document.documentElement.classList.toggle('dark', dark);
+      document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
     } catch (e) {}
   })();
 `;
@@ -33,12 +42,13 @@ const themeScript = `
 export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${splineSans.variable} ${splineSansMono.variable}`}>
+      <body className={`${splineSans.variable} ${splineSansMono.variable} ${newsreader.variable}`}>
         <script
           dangerouslySetInnerHTML={{ __html: themeScript }}
           suppressHydrationWarning
         />
         <CustomCursor />
+        <ClimbNav />
         {children}
       </body>
     </html>

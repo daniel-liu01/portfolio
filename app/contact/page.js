@@ -1,4 +1,3 @@
-import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import Button from "@/components/ui/Button";
 import styles from "./page.module.css";
@@ -11,7 +10,6 @@ export const metadata = {
 export default function ContactPage() {
   return (
     <div className={styles.contactPage}>
-      <Navbar activePage="contact" />
       <main className={styles.contactMain}>
         <section className={styles.contactSection} aria-label="Contact">
           <h1 className={styles.contactTitle}>Contact Me</h1>

@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 import "./Navbar.css";
 
 const THEME_KEY = "portfolio-theme";
-const SCROLL_AWARE_PATHS = ["/", "/levelup", "/forge", "/kofi", "/magazine"];
+const SCROLL_AWARE_PATHS = ["/levelup", "/forge", "/kofi", "/magazine"];
 const SCROLL_TOP_THRESHOLD = 80;
 const SCROLL_DELTA_THRESHOLD = 10;
 
