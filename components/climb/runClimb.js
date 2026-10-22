@@ -7,8 +7,20 @@ const ss = (a, b, x) => smooth(clamp((x - a) / (b - a), 0, 1));
 const dist = (a, b) => Math.hypot(a[0] - b[0], a[1] - b[1]);
 const comb = (a, b, wa, wb) => [a[0] * wa + b[0] * wb, a[1] * wa + b[1] * wb];
 
+function soften(pts, amount) {
+  return pts.map((p, i, a) => {
+    if (i === 0 || i === a.length - 1) return p;
+    const prev = a[i - 1];
+    const next = a[i + 1];
+    return [
+      p[0] + amount * ((prev[0] + next[0]) / 2 - p[0]),
+      p[1] + amount * ((prev[1] + next[1]) / 2 - p[1]),
+    ];
+  });
+}
+
 function buildPath() {
-  const P = CTRL;
+  const P = soften(soften(CTRL, 0.22), 0.16);
   const n = P.length;
   const ext = [
     [2 * P[0][0] - P[1][0], 2 * P[0][1] - P[1][1]],
@@ -93,7 +105,7 @@ export function runClimb(root) {
   const prints = [];
   let step = 24;
   let k = 0;
-  for (let s = 40; s < wayS[3] + 10; s += step, k++) {
+  for (let s = 40; s < L - 4; s += step, k++) {
     const a = at(s);
     const b = at(s + 6);
     const ang = Math.atan2(b[1] - a[1], b[0] - a[0]);
@@ -139,10 +151,14 @@ export function runClimb(root) {
   })();
 
   const FLAGSIDE = [-1, -1, 1, -1];
-  const flags = WAYI.map((idx, i) => {
-    const P = CTRL[idx];
+  const flags = WAYI.map((_, i) => {
+    const onPath = at(wayS[i]);
     const sd = FLAGSIDE[i];
-    const g = el("g", { transform: `translate(${P[0]} ${P[1]})` }, flagsG);
+    const g = el(
+      "g",
+      { transform: `translate(${onPath[0].toFixed(1)} ${onPath[1].toFixed(1)})` },
+      flagsG,
+    );
     el("circle", { class: "ring", r: "9", cx: "0", cy: "0" }, g);
     const spot = el("g", { transform: `translate(${sd * 68} 8)` }, g);
     const up = el("g", { transform: "scale(0)" }, spot);
@@ -479,9 +495,11 @@ export function runClimb(root) {
     return maxLum * 0.65 + (sum / n) * 0.35;
   }
 
-  function updateNavContrast() {
+  function updateNavContrast(force) {
     const lum = sampleNavLuminance();
-    if (navOnLight) {
+    if (force) {
+      navOnLight = lum > 0.42;
+    } else if (navOnLight) {
       if (lum < 0.36) navOnLight = false;
     } else if (lum > 0.48) {
       navOnLight = true;
@@ -546,7 +564,7 @@ export function runClimb(root) {
     pg.style.transform = `translate(${(pos[0] - 45.5).toFixed(1)}px,${(pos[1] - 101).toFixed(1)}px)`;
     pgFlip.style.transform = `scaleX(${dir})`;
     pgBody.style.transform = `translateY(${bob.toFixed(2)}px) rotate(${rot.toFixed(2)}deg)`;
-    baseT.setAttribute("opacity", (1 - ss(0.002, 0.03, p)).toFixed(3));
+    if (baseT) baseT.setAttribute("opacity", (1 - ss(0.002, 0.03, p)).toFixed(3));
 
     for (let i = 0; i < prints.length; i++) {
       const o = clamp((S - prints[i].s - 6) / 30, 0, 1);
@@ -657,6 +675,10 @@ export function runClimb(root) {
   addEventListener("resize", onResize);
   mq.addEventListener?.("change", onMq);
   stepLinks.forEach((el) => el.addEventListener("click", skipToSteps));
+  const themeMo = new MutationObserver(() => {
+    requestAnimationFrame(() => updateNavContrast(true));
+  });
+  themeMo.observe(html, { attributes: true, attributeFilter: ["data-theme"] });
 
   const prevScrollBehavior = html.style.scrollBehavior;
   html.style.scrollBehavior = "auto";
@@ -675,6 +697,7 @@ export function runClimb(root) {
     removeEventListener("resize", onResize);
     mq.removeEventListener?.("change", onMq);
     stepLinks.forEach((el) => el.removeEventListener("click", skipToSteps));
+    themeMo.disconnect();
     html.style.scrollBehavior = prevScrollBehavior;
     html.classList.remove("climb-page", "climb-nav-on-light");
     printsG.replaceChildren();

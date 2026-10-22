@@ -43,9 +43,6 @@ export default function ClimbHome() {
                     [ Mount Drachenfels · 5,378 m ]
                   </text>
                 </g>
-                <text id="base" className="base-t" x="234" y="1100">
-                  BASE CAMP
-                </text>
               </svg>
               <div className="pg" id="pg">
                 <div className="pg-shadow" />

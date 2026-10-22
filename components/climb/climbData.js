@@ -61,8 +61,9 @@ export const CTRL = [
   [900, 335],
   [925, 282],
   [930, 226],
+  [984, 204],
 ];
 
 export const WAYI = [3, 7, 11, 14];
-export const NS = 24;
+export const NS = 36;
 export const THEME_KEY = "portfolio-theme";
