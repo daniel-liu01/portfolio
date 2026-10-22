@@ -163,8 +163,7 @@ export function runClimb(root) {
   el("line", { class: "next-pole", x1: "1500", y1: "-798", x2: "1500", y2: "-868" }, nextEl);
   el("path", { class: "next-flag", d: "M1500 -868 L1575 -848 L1500 -828 Z" }, nextEl);
   el("text", { class: "next-t", x: "1520", y: "-943" }, nextEl).textContent = "NEXT SUMMIT";
-  el("text", { class: "next-s", x: "1520", y: "-900" }, nextEl).textContent =
-    "[ somewhere higher ]";
+  el("text", { class: "next-s", x: "1520", y: "-900" }, nextEl).textContent = "[ ??? ]";
 
   let lastJ = -1;
   function setRoute(S) {
@@ -190,11 +189,20 @@ export function runClimb(root) {
     box.appendChild(s);
   }
 
+  function optimizedSrc(path, width) {
+    return `/_next/image?url=${encodeURIComponent(path)}&w=${width}&q=100`;
+  }
+
   function thumbHTML(s, eager) {
+    const widths = [640, 828, 1080, 1200, 1920];
+    const srcset = widths.map((w) => `${optimizedSrc(s.img, w)} ${w}w`).join(", ");
+    const sizes = eager
+      ? "(max-width: 759px) calc(100vw - 24px), 430px"
+      : "(max-width: 759px) calc(100vw - 32px), min(584px, 46vw)";
     return (
       `<a class="thumb" style="--tone:${s.tone}" href="${s.href}" tabindex="-1" aria-hidden="true">` +
       `<span class="ph"><b>${s.name}</b><i>project image</i></span>` +
-      `<img alt="" ${eager ? "" : 'loading="lazy" '}src="${s.img}"></a>`
+      `<img alt="" ${eager ? 'fetchpriority="high" ' : 'loading="lazy" '}decoding="async" src="${optimizedSrc(s.img, 1200)}" srcset="${srcset}" sizes="${sizes}"></a>`
     );
   }
 
@@ -300,7 +308,8 @@ export function runClimb(root) {
     const sW = Math.max(vw / (2000 + 2 * EXT), vh / 2200);
     const wW = vw / sW;
     const wH = vh / sW;
-    WIDE = { s: sW, cx: clamp(1000, 1740 - wW / 2, 920 + wW / 2), cy: -1040 + wH / 2 };
+    const topPad = 84 / sW;
+    WIDE = { s: sW, cx: clamp(1000, 1740 - wW / 2, 920 + wW / 2), cy: -1040 - topPad + wH / 2 };
     sFollow = Math.max(vw / (mobile ? 640 : 1000), sH * 1.15);
     sEnd = Math.max(vw / (mobile ? 840 : 1320), sH * 1.05);
     fx = mobile ? 0.5 : 0.36;
@@ -342,6 +351,7 @@ export function runClimb(root) {
   const coda = $("#coda");
   const rangeEl = $("#range");
   const cue = $("#cue");
+  const skip = $("#skip");
   const fadeEl = $("#fade");
   const gauge = $("#gauge");
   const finale = $("#finale");
@@ -585,6 +595,11 @@ export function runClimb(root) {
     const cod = u >= 0.3;
     if (fin !== finale.classList.contains("on")) finale.classList.toggle("on", fin);
     if (cod !== coda.classList.contains("on")) coda.classList.toggle("on", cod);
+    const skipOut = ss(0.05, 0.32, u);
+    skip.style.opacity = (1 - skipOut).toFixed(3);
+    skip.style.pointerEvents = skipOut > 0.5 ? "none" : "";
+    skip.setAttribute("aria-hidden", skipOut > 0.5 ? "true" : "false");
+    skip.tabIndex = skipOut > 0.5 ? -1 : 0;
     rangeEl.style.opacity = ss(0, 0.55, u).toFixed(3);
     nextEl.style.opacity = ss(0.5, 0.95, u).toFixed(3);
   }

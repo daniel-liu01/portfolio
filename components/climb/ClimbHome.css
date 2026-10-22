@@ -62,3 +62,20 @@ html.climb-page body {
 .climb-home .stage {
   overflow: hidden;
 }
+
+.climb-home .thumb img {
+  image-rendering: auto;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform: translateZ(0);
+}
+
+@media (min-width: 760px) {
+  .climb-home .card.on {
+    transform: translate3d(0, -50%, 0);
+  }
+}
+
+.climb-home .skip {
+  transition: opacity 0.4s ease;
+}
