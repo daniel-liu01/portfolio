@@ -654,18 +654,16 @@ export function runClimb(root) {
     if (fin) {
       const pr = pg.getBoundingClientRect();
       const sr = stage.getBoundingClientRect();
-      const fw = finale.offsetWidth || 360;
-      const fh = finale.offsetHeight || 220;
-      let left = pr.left - sr.left - fw - 22;
-      let top = pr.top - sr.top + pr.height * 0.12 - fh * 0.55;
-      left = clamp(left, 16, Math.max(16, sr.width - fw - 16));
-      top = clamp(top, 76, Math.max(76, sr.height * 0.38));
+      const fw = finale.offsetWidth || 520;
+      const fh = finale.offsetHeight || 240;
+      let left = pr.left - sr.left - fw - 72;
+      left = clamp(left, 24, Math.max(24, pr.left - sr.left - fw - 36));
+      let top = pr.top - sr.top - fh - 24;
+      top = clamp(top, 88, Math.max(88, sr.height * 0.2));
       finale.style.left = `${left.toFixed(1)}px`;
       finale.style.top = `${top.toFixed(1)}px`;
       finale.style.right = "auto";
       finale.style.bottom = "auto";
-      const tailY = clamp(pr.top - sr.top + pr.height * 0.22 - top, 36, fh - 36);
-      finale.style.setProperty("--tail-y", `${tailY.toFixed(1)}px`);
     }
     rangeEl.style.opacity = ss(0, 0.55, u).toFixed(3);
     nextEl.style.opacity = ss(0.5, 0.95, u).toFixed(3);

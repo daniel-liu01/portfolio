@@ -115,12 +115,12 @@ export default function ClimbHome() {
             </aside>
             <div className="cards" id="cards" />
 
-            <section className="finale" id="finale" aria-label="Contact">
-              <p className="eyebrow">The summit</p>
-              <h2>Hi, I&rsquo;m Daniel.</h2>
+            <section className="finale" id="finale" aria-label="Introduction">
+              <div className="finale-bg" aria-hidden="true" />
+              <h2>Hi, I&rsquo;m Daniel!</h2>
               <p className="body">
-                My goal is to combine design, research and branding to craft meaningful user
-                experiences.
+                I&rsquo;m a product designer based in Vancouver. I create with empathy, bringing
+                design, research, and branding together to craft meaningful user experiences.
               </p>
               <div className="cta">
                 <a className="btn" href="#wide" id="revealWide">
