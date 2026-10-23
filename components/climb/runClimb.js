@@ -70,8 +70,11 @@ function buildPath() {
 
 export function runClimb(root) {
   if ("scrollRestoration" in history) history.scrollRestoration = "manual";
-  if (location.hash) history.replaceState(null, "", location.pathname + location.search);
-  window.scrollTo(0, 0);
+  const openAtWork = location.hash === "#steps";
+  if (location.hash && !openAtWork) {
+    history.replaceState(null, "", location.pathname + location.search);
+  }
+  if (!openAtWork) window.scrollTo(0, 0);
 
   const $ = (s) => root.querySelector(s);
   const { pts, L, at, wayS, wayT } = buildPath();
@@ -761,6 +764,24 @@ export function runClimb(root) {
     cancelWide();
     $("#steps").scrollIntoView({ behavior: "smooth" });
   };
+  function goToWork() {
+    const el = $("#steps");
+    if (!el) return;
+    const top = el.getBoundingClientRect().top + window.scrollY;
+    if (reduced) {
+      wideUnlocked = true;
+      window.scrollTo(0, top);
+      readScroll();
+      kick();
+      return;
+    }
+    animateScrollTo(top, 520, () => {
+      readScroll();
+      kick();
+    });
+    wideUnlocked = true;
+  }
+  const onGoWork = () => goToWork();
   const stepLinks = [...root.querySelectorAll('a[href="#steps"]')];
   const revealWide = $("#revealWide");
   let touchY = 0;
@@ -803,6 +824,7 @@ export function runClimb(root) {
   mq.addEventListener?.("change", onMq);
   stepLinks.forEach((el) => el.addEventListener("click", skipToSteps));
   revealWide?.addEventListener("click", goToWide);
+  addEventListener("climb:go-work", onGoWork);
   const themeMo = new MutationObserver(() => {
     requestAnimationFrame(() => updateNavContrast(true));
   });
@@ -817,6 +839,7 @@ export function runClimb(root) {
   cur = target;
   render(cur, 1);
   kick();
+  if (openAtWork) requestAnimationFrame(() => goToWork());
 
   return () => {
     if (raf) cancelAnimationFrame(raf);
@@ -831,6 +854,7 @@ export function runClimb(root) {
     mq.removeEventListener?.("change", onMq);
     stepLinks.forEach((el) => el.removeEventListener("click", skipToSteps));
     revealWide?.removeEventListener("click", goToWide);
+    removeEventListener("climb:go-work", onGoWork);
     themeMo.disconnect();
     html.style.scrollBehavior = prevScrollBehavior;
     html.classList.remove("climb-page", "climb-nav-on-light");

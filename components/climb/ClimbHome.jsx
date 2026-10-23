@@ -12,10 +12,11 @@ export default function ClimbHome() {
     const root = rootRef.current;
     if (!root) return undefined;
     if ("scrollRestoration" in history) history.scrollRestoration = "manual";
-    if (window.location.hash) {
+    const stayOnWork = window.location.hash === "#steps";
+    if (window.location.hash && !stayOnWork) {
       window.history.replaceState(null, "", window.location.pathname + window.location.search);
     }
-    window.scrollTo(0, 0);
+    if (!stayOnWork) window.scrollTo(0, 0);
     return runClimb(root);
   }, []);
 

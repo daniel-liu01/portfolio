@@ -112,6 +112,10 @@ html.climb-page body {
   margin-top: -6px;
 }
 
+.climb-home .steps {
+  scroll-margin-top: 0;
+}
+
 .climb-home .trail-link {
   position: absolute;
   z-index: 5;

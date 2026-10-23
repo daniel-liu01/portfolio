@@ -79,11 +79,18 @@ export default function ClimbNav() {
           <Link href="/" aria-current={isHome ? "page" : undefined}>
             Home
           </Link>
+          <Link
+            href="/#steps"
+            onClick={(e) => {
+              if (pathname !== "/") return;
+              e.preventDefault();
+              window.dispatchEvent(new Event("climb:go-work"));
+            }}
+          >
+            Work
+          </Link>
           <Link href="/about" aria-current={pathname === "/about" ? "page" : undefined}>
             About
-          </Link>
-          <Link href="/contact" aria-current={pathname === "/contact" ? "page" : undefined}>
-            Contact
           </Link>
         </nav>
         <button
