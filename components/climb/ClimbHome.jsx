@@ -25,6 +25,7 @@ export default function ClimbHome() {
       <main>
         <section className="climb" id="climb" aria-label="Selected work, shown as a climb up a mountain">
           <div className="stage" id="stage">
+            <div className="intro-veil" id="introVeil" aria-hidden="true" />
             <div className="sky" />
             <div className="sky-night" />
             <div className="stars" id="stars" aria-hidden="true" />

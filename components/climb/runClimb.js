@@ -298,6 +298,7 @@ export function runClimb(root) {
   let HERO;
   let WIDE;
   let sFollow;
+  let sClose;
   let sEnd;
   let fx;
   let fy;
@@ -334,6 +335,7 @@ export function runClimb(root) {
     const topPad = 84 / sW;
     WIDE = { s: sW, cx: clamp(1000, 1740 - wW / 2, 920 + wW / 2), cy: -1040 - topPad + wH / 2 };
     sFollow = Math.max(vw / (mobile ? 640 : 1000), sH * 1.15);
+    sClose = Math.max(vw / (mobile ? 240 : 340), sH * 3.1);
     sEnd = Math.max(vw / (mobile ? 900 : 1500), sH * 1.02);
     fx = mobile ? 0.5 : 0.36;
     fy = mobile ? 0.3 : 0.62;
@@ -356,17 +358,26 @@ export function runClimb(root) {
   }
   const P0 = PA[0];
   const PEND = PA[PA.length - 1];
+  function closeCam() {
+    return follow(CTRL[0][0], CTRL[0][1], sClose, mobile ? 0.5 : 0.46, mobile ? 0.54 : 0.58);
+  }
   function wantCam(p, pos) {
     const f = follow(pos[0], pos[1], sFollow, fx, fy);
+    let live;
     if (p < P0) {
       const st = follow(CTRL[0][0], CTRL[0][1], sFollow, fx, fy);
-      return mixCam(HERO, st, smooth(p / P0));
-    }
-    if (p > PEND) {
+      live = mixCam(HERO, st, smooth(p / P0));
+    } else if (p > PEND) {
       const e = follow(endPos[0], endPos[1], sEnd, fxE, fyE);
-      return mixCam(f, e, smooth((p - PEND) / (1 - PEND)));
+      live = mixCam(f, e, smooth((p - PEND) / (1 - PEND)));
+    } else {
+      live = f;
     }
-    return f;
+    if (introU < 1) {
+      const zoom = smooth(ss(0.4, 1, introU));
+      return mixCam(closeCam(), HERO, zoom);
+    }
+    return live;
   }
 
   const html = document.documentElement;
@@ -376,6 +387,7 @@ export function runClimb(root) {
   const skip = $("#skip");
   const seeWork = $("#seeWork");
   const fadeEl = $("#fade");
+  const veil = $("#introVeil");
   const gauge = $("#gauge");
   const finale = $("#finale");
   const pg = $("#pg");
@@ -391,6 +403,18 @@ export function runClimb(root) {
 
   let reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
   if (reduced) html.classList.add("reduced");
+  const INTRO_MS = 4600;
+  let introU = 1;
+  let introDone = true;
+  let introT0 = 0;
+  const skipIntro = reduced || openAtWork;
+  if (!skipIntro) {
+    introU = 0;
+    introDone = false;
+    html.classList.add("climb-intro");
+  } else if (veil) {
+    veil.style.opacity = "0";
+  }
   let target = 0;
   let cur = 0;
   let raf = 0;
@@ -531,8 +555,9 @@ export function runClimb(root) {
     return max > 0 ? clamp(-r.top / max, 0, 1) : 0;
   }
   function readScroll() {
-    if (reduced) {
+    if (reduced || !introDone) {
       target = 0;
+      if (!introDone) window.scrollTo(0, 0);
       return;
     }
     const r = climb.getBoundingClientRect();
@@ -559,6 +584,10 @@ export function runClimb(root) {
     const dx = d1[0] - d0[0];
     const dy = d1[1] - d0[1];
     if (Math.abs(dx) > 0.3 * Math.hypot(dx, dy)) dir = dx >= 0 ? 1 : -1;
+
+    if (veil) veil.style.opacity = skipIntro ? "0" : (1 - ss(0.04, 0.26, introU)).toFixed(3);
+    html.classList.toggle("climb-intro-ui", !introDone && introU > 0.72);
+    const introShow = ss(0.82, 1, introU);
 
     let w = wantCam(p, pos);
     if (u > 0) w = mixCam(w, WIDE, smooth(u));
@@ -608,7 +637,7 @@ export function runClimb(root) {
     }
 
     summitEl.classList.toggle("reached", t > 0.995);
-    cue.style.opacity = (0.8 * (1 - ss(0, 0.025, p))).toFixed(3);
+    cue.style.opacity = (0.8 * (1 - ss(0, 0.025, p)) * introShow).toFixed(3);
     fadeEl.style.opacity = ss(0.94, 1, pp).toFixed(3);
     stage.style.setProperty("--p", p.toFixed(4));
 
@@ -641,8 +670,8 @@ export function runClimb(root) {
     }
     const fin = p > 0.955 && u < 0.22;
     if (fin !== finale.classList.contains("on")) finale.classList.toggle("on", fin);
-    const skipOut = fin ? 1 : ss(0.05, 0.32, u);
-    skip.style.opacity = (1 - skipOut).toFixed(3);
+    const skipOut = fin || introShow < 0.5 ? 1 : ss(0.05, 0.32, u);
+    skip.style.opacity = ((1 - skipOut) * introShow).toFixed(3);
     skip.style.pointerEvents = skipOut > 0.5 ? "none" : "";
     skip.setAttribute("aria-hidden", skipOut > 0.5 ? "true" : "false");
     skip.tabIndex = skipOut > 0.5 ? -1 : 0;
@@ -680,16 +709,29 @@ export function runClimb(root) {
     rangeEl.style.opacity = ss(0, 0.55, u).toFixed(3);
     nextEl.style.opacity = ss(0.5, 0.95, u).toFixed(3);
   }
+  function finishIntro() {
+    if (introDone) return;
+    introDone = true;
+    introU = 1;
+    html.classList.remove("climb-intro", "climb-intro-ui");
+    if (veil) veil.style.opacity = "0";
+  }
   function frame(ts) {
     raf = 0;
     const dt = lastTs ? Math.min(48, ts - lastTs) : 16.7;
     lastTs = ts;
-    const ease = 1 - Math.pow(1 - 0.16, dt / 16.67);
+    if (!introDone) {
+      if (!introT0) introT0 = ts;
+      introU = clamp((ts - introT0) / INTRO_MS, 0, 1);
+      if (introU >= 1) finishIntro();
+    }
+    const ease = introDone ? 1 - Math.pow(1 - 0.16, dt / 16.67) : Math.min(1, dt / 32);
     const dp = target - cur;
     if (Math.abs(dp) > 0.0002) cur += dp * ease;
     else cur = target;
-    render(cur, ease);
-    if (Math.abs(target - cur) > 0.0002 || busy || amp > 0) raf = requestAnimationFrame(frame);
+    render(cur, introDone ? ease : 1);
+    if (!introDone || Math.abs(target - cur) > 0.0002 || busy || amp > 0)
+      raf = requestAnimationFrame(frame);
     else lastTs = 0;
   }
   function kick() {
@@ -770,11 +812,13 @@ export function runClimb(root) {
   };
   const skipToSteps = (e) => {
     e.preventDefault();
+    finishIntro();
     wideUnlocked = true;
     cancelWide();
     $("#steps").scrollIntoView({ behavior: "smooth" });
   };
   function goToWork() {
+    finishIntro();
     const el = $("#steps");
     if (!el) return;
     const top = el.getBoundingClientRect().top + window.scrollY;
@@ -799,6 +843,10 @@ export function runClimb(root) {
     return !wideUnlocked && !reduced && delta > 0 && progressNow() >= LOCK - 0.004;
   }
   const onWheel = (e) => {
+    if (!introDone) {
+      e.preventDefault();
+      return;
+    }
     if (wideAnim) cancelWide();
     if (pastSummit(e.deltaY)) {
       e.preventDefault();
@@ -810,6 +858,10 @@ export function runClimb(root) {
     touchY = e.touches[0]?.clientY ?? 0;
   };
   const onTouchMove = (e) => {
+    if (!introDone) {
+      e.preventDefault();
+      return;
+    }
     const y = e.touches[0]?.clientY ?? 0;
     if (pastSummit(touchY - y)) {
       e.preventDefault();
@@ -817,6 +869,10 @@ export function runClimb(root) {
     }
   };
   const onKeyLock = (e) => {
+    if (!introDone && ["ArrowDown", "PageDown", "ArrowUp", "PageUp", " ", "Spacebar"].includes(e.key)) {
+      e.preventDefault();
+      return;
+    }
     if (!["ArrowDown", "PageDown", " ", "Spacebar"].includes(e.key)) return;
     if (pastSummit(1)) {
       e.preventDefault();
@@ -867,7 +923,7 @@ export function runClimb(root) {
     removeEventListener("climb:go-work", onGoWork);
     themeMo.disconnect();
     html.style.scrollBehavior = prevScrollBehavior;
-    html.classList.remove("climb-page", "climb-nav-on-light");
+    html.classList.remove("climb-page", "climb-nav-on-light", "climb-intro", "climb-intro-ui");
     printsG.replaceChildren();
     flagsG.replaceChildren();
     nextEl.remove();

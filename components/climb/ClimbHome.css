@@ -63,6 +63,34 @@ html.climb-page body {
   overflow: hidden;
 }
 
+.climb-home .intro-veil {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  background: #fefefe;
+  pointer-events: none;
+}
+
+html.climb-intro,
+html.climb-intro body {
+  overflow: hidden;
+}
+
+html.climb-intro .site-nav {
+  opacity: 0;
+  pointer-events: none;
+}
+
+html.climb-intro-ui .site-nav {
+  opacity: 1;
+  pointer-events: auto;
+  transition: opacity 0.9s ease;
+}
+
+html.reduced .climb-home .intro-veil {
+  display: none;
+}
+
 .climb-home .thumb img {
   image-rendering: auto;
   backface-visibility: hidden;
