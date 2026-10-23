@@ -31,6 +31,7 @@ export const metadata = {
 const themeScript = `
   (function() {
     try {
+      if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
       var t = localStorage.getItem('portfolio-theme');
       var dark = t === 'dark';
       document.documentElement.classList.toggle('dark', dark);

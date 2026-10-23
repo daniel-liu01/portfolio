@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useLayoutEffect, useRef } from "react";
 import MountainScene from "./MountainScene";
 import { runClimb } from "./runClimb";
 import "./ClimbHome.css";
@@ -8,9 +8,14 @@ import "./ClimbHome.css";
 export default function ClimbHome() {
   const rootRef = useRef(null);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const root = rootRef.current;
     if (!root) return undefined;
+    if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+    if (window.location.hash) {
+      window.history.replaceState(null, "", window.location.pathname + window.location.search);
+    }
+    window.scrollTo(0, 0);
     return runClimb(root);
   }, []);
 
@@ -57,6 +62,25 @@ export default function ClimbHome() {
             <a className="skip" href="#steps" id="skip">
               Skip the climb, see all work
             </a>
+            <a
+              className="trail-link trail-link--work"
+              href="#steps"
+              id="seeWork"
+              tabIndex={-1}
+              aria-hidden="true"
+            >
+              <span>Scroll</span>
+              <svg
+                className="cue-arrow down"
+                viewBox="0 0 26 18"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.4"
+                aria-hidden="true"
+              >
+                <path d="M1 3l12 12L25 3" />
+              </svg>
+            </a>
             <div className="fade" id="fade" />
             <div className="cue" id="cue">
               <svg
@@ -82,7 +106,7 @@ export default function ClimbHome() {
               </svg>
             </div>
 
-            <aside className="gauge" id="gauge" aria-label="Climb progress">
+            <aside className="gauge" id="gauge" aria-hidden="true">
               <div className="g-track" id="gTrack">
                 <div className="g-fill" />
                 <div className="g-dot" />
@@ -98,20 +122,7 @@ export default function ClimbHome() {
                 experiences.
               </p>
               <div className="cta">
-                <a className="btn" href="#steps">
-                  Explore the full site <span aria-hidden="true">→</span>
-                </a>
-              </div>
-            </section>
-            <section className="finale" id="coda" aria-label="The journey continues">
-              <p className="eyebrow">The journey continues</p>
-              <h2>Higher peaks ahead.</h2>
-              <p className="body">
-                Reaching this summit is just one part of the journey. There is always a taller one to
-                climb.
-              </p>
-              <div className="cta">
-                <a className="btn" href="#steps">
+                <a className="btn" href="#wide" id="revealWide">
                   Explore the full site <span aria-hidden="true">→</span>
                 </a>
               </div>

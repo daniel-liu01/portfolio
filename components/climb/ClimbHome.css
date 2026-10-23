@@ -84,6 +84,10 @@ html.climb-page body {
   stroke-linejoin: round;
 }
 
+.climb-home .gauge {
+  display: none;
+}
+
 .climb-home .cue {
   gap: 4px;
 }
@@ -106,4 +110,74 @@ html.climb-page body {
 
 .climb-home .tile p {
   margin-top: -6px;
+}
+
+.climb-home .trail-link {
+  position: absolute;
+  z-index: 5;
+  bottom: clamp(16px, 3.6vh, 36px);
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  font-weight: 300;
+  color: var(--ink);
+  text-decoration: none;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+}
+
+.climb-home .trail-link--work {
+  right: clamp(16px, 4vw, 56px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  text-decoration: none;
+}
+
+.climb-home .finale {
+  left: auto;
+  right: auto;
+  bottom: auto;
+  top: 0;
+  width: min(380px, calc(100vw - 40px));
+  overflow: visible;
+}
+
+.climb-home .finale::after {
+  content: "";
+  position: absolute;
+  right: -7px;
+  top: var(--tail-y, 46%);
+  width: 16px;
+  height: 16px;
+  margin-top: -8px;
+  background: var(--glass);
+  border-right: 1px solid var(--glass-line);
+  border-bottom: 1px solid var(--glass-line);
+  transform: rotate(-45deg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  pointer-events: none;
+}
+
+@media (max-width: 759px) {
+  .climb-home .finale {
+    left: auto;
+    right: auto;
+    width: min(340px, calc(100vw - 28px));
+    bottom: auto;
+  }
+}
+
+.climb-home .trail-link--work .cue-arrow {
+  width: 18px;
+  height: 12px;
+  animation: bob 2.4s ease-in-out infinite;
+}
+
+@media (max-width: 759px) {
+  .climb-home .trail-link {
+    bottom: calc(20px + env(safe-area-inset-bottom, 0px));
+  }
 }

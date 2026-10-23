@@ -69,6 +69,10 @@ function buildPath() {
 }
 
 export function runClimb(root) {
+  if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+  if (location.hash) history.replaceState(null, "", location.pathname + location.search);
+  window.scrollTo(0, 0);
+
   const $ = (s) => root.querySelector(s);
   const { pts, L, at, wayS, wayT } = buildPath();
   const PA = [0.07, 0.22, 0.3, 0.43, 0.5, 0.63, 0.7, 0.8, 0.87, 0.95];
@@ -296,7 +300,7 @@ export function runClimb(root) {
   let fy;
   let fxE;
   let fyE;
-  const endPos = [905, 312];
+  const endPos = [960, 220];
   const cam = { cx: 1000, cy: 560, s: 0.72 };
   const EXT = 1250;
   const KC = 0.82;
@@ -327,11 +331,11 @@ export function runClimb(root) {
     const topPad = 84 / sW;
     WIDE = { s: sW, cx: clamp(1000, 1740 - wW / 2, 920 + wW / 2), cy: -1040 - topPad + wH / 2 };
     sFollow = Math.max(vw / (mobile ? 640 : 1000), sH * 1.15);
-    sEnd = Math.max(vw / (mobile ? 840 : 1320), sH * 1.05);
+    sEnd = Math.max(vw / (mobile ? 900 : 1500), sH * 1.02);
     fx = mobile ? 0.5 : 0.36;
     fy = mobile ? 0.3 : 0.62;
-    fxE = mobile ? 0.5 : 0.68;
-    fyE = mobile ? 0.3 : 0.48;
+    fxE = mobile ? 0.5 : 0.54;
+    fyE = mobile ? 0.34 : 0.5;
   }
   function follow(x, y, s, fxx, fyy) {
     let cx = x + (0.5 - fxx) * (vw / s);
@@ -364,10 +368,10 @@ export function runClimb(root) {
 
   const html = document.documentElement;
   const summitEl = $("#summit");
-  const coda = $("#coda");
   const rangeEl = $("#range");
   const cue = $("#cue");
   const skip = $("#skip");
+  const seeWork = $("#seeWork");
   const fadeEl = $("#fade");
   const gauge = $("#gauge");
   const finale = $("#finale");
@@ -477,7 +481,10 @@ export function runClimb(root) {
       const stack = document.elementsFromPoint(x, y);
       let rgb = null;
       for (const el of stack) {
-        if (nav.contains(el) || el.closest(".site-nav, .gauge, .cards, .finale, .skip, .cue")) {
+        if (
+          nav.contains(el) ||
+          el.closest(".site-nav, .gauge, .cards, .finale, .skip, .cue, .trail-link")
+        ) {
           continue;
         }
         rgb = colorOfNode(el);
@@ -507,6 +514,19 @@ export function runClimb(root) {
     html.classList.toggle("climb-nav-on-light", navOnLight);
   }
 
+  const LOCK = KC;
+  let wideUnlocked = false;
+  function snapToLock() {
+    const r = climb.getBoundingClientRect();
+    const max = Math.max(0, r.height - stage.clientHeight);
+    const y = window.scrollY + r.top + LOCK * max;
+    if (Math.abs(window.scrollY - y) > 0.5) window.scrollTo(0, y);
+  }
+  function progressNow() {
+    const r = climb.getBoundingClientRect();
+    const max = r.height - stage.clientHeight;
+    return max > 0 ? clamp(-r.top / max, 0, 1) : 0;
+  }
   function readScroll() {
     if (reduced) {
       target = 0;
@@ -515,6 +535,10 @@ export function runClimb(root) {
     const r = climb.getBoundingClientRect();
     const max = r.height - stage.clientHeight;
     target = max > 0 ? clamp(-r.top / max, 0, 1) : 0;
+    if (!wideUnlocked && target > LOCK) {
+      target = LOCK;
+      snapToLock();
+    }
   }
   function render(p, ease) {
     const pp = p;
@@ -609,15 +633,37 @@ export function runClimb(root) {
         live.textContent =
           "Checkpoint at " + STEPS[idx].alt.replace(" m", " meters") + ": " + STEPS[idx].name;
     }
-    const fin = p > 0.955 && u < 0.3;
-    const cod = u >= 0.3;
+    const fin = p > 0.955 && u < 0.22;
     if (fin !== finale.classList.contains("on")) finale.classList.toggle("on", fin);
-    if (cod !== coda.classList.contains("on")) coda.classList.toggle("on", cod);
     const skipOut = ss(0.05, 0.32, u);
     skip.style.opacity = (1 - skipOut).toFixed(3);
     skip.style.pointerEvents = skipOut > 0.5 ? "none" : "";
     skip.setAttribute("aria-hidden", skipOut > 0.5 ? "true" : "false");
     skip.tabIndex = skipOut > 0.5 ? -1 : 0;
+    const trailIn = ss(0.55, 0.92, u);
+    const trailLive = trailIn > 0.5;
+    if (seeWork) {
+      seeWork.style.opacity = trailIn.toFixed(3);
+      seeWork.style.pointerEvents = trailLive ? "auto" : "none";
+      seeWork.setAttribute("aria-hidden", trailLive ? "false" : "true");
+      seeWork.tabIndex = trailLive ? 0 : -1;
+    }
+    if (fin) {
+      const pr = pg.getBoundingClientRect();
+      const sr = stage.getBoundingClientRect();
+      const fw = finale.offsetWidth || 360;
+      const fh = finale.offsetHeight || 220;
+      let left = pr.left - sr.left - fw - 22;
+      let top = pr.top - sr.top + pr.height * 0.12 - fh * 0.55;
+      left = clamp(left, 16, Math.max(16, sr.width - fw - 16));
+      top = clamp(top, 76, Math.max(76, sr.height * 0.38));
+      finale.style.left = `${left.toFixed(1)}px`;
+      finale.style.top = `${top.toFixed(1)}px`;
+      finale.style.right = "auto";
+      finale.style.bottom = "auto";
+      const tailY = clamp(pr.top - sr.top + pr.height * 0.22 - top, 36, fh - 36);
+      finale.style.setProperty("--tail-y", `${tailY.toFixed(1)}px`);
+    }
     rangeEl.style.opacity = ss(0, 0.55, u).toFixed(3);
     nextEl.style.opacity = ss(0.5, 0.95, u).toFixed(3);
   }
@@ -647,6 +693,51 @@ export function runClimb(root) {
     window.scrollTo({ top, behavior: "smooth" });
   }
 
+  let wideAnim = 0;
+  function cancelWide() {
+    if (wideAnim) {
+      cancelAnimationFrame(wideAnim);
+      wideAnim = 0;
+      if (progressNow() < LOCK - 0.01) wideUnlocked = false;
+    }
+  }
+  function climbEndY() {
+    const r = climb.getBoundingClientRect();
+    const max = Math.max(0, r.height - stage.clientHeight);
+    return r.top + window.scrollY + max;
+  }
+  function animateScrollTo(y, ms, done) {
+    cancelWide();
+    const start = window.scrollY;
+    const dist = y - start;
+    if (Math.abs(dist) < 2) {
+      done?.();
+      return;
+    }
+    const t0 = performance.now();
+    const step = (now) => {
+      const t = clamp((now - t0) / ms, 0, 1);
+      const e = t * t * (3 - 2 * t);
+      window.scrollTo(0, start + dist * e);
+      if (t < 1) wideAnim = requestAnimationFrame(step);
+      else {
+        wideAnim = 0;
+        done?.();
+      }
+    };
+    wideAnim = requestAnimationFrame(step);
+  }
+  function goToWide(e) {
+    e.preventDefault();
+    wideUnlocked = true;
+    const y = climbEndY();
+    if (reduced) {
+      window.scrollTo(0, y);
+      return;
+    }
+    animateScrollTo(y, 3360);
+  }
+
   const onScroll = () => {
     readScroll();
     kick();
@@ -666,15 +757,52 @@ export function runClimb(root) {
   };
   const skipToSteps = (e) => {
     e.preventDefault();
+    wideUnlocked = true;
+    cancelWide();
     $("#steps").scrollIntoView({ behavior: "smooth" });
   };
   const stepLinks = [...root.querySelectorAll('a[href="#steps"]')];
+  const revealWide = $("#revealWide");
+  let touchY = 0;
+  function pastSummit(delta) {
+    return !wideUnlocked && !reduced && delta > 0 && progressNow() >= LOCK - 0.004;
+  }
+  const onWheel = (e) => {
+    if (wideAnim) cancelWide();
+    if (pastSummit(e.deltaY)) {
+      e.preventDefault();
+      snapToLock();
+    }
+  };
+  const onTouchStart = (e) => {
+    if (wideAnim) cancelWide();
+    touchY = e.touches[0]?.clientY ?? 0;
+  };
+  const onTouchMove = (e) => {
+    const y = e.touches[0]?.clientY ?? 0;
+    if (pastSummit(touchY - y)) {
+      e.preventDefault();
+      snapToLock();
+    }
+  };
+  const onKeyLock = (e) => {
+    if (!["ArrowDown", "PageDown", " ", "Spacebar"].includes(e.key)) return;
+    if (pastSummit(1)) {
+      e.preventDefault();
+      snapToLock();
+    }
+  };
 
   addEventListener("scroll", onScroll, { passive: true });
   document.addEventListener("scroll", onScroll, { passive: true });
   addEventListener("resize", onResize);
+  addEventListener("wheel", onWheel, { passive: false });
+  addEventListener("touchstart", onTouchStart, { passive: true });
+  addEventListener("touchmove", onTouchMove, { passive: false });
+  addEventListener("keydown", onKeyLock);
   mq.addEventListener?.("change", onMq);
   stepLinks.forEach((el) => el.addEventListener("click", skipToSteps));
+  revealWide?.addEventListener("click", goToWide);
   const themeMo = new MutationObserver(() => {
     requestAnimationFrame(() => updateNavContrast(true));
   });
@@ -692,11 +820,17 @@ export function runClimb(root) {
 
   return () => {
     if (raf) cancelAnimationFrame(raf);
+    cancelWide();
     removeEventListener("scroll", onScroll);
     document.removeEventListener("scroll", onScroll);
     removeEventListener("resize", onResize);
+    removeEventListener("wheel", onWheel);
+    removeEventListener("touchstart", onTouchStart);
+    removeEventListener("touchmove", onTouchMove);
+    removeEventListener("keydown", onKeyLock);
     mq.removeEventListener?.("change", onMq);
     stepLinks.forEach((el) => el.removeEventListener("click", skipToSteps));
+    revealWide?.removeEventListener("click", goToWide);
     themeMo.disconnect();
     html.style.scrollBehavior = prevScrollBehavior;
     html.classList.remove("climb-page", "climb-nav-on-light");
