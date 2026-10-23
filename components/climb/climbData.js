@@ -8,6 +8,7 @@ export const STEPS = [
     href: "/forge",
     img: "/forge/forge.png",
     tone: "#ffe6cc",
+    note: "Gamifying skilled-trades discovery and helping high school students and young adults explore, experience, and choose their future with confidence.",
   },
   {
     n: "02",
@@ -18,6 +19,7 @@ export const STEPS = [
     href: "/levelup",
     img: "/levelup/lvlup.png",
     tone: "#d6f3e4",
+    note: "Reimagining workouts by transforming rest periods into bite-sized minigames and rewarding consistency through a growing virtual companion.",
   },
   {
     n: "03",
@@ -29,6 +31,7 @@ export const STEPS = [
     href: "/magazine",
     img: "/magazine.jpg",
     tone: "#dbe6f3",
+    note: "A magazine focused on layout, typography, and visual storytelling. Based on the fantastic world of Made in Abyss.",
   },
   {
     n: "04",
@@ -39,6 +42,7 @@ export const STEPS = [
     href: "/kofi",
     img: "/kofi/cans.png",
     tone: "#d9ecfb",
+    note: "Kofi is well... Coffee! A can design blending playfulness and minimalism.",
   },
 ];
 

@@ -38,8 +38,8 @@ html.dark .site-nav.ink {
 }
 
 .site-nav .logo svg {
-  width: 34px;
-  height: 34px;
+  width: 40px;
+  height: 36px;
 }
 
 .site-nav .nav-right {
@@ -137,11 +137,16 @@ body.has-nav-offset {
 }
 
 @media (max-width: 759px) {
-  .site-nav .nav-links a:not([aria-current]) {
-    display: none;
-  }
-
   .site-nav .nav-right {
     padding-left: 10px;
+    gap: 12px;
+  }
+
+  .site-nav .nav-links {
+    gap: 28px;
+  }
+
+  .site-nav .theme {
+    margin-left: 16px;
   }
 }

@@ -6,7 +6,7 @@ function Footer() {
       <div className="footer-container">
         <div className="footer-left">
           <span className="footer-name">Daniel Liu</span>
-          <span className="footer-title">UX/UI Designer</span>
+          <span className="footer-title">Product Designer</span>
         </div>
         <a href="mailto:daniel30912@gmail.com" className="footer-email">
           daniel30912@gmail.com

@@ -238,7 +238,7 @@ export function runClimb(root) {
       thumbHTML(s, true) +
       `<div class="card-body"><div class="meta"><span class="step alt">${s.alt}</span><span>${s.kind}</span></div>` +
       `<h3>${s.name}</h3><ul class="tags">${s.tags.map((t) => `<li>${t}</li>`).join("")}</ul>` +
-      `<p class="note">One line on what this step taught you goes here.</p>` +
+      `<p class="note">${s.note}</p>` +
       `<a class="go" href="${s.href}" tabindex="-1">View case study <span aria-hidden="true">→</span></a></div>`;
     cardsEl.appendChild(c);
   });
@@ -338,7 +338,7 @@ export function runClimb(root) {
     fx = mobile ? 0.5 : 0.36;
     fy = mobile ? 0.3 : 0.62;
     fxE = mobile ? 0.5 : 0.54;
-    fyE = mobile ? 0.34 : 0.5;
+    fyE = mobile ? 0.42 : 0.5;
   }
   function follow(x, y, s, fxx, fyy) {
     let cx = x + (0.5 - fxx) * (vw / s);
@@ -588,7 +588,10 @@ export function runClimb(root) {
     const ph = S / 11;
     const rot = Math.sin(ph * Math.PI) * 4.6 * amp;
     const bob = -Math.abs(Math.sin(ph * Math.PI)) * 2.6 * amp;
-    pg.style.transform = `translate(${(pos[0] - 45.5).toFixed(1)}px,${(pos[1] - 101).toFixed(1)}px)`;
+    const sit = ss(0.88, 0.995, t);
+    const ox = -40 * sit;
+    const oy = 24 * sit;
+    pg.style.transform = `translate(${(pos[0] - 45.5 + ox).toFixed(1)}px,${(pos[1] - 101 + oy).toFixed(1)}px)`;
     pgFlip.style.transform = `scaleX(${dir})`;
     pgBody.style.transform = `translateY(${bob.toFixed(2)}px) rotate(${rot.toFixed(2)}deg)`;
     if (baseT) baseT.setAttribute("opacity", (1 - ss(0.002, 0.03, p)).toFixed(3));
@@ -638,7 +641,7 @@ export function runClimb(root) {
     }
     const fin = p > 0.955 && u < 0.22;
     if (fin !== finale.classList.contains("on")) finale.classList.toggle("on", fin);
-    const skipOut = ss(0.05, 0.32, u);
+    const skipOut = fin ? 1 : ss(0.05, 0.32, u);
     skip.style.opacity = (1 - skipOut).toFixed(3);
     skip.style.pointerEvents = skipOut > 0.5 ? "none" : "";
     skip.setAttribute("aria-hidden", skipOut > 0.5 ? "true" : "false");
@@ -654,16 +657,25 @@ export function runClimb(root) {
     if (fin) {
       const pr = pg.getBoundingClientRect();
       const sr = stage.getBoundingClientRect();
-      const fw = finale.offsetWidth || 520;
-      const fh = finale.offsetHeight || 240;
-      let left = pr.left - sr.left - fw - 72;
-      left = clamp(left, 24, Math.max(24, pr.left - sr.left - fw - 36));
-      let top = pr.top - sr.top - fh - 24;
-      top = clamp(top, 88, Math.max(88, sr.height * 0.2));
-      finale.style.left = `${left.toFixed(1)}px`;
-      finale.style.top = `${top.toFixed(1)}px`;
-      finale.style.right = "auto";
-      finale.style.bottom = "auto";
+      if (mobile) {
+        finale.style.left = "12px";
+        finale.style.right = "12px";
+        finale.style.width = "auto";
+        finale.style.top = "auto";
+        finale.style.bottom = "calc(12px + env(safe-area-inset-bottom, 0px))";
+      } else {
+        const fw = finale.offsetWidth || 520;
+        const fh = finale.offsetHeight || 240;
+        let left = pr.left - sr.left - fw - 72;
+        left = clamp(left, 24, Math.max(24, pr.left - sr.left - fw - 36));
+        let top = pr.top - sr.top - fh - 24;
+        top = clamp(top, 88, Math.max(88, sr.height * 0.2));
+        finale.style.left = `${left.toFixed(1)}px`;
+        finale.style.top = `${top.toFixed(1)}px`;
+        finale.style.right = "auto";
+        finale.style.bottom = "auto";
+        finale.style.width = "";
+      }
     }
     rangeEl.style.opacity = ss(0, 0.55, u).toFixed(3);
     nextEl.style.opacity = ss(0.5, 0.95, u).toFixed(3);
