@@ -110,8 +110,7 @@ export function runClimb(root) {
   const flagsG = $("#flags");
   const routeEl = $("#route");
   const prints = [];
-  const lite = (stage.clientWidth || innerWidth) < 760;
-  let step = lite ? 44 : 24;
+  let step = 24;
   let k = 0;
   for (let s = 40; s < L - 4; s += step, k++) {
     const a = at(s);
@@ -206,8 +205,7 @@ export function runClimb(root) {
     seed = (seed * 16807) % 2147483647;
     return seed / 2147483647;
   }
-  const starCount = lite ? 28 : 110;
-  for (let i = 0; i < starCount; i++) {
+  for (let i = 0; i < 110; i++) {
     const s = document.createElement("i");
     const z = rnd() < 0.15 ? 2.4 : rnd() < 0.5 ? 1.6 : 1.1;
     s.style.cssText = `left:${(rnd() * 100).toFixed(2)}%;top:${(rnd() * 100).toFixed(2)}%;width:${z}px;height:${z}px;animation-delay:-${(rnd() * 5).toFixed(2)}s;animation-duration:${(3 + rnd() * 4).toFixed(1)}s`;
@@ -215,30 +213,29 @@ export function runClimb(root) {
   }
 
   function optimizedSrc(path, width) {
-    return `/_next/image?url=${encodeURIComponent(path)}&w=${width}&q=75`;
+    return `/_next/image?url=${encodeURIComponent(path)}&w=${width}&q=100`;
   }
 
   function thumbHTML(s, eager) {
-    const widths = lite ? [640, 828, 1080] : [640, 828, 1080, 1200, 1600];
+    const widths = [640, 828, 1080, 1200, 1920];
     const srcset = widths.map((w) => `${optimizedSrc(s.img, w)} ${w}w`).join(", ");
     const sizes = eager
       ? "(max-width: 759px) calc(100vw - 24px), 430px"
       : "(max-width: 759px) calc(100vw - 32px), min(584px, 46vw)";
-    const srcW = lite ? 828 : 1200;
     return (
       `<a class="thumb" style="--tone:${s.tone}" href="${s.href}" tabindex="-1" aria-hidden="true">` +
       `<span class="ph"><b>${s.name}</b><i>project image</i></span>` +
-      `<img alt="" ${eager ? 'fetchpriority="high" ' : 'loading="lazy" '}decoding="async" src="${optimizedSrc(s.img, srcW)}" srcset="${srcset}" sizes="${sizes}"></a>`
+      `<img alt="" ${eager ? 'fetchpriority="high" ' : 'loading="lazy" '}decoding="async" src="${optimizedSrc(s.img, 1200)}" srcset="${srcset}" sizes="${sizes}"></a>`
     );
   }
 
   const cardsEl = $("#cards");
-  STEPS.forEach((s, i) => {
+  STEPS.forEach((s) => {
     const c = document.createElement("article");
     c.className = "card";
     c.setAttribute("aria-hidden", "true");
     c.innerHTML =
-      thumbHTML(s, i === 0) +
+      thumbHTML(s, true) +
       `<div class="card-body"><div class="meta"><span class="step alt">${s.alt}</span><span>${s.kind}</span></div>` +
       `<h3>${s.name}</h3><ul class="tags">${s.tags.map((t) => `<li>${t}</li>`).join("")}</ul>` +
       `<p class="note">${s.note}</p>` +
@@ -508,11 +505,7 @@ export function runClimb(root) {
     return maxLum * 0.65 + (sum / n) * 0.35;
   }
 
-  let navSampleAt = 0;
   function updateNavContrast(force) {
-    const now = performance.now();
-    if (!force && now - navSampleAt < (mobile ? 200 : 90)) return;
-    navSampleAt = now;
     const lum = sampleNavLuminance();
     if (force) {
       navOnLight = lum > 0.42;
@@ -585,7 +578,7 @@ export function runClimb(root) {
       Math.abs(Math.log(w.s / cam.s)) > 0.0008;
     const tx = vw / 2 - cam.cx * cam.s;
     const ty = vh / 2 - cam.cy * cam.s;
-    world.style.transform = `translate3d(${tx.toFixed(1)}px,${ty.toFixed(1)}px,0) scale(${cam.s.toFixed(4)})`;
+    world.style.transform = `translate3d(${tx.toFixed(2)}px,${ty.toFixed(2)}px,0) scale(${cam.s.toFixed(5)})`;
     updateNavContrast();
 
     const v = Math.abs(S - lastS);
@@ -605,20 +598,13 @@ export function runClimb(root) {
 
     for (let i = 0; i < prints.length; i++) {
       const o = clamp((S - prints[i].s - 6) / 30, 0, 1);
-      const op = (o * 0.9).toFixed(2);
-      if (prints[i].op !== op) {
-        prints[i].op = op;
-        prints[i].e.setAttribute("opacity", op);
-      }
+      prints[i].e.setAttribute("opacity", (o * 0.9).toFixed(3));
     }
     setRoute(S);
     for (let j = 0; j < flags.length; j++) {
       const a = ss(wayT[j] - 0.028, wayT[j] - 0.004, t);
-      const sc = (a * (1 + 0.1 * Math.sin(Math.PI * a))).toFixed(3);
-      if (flags[j].dataset.sc !== sc) {
-        flags[j].dataset.sc = sc;
-        flags[j].setAttribute("transform", `scale(${sc})`);
-      }
+      const sc = a * (1 + 0.1 * Math.sin(Math.PI * a));
+      flags[j].setAttribute("transform", `scale(${sc.toFixed(3)})`);
     }
 
     summitEl.classList.toggle("reached", t > 0.995);
