@@ -203,3 +203,34 @@ html.climb-page body {
     bottom: calc(20px + env(safe-area-inset-bottom, 0px));
   }
 }
+
+.climb-home .snow-intro {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  background: var(--snow);
+  pointer-events: none;
+  animation: snow-intro 1.7s ease forwards;
+}
+
+html.dark .climb-home .snow-intro,
+html[data-theme="dark"] .climb-home .snow-intro {
+  background: #0a0e2c;
+}
+
+@keyframes snow-intro {
+  0%,
+  32% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .climb-home .snow-intro {
+    animation: none;
+    opacity: 0;
+  }
+}

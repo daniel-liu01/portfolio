@@ -1,12 +1,19 @@
 "use client";
 
-import { useLayoutEffect, useRef } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
 import MountainScene from "./MountainScene";
 import { runClimb } from "./runClimb";
 import "./ClimbHome.css";
 
 export default function ClimbHome() {
   const rootRef = useRef(null);
+  const [showIntro, setShowIntro] = useState(true);
+
+  useLayoutEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      setShowIntro(false);
+    }
+  }, []);
 
   useLayoutEffect(() => {
     const root = rootRef.current;
@@ -22,6 +29,13 @@ export default function ClimbHome() {
 
   return (
     <div className="climb-home" id="top" ref={rootRef}>
+      {showIntro && (
+        <div
+          className="snow-intro"
+          aria-hidden="true"
+          onAnimationEnd={() => setShowIntro(false)}
+        />
+      )}
       <main>
         <section className="climb" id="climb" aria-label="Selected work, shown as a climb up a mountain">
           <div className="stage" id="stage">
