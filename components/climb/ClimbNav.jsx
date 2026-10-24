@@ -58,7 +58,7 @@ export default function ClimbNav() {
   const ink = !overSky;
 
   return (
-    <header className={`site-nav${ink ? " ink" : ""}`} id="nav">
+    <header className={`site-nav${ink ? " ink" : ""}${isHome ? "" : " bar"}`} id="nav">
       <Link className="logo" href="/" aria-label="Daniel Liu, home">
         <svg
           viewBox="0 0 97.24 87.48"

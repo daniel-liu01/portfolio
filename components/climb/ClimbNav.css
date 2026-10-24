@@ -19,6 +19,11 @@
   --nav-fg: #101820;
 }
 
+.site-nav.bar {
+  background: var(--white);
+  border-bottom: 1px solid color-mix(in srgb, var(--black) 10%, transparent);
+}
+
 html.dark .site-nav.ink {
   --nav-fg: #fefefe;
 }
