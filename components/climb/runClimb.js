@@ -311,6 +311,7 @@ export function runClimb(root) {
     vw = stage.clientWidth || innerWidth;
     vh = stage.clientHeight || innerHeight;
     mobile = vw < 760;
+    stage.classList.toggle("is-narrow", mobile);
     const Rx0 = 90;
     const Rx1 = 1300;
     let B = 1160;
@@ -378,6 +379,7 @@ export function runClimb(root) {
   const fadeEl = $("#fade");
   const gauge = $("#gauge");
   const finale = $("#finale");
+  const wideTitle = $("#wideTitle");
   const pg = $("#pg");
   const pgFlip = $("#pgFlip");
   const pgBody = $("#pgBody");
@@ -486,7 +488,7 @@ export function runClimb(root) {
       for (const el of stack) {
         if (
           nav.contains(el) ||
-          el.closest(".site-nav, .gauge, .cards, .finale, .skip, .cue, .trail-link")
+          el.closest(".site-nav, .gauge, .cards, .finale, .skip, .cue, .trail-link, .wide-title")
         ) {
           continue;
         }
@@ -579,6 +581,10 @@ export function runClimb(root) {
     const tx = vw / 2 - cam.cx * cam.s;
     const ty = vh / 2 - cam.cy * cam.s;
     world.style.transform = `translate3d(${tx.toFixed(2)}px,${ty.toFixed(2)}px,0) scale(${cam.s.toFixed(5)})`;
+    world.style.setProperty("--cam-s", cam.s.toFixed(4));
+    world.style.setProperty("--cam-tx", `${tx.toFixed(1)}px`);
+    world.style.setProperty("--cam-ty", `${ty.toFixed(1)}px`);
+    world.style.setProperty("--stage-w", `${vw}px`);
     updateNavContrast();
 
     const v = Math.abs(S - lastS);
@@ -679,6 +685,12 @@ export function runClimb(root) {
     }
     rangeEl.style.opacity = ss(0, 0.55, u).toFixed(3);
     nextEl.style.opacity = ss(0.5, 0.95, u).toFixed(3);
+    const titleIn = ss(0.22, 0.82, u);
+    if (wideTitle) {
+      wideTitle.style.opacity = titleIn.toFixed(3);
+      wideTitle.setAttribute("aria-hidden", titleIn < 0.08 ? "true" : "false");
+    }
+    stage.classList.toggle("is-wide", u > 0.12);
   }
   function frame(ts) {
     raf = 0;

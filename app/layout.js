@@ -1,4 +1,5 @@
-import { Newsreader, Spline_Sans, Spline_Sans_Mono } from "next/font/google";
+import localFont from "next/font/local";
+import { Spline_Sans, Spline_Sans_Mono } from "next/font/google";
 import "./globals.css";
 import CustomCursor from "@/components/CustomCursor";
 import ClimbNav from "@/components/climb/ClimbNav";
@@ -15,11 +16,12 @@ const splineSansMono = Spline_Sans_Mono({
   display: "swap",
 });
 
-const newsreader = Newsreader({
-  subsets: ["latin"],
-  weight: ["300", "400"],
+const roxborough = localFont({
+  src: "./fonts/roxborough-cf-regular.otf",
   variable: "--font-serif",
   display: "swap",
+  weight: "400",
+  style: "normal",
 });
 
 export const metadata = {
@@ -43,7 +45,7 @@ const themeScript = `
 export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${splineSans.variable} ${splineSansMono.variable} ${newsreader.variable}`}>
+      <body className={`${splineSans.variable} ${splineSansMono.variable} ${roxborough.variable}`}>
         <script
           dangerouslySetInnerHTML={{ __html: themeScript }}
           suppressHydrationWarning

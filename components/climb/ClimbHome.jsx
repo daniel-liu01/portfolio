@@ -47,6 +47,23 @@ export default function ClimbHome() {
             <h1 className="sr">Daniel Liu: UX/UI designer. Design, research and branding.</h1>
 
             <div className="world" id="world" aria-hidden="true">
+              <div className="wide-title" id="wideTitle" aria-hidden="true">
+                <p className="wide-kicker">
+                  Combining design, research, and branding to craft meaningful user experiences.
+                </p>
+                <p className="wide-name">
+                  <span className="wide-first" aria-hidden="true">
+                    {"DANIEL".split("").map((ch, i) => (
+                      <span key={i}>{ch}</span>
+                    ))}
+                  </span>
+                  <span className="wide-last" aria-hidden="true">
+                    {"LIU".split("").map((ch, i) => (
+                      <span key={i}>{ch}</span>
+                    ))}
+                  </span>
+                </p>
+              </div>
               <div className="ground" />
               <MountainScene />
               <svg id="trail" width="2000" height="1125" viewBox="0 0 2000 1125">

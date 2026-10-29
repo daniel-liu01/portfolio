@@ -50,7 +50,7 @@
 }
 
 .hero-name-first {
-  font-family: "FONTSPRING DEMO - Roxborough CF", serif;
+  font-family: var(--font-serif);
   font-size: 133.858px;
   font-weight: 400;
   line-height: 82.546px;
