@@ -257,7 +257,6 @@ html[data-theme="dark"] .climb-home .snow-intro {
   width: var(--stage-w);
   padding: calc(96px + env(safe-area-inset-top, 0px)) clamp(16px, 3vw, 40px) 0;
   color: var(--on-sky);
-  opacity: 0;
   pointer-events: none;
   transform: scale(calc(1 / var(--cam-s)));
   transform-origin: 0 0;
@@ -270,6 +269,28 @@ html[data-theme="dark"] .climb-home .snow-intro {
   font-weight: 300;
   font-size: clamp(9px, 0.82vw, 13px);
   line-height: 1.28;
+  opacity: 0;
+  transition: opacity 1.15s cubic-bezier(0.37, 0, 0.15, 1);
+}
+
+.climb-home .wide-first span,
+.climb-home .wide-last span {
+  opacity: 0;
+  transition: opacity 1.25s cubic-bezier(0.37, 0, 0.15, 1);
+  transition-delay: calc(180ms + var(--i, 0) * 72ms);
+}
+
+.climb-home .wide-title.is-shown .wide-kicker,
+.climb-home .wide-title.is-shown .wide-first span,
+.climb-home .wide-title.is-shown .wide-last span {
+  opacity: 1;
+}
+
+.climb-home .wide-title:not(.is-shown) .wide-kicker,
+.climb-home .wide-title:not(.is-shown) .wide-first span,
+.climb-home .wide-title:not(.is-shown) .wide-last span {
+  transition-duration: 0.28s;
+  transition-delay: 0s;
 }
 
 .climb-home .wide-name {

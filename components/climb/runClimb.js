@@ -685,11 +685,7 @@ export function runClimb(root) {
     }
     rangeEl.style.opacity = ss(0, 0.55, u).toFixed(3);
     nextEl.style.opacity = ss(0.5, 0.95, u).toFixed(3);
-    const titleIn = ss(0.22, 0.82, u);
-    if (wideTitle) {
-      wideTitle.style.opacity = titleIn.toFixed(3);
-      wideTitle.setAttribute("aria-hidden", titleIn < 0.08 ? "true" : "false");
-    }
+    updateWideTitle(u);
     stage.classList.toggle("is-wide", u > 0.12);
   }
   function frame(ts) {
@@ -719,6 +715,43 @@ export function runClimb(root) {
   }
 
   let wideAnim = 0;
+  let titleRevealTimer = 0;
+  let titleArmed = false;
+  let titleShown = false;
+  function setWideTitleShown(on) {
+    if (!wideTitle || titleShown === on) return;
+    titleShown = on;
+    wideTitle.classList.toggle("is-shown", on);
+    wideTitle.setAttribute("aria-hidden", on ? "false" : "true");
+  }
+  function clearTitleReveal() {
+    if (titleRevealTimer) {
+      clearTimeout(titleRevealTimer);
+      titleRevealTimer = 0;
+    }
+    titleArmed = false;
+    setWideTitleShown(false);
+  }
+  function updateWideTitle(u) {
+    if (!wideTitle) return;
+    if (reduced) {
+      clearTimeout(titleRevealTimer);
+      titleRevealTimer = 0;
+      titleArmed = u >= 0.2;
+      setWideTitleShown(u >= 0.2);
+      return;
+    }
+    if (u >= 0.98) {
+      if (titleShown || titleArmed) return;
+      titleArmed = true;
+      titleRevealTimer = setTimeout(() => {
+        titleRevealTimer = 0;
+        setWideTitleShown(true);
+      }, 500);
+      return;
+    }
+    if (u < 0.6) clearTitleReveal();
+  }
   function cancelWide() {
     if (wideAnim) {
       cancelAnimationFrame(wideAnim);
@@ -866,6 +899,7 @@ export function runClimb(root) {
   return () => {
     if (raf) cancelAnimationFrame(raf);
     cancelWide();
+    clearTitleReveal();
     removeEventListener("scroll", onScroll);
     document.removeEventListener("scroll", onScroll);
     removeEventListener("resize", onResize);

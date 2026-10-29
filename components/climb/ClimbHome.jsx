@@ -54,12 +54,16 @@ export default function ClimbHome() {
                 <p className="wide-name">
                   <span className="wide-first" aria-hidden="true">
                     {"DANIEL".split("").map((ch, i) => (
-                      <span key={i}>{ch}</span>
+                      <span key={i} style={{ "--i": i }}>
+                        {ch}
+                      </span>
                     ))}
                   </span>
                   <span className="wide-last" aria-hidden="true">
                     {"LIU".split("").map((ch, i) => (
-                      <span key={i}>{ch}</span>
+                      <span key={i} style={{ "--i": i + 6 }}>
+                        {ch}
+                      </span>
                     ))}
                   </span>
                 </p>
